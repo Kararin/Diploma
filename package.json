@@ -19,6 +19,8 @@
     "expect.js": "^0.3.1",
     "grunt-contrib-copy": "^0.8.2",
     "isomorphic-fetch": "^2.2.1",
+    "material-design-lite": "^1.1.1",
+    "material-ui": "^0.14.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
