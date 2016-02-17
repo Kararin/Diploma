@@ -11,7 +11,7 @@ export default class Input extends React.Component{
     render() {
 
         return (
-            <div>
+            <div className = "mdl-textfield mdl-js-textfield">
                 <input
                     className = "mdl-textfield__input"
                     type = "text"

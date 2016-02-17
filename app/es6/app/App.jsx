@@ -1,5 +1,5 @@
 import React from 'react';
-import AddTeacher from './Teachers/AddTeacher';
+import AddTeacher from './Teachers/AddTeacherContainer';
 import List from './Teachers/List';
 
 export default () => (

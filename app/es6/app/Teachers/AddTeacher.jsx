@@ -1,16 +1,15 @@
 import React from 'react';
-import {addTeacher} from '../actions/teachers';
-import {connect} from 'react-redux';
 import Paper from 'material-ui/lib/paper';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Input from '../core/components/Input';
 
-let AddTeacher =  ({dispatch}) => {
-    let input = '',
+let AddTeacher =  ({onAdd}) => {
+    let firstName,
+        lastName,
+        position,
         style = {
-            height: 200,
             width: 400,
             float: 'left',
             padding: 10,
@@ -23,25 +22,36 @@ let AddTeacher =  ({dispatch}) => {
                 <ToolbarTitle
                     text = "New teacher"/>
             </Toolbar>
-                <div className="mdl-textfield mdl-js-textfield">
+                <div>
                     <Input
-                        hint = 'Name...'
-                        ref = {(node) => {input = node}}/>
+                        hint = 'Last Name'
+                        ref = {node => lastName = node}/>
+                    <Input
+                        hint = 'First Name'
+                        ref = {node => firstName = node}/>
+                    <Input
+                        hint = 'Position'
+                        ref = {node => position = node}/>
                 </div>
             <div>
                 <RaisedButton
                         label = "Add"
                         secondary = {true}
                         onClick = {() => {
-                            dispatch(addTeacher(input.value));
-                            input.value = '';
+                            onAdd({
+                                lastName: lastName.value,
+                                firstName: firstName.value,
+                                position: position.value
+                            });
+
+                            lastName.value = '';
+                            firstName.value = '';
+                            position.value = '';
                         }}
                 />
             </div>
         </Paper>
     );
 };
-
-AddTeacher = connect()(AddTeacher);
 
 export default AddTeacher;
