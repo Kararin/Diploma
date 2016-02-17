@@ -1,8 +1,6 @@
-import {combineReducers} from 'redux';
-
 let teacherId = 0;
 
-const teachers = (state = [], action) => {
+export default (state = [], action) => {
     switch (action.type) {
         case 'ADD_TEACHER': {
             return [
@@ -15,5 +13,3 @@ const teachers = (state = [], action) => {
         default: return state;
     }
 };
-
-export default combineReducers({teachers});

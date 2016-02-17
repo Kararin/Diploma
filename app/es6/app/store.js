@@ -1,6 +1,8 @@
 import {createStore} from 'redux';
-import counter from './counter/teachers';
+import teachers from './counter/teachers';
+import {combineReducers} from 'redux';
 
-const store = createStore(counter);
+const reducer = combineReducers({teachers}),
+    store = createStore(reducer);
 
 export default store;

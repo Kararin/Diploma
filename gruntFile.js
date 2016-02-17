@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 
         watch: {
             scripts: {
-                files: ['<%= reactApp%>/**/*.jsx'],
+                files: ['<%= reactApp%>/**/*.jsx', '<%= reactApp%>/**/*.js'],
                 tasks: ['build'],
                 options: {
                     spawn: false
