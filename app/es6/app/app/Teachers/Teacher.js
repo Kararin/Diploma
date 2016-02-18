@@ -4,6 +4,7 @@ export default class {
         firstName = '',
         position = 'teacher'
     }) {
+        this.id = Date.now();
         this.lastName = lastName;
         this.firstName = firstName;
         this.position = position;
@@ -13,6 +14,7 @@ export default class {
         return Object.assign({},
             this.lastName,
             this.firstName,
-            this.position);
+            this.position,
+            this.id);
     }
 }

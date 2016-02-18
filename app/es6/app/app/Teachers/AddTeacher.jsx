@@ -3,7 +3,7 @@ import Paper from 'material-ui/lib/paper';
 import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import RaisedButton from 'material-ui/lib/raised-button';
-import Input from '../core/components/Input';
+import Input from 'components/Input';
 
 let AddTeacher =  ({onAdd}) => {
     let firstName,

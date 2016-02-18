@@ -35,6 +35,11 @@ module.exports = function(grunt) {
             options: {
                 browserifyOptions: {
                     debug: true
+                },
+                alias: {
+                    'actions/teachers': './<%= tempApp%>actions/teachers.js',
+
+                    'components/Input': './<%= tempApp%>/core/components/Input.js'
                 }
             },
         },

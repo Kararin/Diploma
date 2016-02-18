@@ -9,7 +9,6 @@ export default class Input extends React.Component{
     }
 
     render() {
-
         return (
             <div className = "mdl-textfield mdl-js-textfield">
                 <input
@@ -36,3 +35,5 @@ export default class Input extends React.Component{
         this.input.value = value;
     }
 }
+
+//TODO: default props and propTypes
