@@ -1,10 +1,12 @@
+let id = 0;
+
 export default class {
     constructor({
         lastName = '',
         firstName = '',
-        position = 'teacher'
+        position = 'teacher',
     }) {
-        this.id = Date.now();
+        this.id = id++;
         this.lastName = lastName;
         this.firstName = firstName;
         this.position = position;
@@ -16,5 +18,9 @@ export default class {
             this.firstName,
             this.position,
             this.id);
+    }
+
+    get fullName() {
+        return `${this.lastName} ${this.firstName}`
     }
 }

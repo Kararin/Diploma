@@ -1,57 +1,51 @@
 import React from 'react';
-import Paper from 'material-ui/lib/paper';
-import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
-import Toolbar from 'material-ui/lib/toolbar/toolbar';
-import RaisedButton from 'material-ui/lib/raised-button';
-import Input from 'components/Input';
+import {Modal, Input, Button} from 'react-bootstrap';
 
-let AddTeacher =  ({onAdd}) => {
+export default({
+    onAdd,
+    onClose,
+    isShown
+}) => {
     let firstName,
         lastName,
-        position,
-        style = {
-            width: 400,
-            float: 'left',
-            padding: 10,
-            margin: 10
-        };
+        position;
 
     return (
-        <Paper style = {style}>
-            <Toolbar>
-                <ToolbarTitle
-                    text = "New teacher"/>
-            </Toolbar>
-                <div>
+        <div>
+            <Modal
+              show = {isShown}
+              onHide = {onClose}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title">Add teacher</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <Input
-                        hint = 'Last Name'
+                        type = 'text'
+                        placeholder = 'Last name...'
                         ref = {node => lastName = node}/>
                     <Input
-                        hint = 'First Name'
+                        type = 'text'
+                        placeholder = 'First name...'
                         ref = {node => firstName = node}/>
                     <Input
-                        hint = 'Position'
+                        type = 'text'
+                        placeholder = 'Position...'
                         ref = {node => position = node}/>
-                </div>
-            <div>
-                <RaisedButton
-                        label = "Add"
-                        secondary = {true}
-                        onClick = {() => {
-                            onAdd({
-                                lastName: lastName.value,
-                                firstName: firstName.value,
-                                position: position.value
-                            });
-
-                            lastName.value = '';
-                            firstName.value = '';
-                            position.value = '';
-                        }}
-                />
-            </div>
-        </Paper>
+                </Modal.Body>
+              <Modal.Footer>
+                <Button
+                    onClick = {() => {
+                        onAdd({
+                            lastName: lastName.getValue(),
+                            firstName: firstName.getValue(),
+                            position: position.getValue()});
+                    }}>
+                    Add
+                </Button>
+                <Button onClick = {onClose}>Cancel</Button>
+              </Modal.Footer>
+            </Modal>
+        </div>
     );
 };
-
-export default AddTeacher;

@@ -9,21 +9,11 @@ export default ({
     teachers
 }) => {
     return (
-        <Paper style = {{
-            width: 400,
-            float: 'left',
-            padding: 10,
-            margin: 10
-        }}>
-            <Toolbar>
-                <ToolbarTitle text = "Teachers:"/>
-            </Toolbar>
-            <List>
-                {teachers.map( teacher => <ListItem
-                                            key = {teacher.id}
-                                            primaryText = {teacher.name}>
-                                        </ListItem>)}
-            </List>
-        </Paper>
+        <List>
+            {teachers.map( teacher => <ListItem
+                                        key = {teacher.id}
+                                        primaryText = {teacher.fullName}>
+                                    </ListItem>)}
+        </List>
     );
 };

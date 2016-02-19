@@ -1,14 +1,10 @@
-let teacherId = 0;
+import Collection from 'collection/Teacher';
 
-export default (state = [], action) => {
+export default (state = new Collection(), action) => {
     switch (action.type) {
         case 'ADD_TEACHER': {
-            return [
-            ...state,
-            {
-                name: action.name,
-                id: teacherId++
-            }];
+            let people = [...state.array, action.teacher];
+            return new Collection(people);
         }
         default: return state;
     }

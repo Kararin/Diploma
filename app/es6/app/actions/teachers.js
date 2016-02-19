@@ -1,6 +1,8 @@
-export const addTeacher = (name) => {
+import Teacher from 'model/Teacher';
+
+export const addTeacher = (teacherInfo) => {
     return {
         type: 'ADD_TEACHER',
-        name
+        teacher: new Teacher(teacherInfo)
     };
 };

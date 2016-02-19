@@ -3,7 +3,7 @@ import TeachersList from './TeachersList';
 
 const mapStateToProps = (state = []) => {
     return {
-        teachers: state.teachers
+        teachers: state.teachers.array
     };
 };
 

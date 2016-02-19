@@ -1,47 +1,34 @@
 import React, {PropTypes} from 'react';
-import {Table} from 'react-bootstrap';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableBody from 'material-ui/lib/table/table-body';
 import Row from './TableRow';
 import Teachers from './Teachers';
+import Table from 'components/Table';
+import Th from 'components/Header';
 
 const TeacherTable =  ({
     teachers,
     onTeacherSelected
-}) => (
- <Table striped = {true} bordered = {true}>
+}) => {
+  return (
+  <Table>
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Status</th>
+        <Th>
+          Last Name
+        </Th>
+        <Th>
+          Name
+        </Th>
+        <Th>
+          Position
+        </Th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>John Smith</td>
-        <td>Employed</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Randal White</td>
-        <td>Unemployed</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stephanie Sanders</td>
-        <td>Employed</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Steve Brown</td>
-        <td>Employed</td>
-      </tr>
+      {teachers.array.map(teacher => <Row {...teacher} onClick = {onTeacherSelected}/>)}
     </tbody>
   </Table>
-)
+  );
+}
 
 TeacherTable.defaultProps = {
     teachers: new Teachers(),

@@ -1,10 +1,7 @@
 import React from 'react';
-import Tabs from 'material-ui/lib/tabs/tabs';
-import Tab from 'material-ui/lib/tabs/tab';
-import AddTeacher from './app/Teachers/AddTeacherContainer';
-import List from './app/Teachers/List';
-import Table from './app/Teachers/Table';
+import {Tabs, Tab} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import TeacherPage from 'teacher/Page';
 import {gotoPage} from './actions/currentPage';
 
 
@@ -14,12 +11,12 @@ let App = ({
 }) => {
     console.log(`currenr page is ${currentPage}`);
     return (
-        <Tabs>
-            <Tab label = 'Teachers'>
-                <Table/>
+        <Tabs defaultActiveKey = {1}>
+            <Tab eventKey = {1} title = 'Teachers'>
+                <TeacherPage/>
             </Tab>
-            <Tab label = 'Schedule'>
-            </Tab>
+            <Tab eventKey = {2} title = 'Positions'/>
+            <Tab eventKey = {3} title = 'Teacher positions'/>
         </Tabs>
     );
 }
