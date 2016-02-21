@@ -1,4 +1,4 @@
-app/vanilla/
-temp/
-node_modules/
+myapp/temp/
+myapp/node_modules/
+myapp/public/javascripts/
 .sublime-grunt.cahce
