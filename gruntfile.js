@@ -48,13 +48,14 @@ module.exports = function(grunt) {
                     'components/Table': './<%= tempApp%>/core/components/table/Table.js',
                     'components/Header': './<%= tempApp%>/core/components/table/Header.js',
                     'components/Panel': './<%= tempApp%>/core/components/Panel.js',
+                    'components/Page': './<%= tempApp%>/core/components/Page.js',
 
                     'model/Teacher': './<%= tempApp%>/app/Teachers/Teacher.js',
 
                     'collection/Teacher': './<%= tempApp%>/app/Teachers/Teachers.js',
 
                     'teacher/Page': './<%= tempApp%>/app/Teachers/TeacherPage.js',
-                    'teacher/PageHeaderButtons': './<%= tempApp%>/waapp/Teachers/TeacherPageHeader.js',
+                    'teacher/PageHeaderButtons': './<%= tempApp%>/app/Teachers/TeacherPageHeader.js',
                     'teacher/Add': './<%= tempApp%>/app/Teachers/AddTeacher.js',
                     'teacher/List': './<%= tempApp%>/app/Teachers/List.js'
                 }

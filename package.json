@@ -37,11 +37,16 @@
     "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsxhint": "^0.6.0",
     "grunt-reactify": "0.0.2",
     "inspect": "0.0.2",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
-    "react-tap-event-plugin": "^0.2.2"
+    "react-tap-event-plugin": "^0.2.2",
+    "react-tools": "^0.13.3"
   },
-  "homepage": "https://github.com/Kararin/Diploma#readme"
+  "homepage": "https://github.com/Kararin/Diploma#readme",
+  "jshintConfig": {
+    "esversion": 6
+  }
 }

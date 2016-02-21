@@ -6,41 +6,45 @@ import {addTeacher} from 'actions/teachers';
 import {toggleAddPage} from 'actions/pages';
 import HeaderButtons from 'teacher/PageHeaderButtons';
 import AddPage from 'teacher/Add';
+import Page from 'components/Page';
 
-let TeacherPage  = ({
-    onAddPageShow,
-    onAddTeacher,
-    idAddPageShown
+let TeacherPage = ({
+  onAddPageShow,
+  onAddTeacher,
+  idAddPageShown
 }) => {
   return (
-    <div className = 'container'>
-      <h2 className = 'header'>
-        Teachers
-      </h2>
-      <HeaderButtons onAddShow = {onAddPageShow}/>
+    <Page
+      title='Teachers'
+      buttons={{
+        isAdd: true
+      }}
+      actions = {{
+        onAdd: onAddPageShow.bind(this)
+      }}
+    >
       <List/>
       <AddPage
-        onAdd = {onAddTeacher}
-        isShown = {idAddPageShown}
-        onClose = {onAddPageShow}/>
-    </div>
-  );
+          onAdd = {onAddTeacher.bind(this)}
+          onClose = {onAddPageShow.bind(this)}
+          isShown = {idAddPageShown}
+      />
+  </Page>
+);
 }
 
 const mapStatesToProps = (state) => {
-  return {
-    idAddPageShown: state.pages['teachers'].isAddShown
-  }
+  return {idAddPageShown: state.pages['teachers'].isAddShown}
 }
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onAddTeacher: (teacherInfo) => {
-            dispatch(addTeacher(teacherInfo));
-        },
-        onAddPageShow: () => {
-          dispatch(toggleAddPage('teachers'));
-        }
-    };
+  return {
+    onAddTeacher: (teacherInfo) => {
+      dispatch(addTeacher(teacherInfo));
+    },
+    onAddPageShow: () => {
+      dispatch(toggleAddPage('teachers'));
+    }
+  };
 };
 
 TeacherPage = connect(mapStatesToProps, mapDispatchToProps)(TeacherPage);

@@ -1,5 +1,5 @@
-import React from 'React';
-import {PropTypes} from 'React';
+import React from 'react';
+import {PropTypes} from 'react';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 
