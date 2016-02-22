@@ -1,5 +1,15 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='https://code.getmdl.io/1.1.1/material.indigo-pink.min.css')
 
-block content
-  h1= title
-  p Welcome to #{title}
+    script(defer, src="https://code.getmdl.io/1.1.1/material.min.js")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/main.js')
+
+  body
+    #content

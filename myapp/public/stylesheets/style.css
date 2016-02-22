@@ -1,8 +1,12 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #FAFAFA;
 }
 
-a {
-  color: #00B7FF;
+.ker-card {
+  width: 75%;
+  margin: auto;
+  margin-top: 3%;
+  min-height: 100px;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }

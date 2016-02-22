@@ -1,4 +1,5 @@
 myapp/temp/
 myapp/node_modules/
 myapp/public/javascripts/
+myapp/public/stylesheets/
 .sublime-grunt.cahce

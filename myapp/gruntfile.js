@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 
         reactBase: 'app/es6',
         reactApp: '<%= reactBase%>/app',
-        vanillaApp: 'app/vanilla/',
+        vanillaApp: 'public/javascripts',
+        cssVanillaApp: 'public/stylesheets',
         temp: 'temp/',
         tempApp: 'temp/app/',
 
@@ -24,13 +25,9 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            html: {
-                src: '<%= reactBase%>/index.html',
-                dest: '<%= vanillaApp%>/index.html'
-            },
             css: {
                 src: '<%= reactBase%>/css/*.css',
-                dest: '<%= vanillaApp%>/style.css'
+                dest: '<%= cssVanillaApp%>/style.css'
             }
         },
 
