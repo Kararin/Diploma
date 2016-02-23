@@ -5,8 +5,26 @@ body {
 .ker-card {
   width: 75%;
   margin: auto;
-  margin-top: 3%;
+  margin-top: 5%;
   min-height: 100px;
   height: auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.ker-menu-ul {
+    width: 100%;
+    margin: 0;
+    padding: 4px;
+}
+
+.ker-menu-ul li {
+    display: inline;
+    padding: 5px;
+    margin: 15px;
+    font-size: 30px;
+}
+
+.ker-menu-ul li:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px black;
 }

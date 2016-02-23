@@ -30,8 +30,8 @@ const Page = ({
         }
       </div>
     </header>
-    <main class="mdl-layout__content">
-      <div class="page-content">
+    <main className="mdl-layout__content">
+      <div className="page-content">
         {children}
       </div>
     </main>

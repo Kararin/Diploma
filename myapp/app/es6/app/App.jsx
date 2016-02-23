@@ -1,23 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import TeacherPage from 'teacher/Page';
 import {gotoPage} from './actions/currentPage';
 import Tabs from 'components/Tabs';
 import Tab from 'components/Tab';
+import Main from 'components/Main';
 
 let App = ({
     currentPage,
     handleChange
 }) => {
     console.log(`currenr page is ${currentPage}`);
-    // return (
-    //   <div>
-    //     <TeacherPage/>
-    //   </div>
-    // );
     return (
-        <Tabs>
-        </Tabs>
+        <div>
+            <Tabs>
+                <Tab key = '1' onClickHandler = {handleChange.bind(this,'teachers')}>Teachers</Tab>
+                <Tab key = '2' onClickHandler = {handleChange.bind(this, 'teachersPositions')}>Positions</Tab>
+            </Tabs>
+            <div>
+                <Main pageName = {currentPage}/>
+            </div>
+        </div>
     );
 }
 

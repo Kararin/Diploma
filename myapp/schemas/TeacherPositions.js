@@ -1,5 +1,6 @@
 'use strict';
 //TODO: get rid of _id
+//TODO: validation added
 var mongoose = require('mongoose'),
     teachersPositions = mongoose.Schema({
         id: Number,
