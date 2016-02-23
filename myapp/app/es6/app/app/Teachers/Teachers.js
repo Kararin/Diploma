@@ -18,8 +18,6 @@ export default class {
 
                 return result;
             });
-        } else {
-            result = [];
         }
 
         return result;

@@ -57,7 +57,10 @@ module.exports = function(grunt) {
                     'teacher/Page': './<%= tempApp%>/app/Teachers/TeacherPage.js',
                     'teacher/PageHeaderButtons': './<%= tempApp%>/app/Teachers/TeacherPageHeader.js',
                     'teacher/Add': './<%= tempApp%>/app/Teachers/AddTeacher.js',
-                    'teacher/List': './<%= tempApp%>/app/Teachers/List.js'
+                    'teacher/List': './<%= tempApp%>/app/Teachers/List.js',
+
+                    'teacherPositions/model': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsModel',
+                    'teacherPositions/collection': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsCollection'
                 }
             },
         },

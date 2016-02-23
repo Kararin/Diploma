@@ -21,6 +21,8 @@ export default class {
     }
 
     get fullName() {
-        return `${this.lastName} ${this.firstName}`
+        return `${this.lastName} ${this.firstName}`;
     }
 }
+
+//TODO: change names
