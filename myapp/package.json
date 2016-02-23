@@ -48,6 +48,8 @@
     "grunt-jsxhint": "^0.6.0",
     "grunt-reactify": "0.0.2",
     "inspect": "0.0.2",
+    "mongodb": "^2.1.7",
+    "mongoose": "^4.4.4",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-tap-event-plugin": "^0.2.2",

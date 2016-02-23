@@ -46,6 +46,8 @@ module.exports = function(grunt) {
                     'components/Header': './<%= tempApp%>/core/components/table/Header.js',
                     'components/Panel': './<%= tempApp%>/core/components/Panel.js',
                     'components/Page': './<%= tempApp%>/core/components/Page.js',
+                    'components/Tab': './<%= tempApp%>/core/components/tabs/Tab.js',
+                    'components/Tabs': './<%= tempApp%>/core/components/tabs/Tabs.js',
 
                     'model/Teacher': './<%= tempApp%>/app/Teachers/Teacher.js',
 

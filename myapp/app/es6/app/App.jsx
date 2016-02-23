@@ -1,19 +1,23 @@
 import React from 'react';
-import {Tabs, Tab} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import TeacherPage from 'teacher/Page';
 import {gotoPage} from './actions/currentPage';
-
+import Tabs from 'components/Tabs';
+import Tab from 'components/Tab';
 
 let App = ({
     currentPage,
     handleChange
 }) => {
     console.log(`currenr page is ${currentPage}`);
+    // return (
+    //   <div>
+    //     <TeacherPage/>
+    //   </div>
+    // );
     return (
-      <div>
-        <TeacherPage/>
-      </div>
+        <Tabs>
+        </Tabs>
     );
 }
 
