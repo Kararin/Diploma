@@ -7,19 +7,27 @@ var express = require('express'),
 
 //TODO: db name in separate file
 router.get('/', function(req, res, next) {
-    let fasade = new Fasade('DepTools');
+    var fasade = new Fasade('DepTools');
 
-    fasade.connect().then(() => {
-        TeacherPositions.find((err, data) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('teacherPositions table error');
-            } else {
-                console.log('teacherPositions find correctly');
+    fasade.connect()
+        .then(() => {
+            console.log('finding');
+            TeacherPositions.find((err, data) => {
+                if (err) {
+                    fasade.closeConnection();
+                    res.status(500).send('teacherPositions table error');
+                }
+
+                fasade.closeConnection();
+                console.log('teacher positions finded correctly');
                 res.send(data);
-            }
+
+            });
+        }, error => {
+            fasade.closeConnection();
+            res.status(500).send(error);
         });
-    });
+
 });
 
 module.exports = router;

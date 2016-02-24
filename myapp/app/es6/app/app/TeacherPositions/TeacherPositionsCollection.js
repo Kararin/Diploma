@@ -1,6 +1,7 @@
 import TeacherPosition from './TeacherPositionsModel';
+import expect from 'expect';
 
-export default class {
+export default class TeacherPositions {
     constructor(positions = []) {
         this.positions = this.addPositions(positions);
     }
@@ -22,6 +23,25 @@ export default class {
 
         return result;
     }
+
+    get array() {
+        return this.positions.map(item => item.data);
+    }
 }
 
-//TODO: ine base class
+//TODO: test all cases
+//TODO: ids?
+// const testGetArray = () => {
+//     var positions = new TeacherPositions([{
+//             name: 'teacher',
+//             shortName: 'teach.'
+//         }]),
+//         array = [{
+//             name: 'teacher',
+//             shortName: 'teach.'
+//         }];
+//     expect(positions.array).toEqual(array);
+// };
+
+// testGetArray();
+//TODO: one base class

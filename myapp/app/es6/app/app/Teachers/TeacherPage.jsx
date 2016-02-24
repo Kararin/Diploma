@@ -8,20 +8,23 @@ import HeaderButtons from 'teacher/PageHeaderButtons';
 import AddPage from 'teacher/Add';
 import Page from 'components/Page';
 
+//TODO: rename files
 let TeacherPage = ({
   onAddPageShow,
   onAddTeacher,
-  idAddPageShown
+  idAddPageShown,
+  display
 }) => {
   return (
     <Page
-      title='Teachers'
-      buttons={{
+      title = 'Teachers'
+      buttons = {{
         isAdd: true
       }}
       actions = {{
         onAdd: onAddPageShow.bind(this)
       }}
+      display = {display}
     >
       <List/>
       <AddPage

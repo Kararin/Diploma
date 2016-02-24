@@ -4,7 +4,8 @@ var TeacherPositions = require('../schemas/TeacherPositions'),
 
 //TODO: add map
 const setTeacherPositions = () => {
-    TeacherPositions.remove(() => {
+    TeacherPositions.remove((err, data) => {
+        console.log('positions removed' +  data);
         teacherPositionsData.forEach(positionData => {
             let position = new TeacherPositions(positionData);
             position.save((err, position) => {
@@ -18,8 +19,10 @@ const setTeacherPositions = () => {
     });
 };
 
-const setInitialData = () => {
-    setTeacherPositions();
+const setInitialData = (resolve) => {
+    return new Promise((resolve, reject) => {
+        setTeacherPositions();
+    });
 };
 
 module.exports = setInitialData;

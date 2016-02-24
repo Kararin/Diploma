@@ -40,6 +40,7 @@ module.exports = function(grunt) {
                 alias: {
                     'actions/teachers': './<%= tempApp%>actions/teachers.js',
                     'actions/pages': './<%= tempApp%>actions/pages.js',
+                    'actions/teacherPositions': './<%= tempApp%>actions/teacherPositions.js',
 
                     'components/Input': './<%= tempApp%>/core/components/Input.js',
                     'components/Table': './<%= tempApp%>/core/components/table/Table.js',
@@ -59,8 +60,16 @@ module.exports = function(grunt) {
                     'teacher/Add': './<%= tempApp%>/app/Teachers/AddTeacher.js',
                     'teacher/List': './<%= tempApp%>/app/Teachers/List.js',
 
-                    'teacherPositions/model': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsModel',
-                    'teacherPositions/collection': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsCollection'
+                    'teacherPositions/model': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsModel.js',
+                    'teacherPositions/collection': './<%= tempApp%>/app/TeacherPositions/TeacherPositionsCollection.js',
+                    'teacherPositions/Page': './<%= tempApp%>/app/TeacherPositions/Page.js',
+                    'teacherPositions/List': './<%= tempApp%>/app/TeacherPositions/Page.js',
+                    'teacherPositions/AddNew': './<%= tempApp%>/app/TeacherPositions/AddNew.js',
+                    'teacherPositions/Table': './<%= tempApp%>/app/TeacherPositions/Table.js',
+                    'teacherPositions/container/Table': './<%= tempApp%>/app/TeacherPositions/containers/Table.js',
+                    'teacherPositions/Row': './<%= tempApp%>/app/TeacherPositions/Row.js',
+
+                    'utils/fetch': './<%= tempApp%>/utils/ajaxHelper.js'
                 }
             },
         },

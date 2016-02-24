@@ -9,9 +9,15 @@ const Page = ({
   },
   actions: {
     onAdd
-  }
+  },
+  display
 }) => (
-  <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header ker-card">
+  <div
+    className="mdl-layout mdl-js-layout mdl-layout--fixed-header ker-card"
+    style = {{
+      display: display
+    }}
+  >
     <header className="mdl-layout__header">
       <div className="mdl-layout__header-row">
         <span className="mdl-layout-title">
@@ -46,7 +52,8 @@ Page.defaultProps = {
   actions: {
     onAdd: () => console.log('not implemented')
   },
-  title: ''
+  title: '',
+  display: 'block'
 }
 
 // TODO: proptypes

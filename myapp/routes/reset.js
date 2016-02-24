@@ -2,13 +2,17 @@
 
 var express = require('express'),
     router = express.Router(),
-    Fasade = require('../db/fasade');
+    service = require('../services/reset');
 
 router.get('/', function(req, res, next) {
-    let facade = new Fasade('DepTools');
-
-    facade.setDefaultData();
-    res.send(facade.dbName);
+    service.setDefaultData()
+           .tnen((data) => {
+                console.log('reset: set default data correctly');
+                res.send(data);
+           }, error => {
+                console.log('reset: set default data failed');
+                res.status(500).send(error);
+           });
 });
 
 module.exports = router;
