@@ -3,9 +3,10 @@ import expect from 'expect';
 export default class TeacherPosition {
     constructor({
         name = '',
-        shortName = ''
+        shortName = '',
+        id
     }) {
-        this.id = Date.now();
+        this.id = id;
         this.name = name;
         this.shortName = shortName;
     }

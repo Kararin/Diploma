@@ -6,13 +6,13 @@ var express = require('express'),
 
 router.get('/', function(req, res, next) {
     service.setDefaultData()
-           .tnen((data) => {
-                console.log('reset: set default data correctly');
-                res.send(data);
-           }, error => {
-                console.log('reset: set default data failed');
-                res.status(500).send(error);
-           });
+        .then((data) => {
+            console.log('reset: set default data correctly');
+            res.send(data);
+        }, err => {
+            console.log('reset: set default data failed');
+            res.sendStatus(500).send(err);
+        });
 });
 
 module.exports = router;

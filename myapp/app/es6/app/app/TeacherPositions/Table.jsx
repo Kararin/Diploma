@@ -12,12 +12,14 @@ class Table extends React.Component {
             <TableComponent>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Short ame</th>
+                        <th className = 'mdl-data-table__cell--non-numeric'>Name</th>
+                        <th className = 'mdl-data-table__cell--non-numeric'>Short ame</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.positions.map(item => <Row {...item}/>)}
+                    {this.props.positions.map(item => <Row
+                                                        position = {item}
+                                                        key = {item.id}/>)}
                 </tbody>
             </TableComponent>
         );

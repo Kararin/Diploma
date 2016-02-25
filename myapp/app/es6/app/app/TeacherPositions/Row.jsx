@@ -1,4 +1,5 @@
 import React from 'react';
+import TD from 'components/Td';
 
 //TODO: add buttons
 //TODO: add style if needed
@@ -7,8 +8,8 @@ const Row = ({
     actions
 }) => (
     <tr>
-        <td>position.name</td>
-        <td>position.shortName</td>
+        <TD>{position.name}</TD>
+        <TD>{position.shortName}</TD>
     </tr>
 );
 

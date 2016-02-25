@@ -7,6 +7,7 @@ class PositionsPage extends React.Component {
     render() {
         return (
             <Page
+                className = 'ker-teacher-positions-page'
                 title = 'Teachers positions'
                 display = {this.props.display}>
                 <Table/>

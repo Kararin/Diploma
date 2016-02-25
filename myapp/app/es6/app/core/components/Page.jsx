@@ -36,7 +36,7 @@ const Page = ({
         }
       </div>
     </header>
-    <main className="mdl-layout__content">
+    <main className="mdl-layout__content ker-content">
       <div className="page-content">
         {children}
       </div>

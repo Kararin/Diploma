@@ -7,11 +7,18 @@ var schema = require('../schemas/TeacherPositions'),
 class teacherPositionsService {
     setDefaultData() {
         return new Promise((resolve, reject) => {
-            schema.setDefaultData(data).then(() =>{
-                resolve();
-            });
+            schema.setDefaultData(data).then(data => {
+                resolve(data);
+            }, reject);
+        });
+    }
+
+    getData() {
+        return new Promise((resolve, reject) => {
+            schema.getData()
+                  .then(resolve, reject);
         });
     }
 }
 
-module.exports = teacherPositionsService;
+module.exports = new teacherPositionsService();

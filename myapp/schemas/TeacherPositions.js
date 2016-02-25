@@ -3,29 +3,57 @@
 //TODO: validation added
 
 var mongoose = require('mongoose'),
-    Fasade = new require('../db/fasade'),
+    Fasade = require('../db/fasade'),
     teachersPositions = mongoose.Schema({
         id: Number,
         name: String,
         shortName: String
-    });
+    }),
+    TeacherPositions;
 
 teachersPositions.statics.setDefaultData = (positions) => {
-    var promises = positions.map(item => {
-            let temp = new teachersPositions(item);
-
-            return temp.save;
-        }),
-        fasade = new Fasade('DepTools');
-
+    var fasade = new Fasade('DepTools'),
+        models = positions.map(item => new TeacherPositions(item));
 
     return new Promise((resolve, reject) => {
-        fasade.connect().then(() => {
-            Promise.all(promises.map(item => item()))
-                   .then(fasade.closeConnection);
+        fasade.connect()
+        .then(() => {
+            return TeacherPositions.remove();
+        })
+        .then(() => {
+            return Promise.all(models.map(item => item.save()));
+        })
+        .then((resultData) => {
+            resolve(resultData);
+        })
+        .then(() => {
+            return fasade.closeConnection();
         });
     });
 };
 
-module.exports = mongoose.model('TeacherPositions', teachersPositions);
+teachersPositions.statics.getData = () => {
+    var fasade = new Fasade('DepTools');
 
+    return new Promise((resolve, reject) => {
+        fasade.connect()
+        .then(() => {
+            return TeacherPositions.find();
+        })
+        .then((resultData) => {
+            resolve(resultData);
+        })
+        .then(() => {
+            return fasade.closeConnection();
+        })
+        .catch(err => {
+            return fasade.closeConnection();
+        })
+        .then(err => {
+            reject(err);
+        });
+    });
+};
+
+TeacherPositions = mongoose.model('TeacherPositions', teachersPositions);
+module.exports = TeacherPositions;

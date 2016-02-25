@@ -5,10 +5,10 @@ var TeacherPositions = require('../services/teacherPositions');
 class reset {
     setDefaultData() {
         return new Promise((resolve, reject) => {
-            TeacherPositions.setDefaultData().then(() => {
-                resolve();
+            TeacherPositions.setDefaultData().then((data) => {
+                resolve(data);
             }, error => {
-                reject();
+                reject(error);
             });
         });
     }
