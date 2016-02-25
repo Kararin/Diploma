@@ -7,13 +7,25 @@ var express = require('express'),
 //TODO: db name in separate file
 router.get('/', function(req, res, next) {
     servise.getData()
-           .then(data => {
-                console.log('teacher positions finded correctly');
-                res.send(data);
-           }, error => {
-                console.log('teacher positions finded failed');
-                res.sendStatus(500).send(error);
-           });
+        .then(data => {
+            console.log('teacher positions finded correctly');
+            res.send(data);
+        }, error => {
+            console.error('teacher positions finded failed');
+            res.sendStatus(500).send(error);
+        });
+});
+
+router.post('/new', (req, res, next) => {
+    servise.addNew(req.body)
+        .then(newPosition => {
+            console.log('new teacher position added successfully');
+            res.send(newPosition);
+        })
+        .catch(error => {
+            console.error('new teacher position added failed');
+            res.sendStatus(500).send(error);
+        });
 });
 
 module.exports = router;

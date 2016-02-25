@@ -17,18 +17,18 @@ teachersPositions.statics.setDefaultData = (positions) => {
 
     return new Promise((resolve, reject) => {
         fasade.connect()
-        .then(() => {
-            return TeacherPositions.remove();
-        })
-        .then(() => {
-            return Promise.all(models.map(item => item.save()));
-        })
-        .then((resultData) => {
-            resolve(resultData);
-        })
-        .then(() => {
-            return fasade.closeConnection();
-        });
+            .then(() => {
+                return TeacherPositions.remove();
+            })
+            .then(() => {
+                return Promise.all(models.map(item => item.save()));
+            })
+            .then((resultData) => {
+                resolve(resultData);
+            })
+            .then(() => {
+                return fasade.closeConnection();
+            });
     });
 };
 
@@ -37,21 +37,43 @@ teachersPositions.statics.getData = () => {
 
     return new Promise((resolve, reject) => {
         fasade.connect()
-        .then(() => {
-            return TeacherPositions.find();
-        })
-        .then((resultData) => {
-            resolve(resultData);
-        })
-        .then(() => {
-            return fasade.closeConnection();
-        })
-        .catch(err => {
-            return fasade.closeConnection();
-        })
-        .then(err => {
-            reject(err);
-        });
+            .then(() => {
+                return TeacherPositions.find();
+            })
+            .then((resultData) => {
+                resolve(resultData);
+            })
+            .then(() => {
+                return fasade.closeConnection();
+            })
+            .catch(err => {
+                return fasade.closeConnection();
+            })
+            .then(err => {
+                reject(err);
+            });
+    });
+};
+
+teachersPositions.statics.addNew = (position) => {
+    console.log(position);
+    position.id = Date.now();
+    var data = new TeacherPositions(position),
+        fasade = new Fasade('DepTools');
+
+    return new Promise((resolve, reject) => {
+        fasade.connect()
+            .then(() => {
+                return data.save();
+            }).then(newPosition => {
+                resolve(newPosition);
+            }).then(() => {
+                return fasade.closeConnection();
+            }).catch(err => {
+                return fasade.closeConnection();
+            }).then((err) => {
+                reject(err);
+            });
     });
 };
 

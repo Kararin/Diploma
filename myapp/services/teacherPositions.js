@@ -19,6 +19,13 @@ class teacherPositionsService {
                   .then(resolve, reject);
         });
     }
+
+    addNew(position) {
+        return new Promise((resolve, reject) => {
+            schema.addNew(position)
+                  .then(resolve, reject);
+        });
+    }
 }
 
 module.exports = new teacherPositionsService();
