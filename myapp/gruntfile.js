@@ -50,6 +50,7 @@ module.exports = function(grunt) {
                     'components/Page': './<%= tempApp%>/core/components/Page.js',
                     'components/Tab': './<%= tempApp%>/core/components/tabs/Tab.js',
                     'components/Tabs': './<%= tempApp%>/core/components/tabs/Tabs.js',
+                    'components/Button': './<%= tempApp%>/core/components/Button.js',
                     'components/Main': './<%= tempApp%>/app/Main.js',
 
                     'model/Teacher': './<%= tempApp%>/app/Teachers/Teacher.js',
@@ -68,9 +69,8 @@ module.exports = function(grunt) {
                     'teacherPositions/AddNew': './<%= tempApp%>/app/TeacherPositions/AddNew.js',
                     'teacherPositions/Table': './<%= tempApp%>/app/TeacherPositions/Table.js',
                     'teacherPositions/container/Table': './<%= tempApp%>/app/TeacherPositions/containers/Table.js',
+                    'teacherPositions/container/AddNew': './<%= tempApp%>/app/TeacherPositions/containers/AddNew.js',
                     'teacherPositions/Row': './<%= tempApp%>/app/TeacherPositions/Row.js',
-
-                    'utils/fetch': './<%= tempApp%>/utils/ajaxHelper.js'
                 }
             },
         },

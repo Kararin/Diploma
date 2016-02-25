@@ -2,7 +2,7 @@ import TeacherPosition from './TeacherPositionsModel';
 import expect from 'expect';
 
 export default class TeacherPositions {
-    constructor(positions = []) {
+    constructor(...positions) {
         this.positions = this.addPositions(positions);
     }
 
@@ -27,21 +27,16 @@ export default class TeacherPositions {
     get array() {
         return this.positions.map(item => item.data);
     }
+
+    push(position) {
+        var resultPosition = position;
+
+        if (!(position instanceof TeacherPosition)) {
+            resultPosition = new TeacherPosition(position);
+        }
+
+        this.positions.push(resultPosition);
+    }
 }
 
 //TODO: test all cases
-//TODO: ids?
-// const testGetArray = () => {
-//     var positions = new TeacherPositions([{
-//             name: 'teacher',
-//             shortName: 'teach.'
-//         }]),
-//         array = [{
-//             name: 'teacher',
-//             shortName: 'teach.'
-//         }];
-//     expect(positions.array).toEqual(array);
-// };
-
-// testGetArray();
-//TODO: one base class

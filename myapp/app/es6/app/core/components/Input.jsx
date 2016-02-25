@@ -3,14 +3,18 @@ import React from 'react';
 export default class Input extends React.Component{
     constructor(props) {
         super(props);
-        this.id = Date.now();
+        this.id = (function () {return Date.now();})();
 
         this.input = null;
     }
 
     render() {
         return (
-            <div className = "mdl-textfield mdl-js-textfield">
+            <div className = "mdl-textfield mdl-js-textfield"
+                 style = {{
+                        width: this.props.width,
+                        margin: '20px'
+                    }}>
                 <input
                     className = "mdl-textfield__input"
                     type = "text"
@@ -36,4 +40,8 @@ export default class Input extends React.Component{
     }
 }
 
+Input.defaultProps = {
+    hint: '',
+    width: '100px'
+}
 //TODO: default props and propTypes

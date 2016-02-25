@@ -13,7 +13,7 @@ class Table extends React.Component {
                 <thead>
                     <tr>
                         <th className = 'mdl-data-table__cell--non-numeric'>Name</th>
-                        <th className = 'mdl-data-table__cell--non-numeric'>Short ame</th>
+                        <th className = 'mdl-data-table__cell--non-numeric'>Short name</th>
                     </tr>
                 </thead>
                 <tbody>

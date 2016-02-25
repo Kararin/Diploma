@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from 'teacherPositions/container/Table';
-import AddNew from "teacherPositions/AddNew";
+import AddNew from "teacherPositions/container/AddNew";
 import Page from 'components/Page';
 
 class PositionsPage extends React.Component {
@@ -11,6 +11,7 @@ class PositionsPage extends React.Component {
                 title = 'Teachers positions'
                 display = {this.props.display}>
                 <Table/>
+                <AddNew/>
             </Page>
         );
 

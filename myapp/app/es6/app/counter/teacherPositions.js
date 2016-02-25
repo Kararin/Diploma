@@ -28,8 +28,16 @@ const teacherPositions = (state = {
                     state, {
                         isFetching: false,
                         isError: false,
-                        data: new Positions(action.data)
+                        data: new Positions(...action.data)
                     });
+            }
+        case 'ADD_NEW_POSITION':
+            {
+                return Object.assign({},
+                    state, {
+                        data: new Positions(...state.data.array, action.data)
+                    }
+                );
             }
         default:
             return state;
@@ -79,10 +87,10 @@ const testResponseSuccessful = () => {
         stateAfter = {
             isFetching: false,
             isError: false,
-            data: new Positions([{
+            data: new Positions({
                 name: 'teacher',
                 shortName: 'teach.'
-            }])
+            })
         },
         action = {
             type: 'RESPONSE_POSITIONS_SUCCESS',
@@ -95,7 +103,32 @@ const testResponseSuccessful = () => {
     expect(teacherPositions(stateBegore, action)).toEqual(stateAfter);
 };
 
+const testAddNew = () => {
+    var stateBefore = {
+            isFetching: false,
+            isError: false,
+            data: new Positions({ name: 'teacher', shortName: 'teach.' })
+        },
+        action = {
+            type: 'ADD_NEW_POSITION',
+            data: {
+                name: 'assistent',
+                shortName: 'assist.'
+            }
+        },
+        stateAfter = {
+            isFetching: false,
+            isError: false,
+            data: new Positions({ name: 'teacher', shortName: 'teach.' },
+                                { name: 'assistent', shortName: 'assist.'})
+        };
+
+    expect(teacherPositions(stateBefore, action)).toEqual(stateAfter);
+
+};
+
 testRequestPositions();
 testErrorResponse();
 testResponseSuccessful();
+testAddNew();
 export default teacherPositions;

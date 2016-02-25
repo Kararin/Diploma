@@ -13,5 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <App/>
         </Provider>, el
     );
+
     store.subscribe(() => console.log(store.getState()));
 });
