@@ -16,14 +16,21 @@ class teacherPositionsService {
     getData() {
         return new Promise((resolve, reject) => {
             schema.getData()
-                  .then(resolve, reject);
+                .then(resolve, reject);
         });
     }
 
     addNew(position) {
         return new Promise((resolve, reject) => {
             schema.addNew(position)
-                  .then(resolve, reject);
+                .then(resolve, reject);
+        });
+    }
+
+    delete(positionId) {
+        return new Promise((resolve, reject) => {
+            schema.delete(positionId)
+                .then(resolve, reject);
         });
     }
 }

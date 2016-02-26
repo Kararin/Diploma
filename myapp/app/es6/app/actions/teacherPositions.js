@@ -54,9 +54,49 @@ export const addPositionServer = (option) => {
             return response.json();
         }).then(position => {
             dispatch(addPosition(position));
-        }).catch((error) => {
+        }).catch(error => {
             dispatch(responseError(error));
         });
+    };
+};
+
+export const deletePosition = (option) => {
+    return {
+        type: 'DELETE_POSITION',
+        data: option
+    };
+};
+
+export const deletePositionServer = (option) => {
+    return (dispatch) => {
+        dispatch(requestPositions);
+        return fetch(`/teacherPositions/delete${option.id}`, {
+            method: 'delete',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            return response.json();
+        }).then(position => {
+            dispatch(deletePosition(position));
+        }).catch(error => {
+            dispatch(responseError(error));
+        });
+    };
+};
+
+export const addEditing = (id) => {
+    return {
+        type: 'ADD_EDITING',
+        id
+    };
+};
+
+export const removeEditing = (id) => {
+    return {
+        type: 'DELETE_EDITING',
+        id
     };
 };
 //TODO: add file with all action types

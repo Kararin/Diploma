@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from "teacherPositions/Row";
+import Row from "teacherPositions/container/Row";
 import TableComponent from 'components/Table';
 
 class Table extends React.Component {
@@ -28,6 +28,7 @@ class Table extends React.Component {
 
 Table.defaultProps = {
     positions: [],
+    editing: new Set(),
     getData: console.log(' getdata not implemented yet')
 };
 

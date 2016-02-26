@@ -37,6 +37,15 @@ export default class TeacherPositions {
 
         this.positions.push(resultPosition);
     }
+
+    delete(positionToDelete) {
+        var cb = (element) => {
+            return element.id === positionToDelete.id;
+        },
+            indexToDelete = this.positions.findIndex(cb);
+
+        this.positions.splice(indexToDelete, 1);
+    }
 }
 
 //TODO: test all cases

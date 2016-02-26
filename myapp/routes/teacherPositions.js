@@ -28,4 +28,16 @@ router.post('/new', (req, res, next) => {
         });
 });
 
+router.delete('/delete:id', (req, res, next) => {
+    servise.delete(req.params.id)
+        .then(deletedPosition => {
+            console.log('new teacher position added successfully');
+            res.send(deletedPosition);
+        })
+        .catch(error => {
+            console.error('new teacher position added failed');
+            res.sendStatus(500).send(error);
+        });
+});
+
 module.exports = router;

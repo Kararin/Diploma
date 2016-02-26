@@ -51,6 +51,7 @@ module.exports = function(grunt) {
                     'components/Tab': './<%= tempApp%>/core/components/tabs/Tab.js',
                     'components/Tabs': './<%= tempApp%>/core/components/tabs/Tabs.js',
                     'components/Button': './<%= tempApp%>/core/components/Button.js',
+                    'components/MiniFabButton': './<%= tempApp%>/core/components/MiniFabButton.js',
                     'components/Main': './<%= tempApp%>/app/Main.js',
 
                     'model/Teacher': './<%= tempApp%>/app/Teachers/Teacher.js',
@@ -70,6 +71,7 @@ module.exports = function(grunt) {
                     'teacherPositions/Table': './<%= tempApp%>/app/TeacherPositions/Table.js',
                     'teacherPositions/container/Table': './<%= tempApp%>/app/TeacherPositions/containers/Table.js',
                     'teacherPositions/container/AddNew': './<%= tempApp%>/app/TeacherPositions/containers/AddNew.js',
+                    'teacherPositions/container/Row': './<%= tempApp%>/app/TeacherPositions/containers/Row.js',
                     'teacherPositions/Row': './<%= tempApp%>/app/TeacherPositions/Row.js',
                 }
             },

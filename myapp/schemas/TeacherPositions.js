@@ -56,7 +56,6 @@ teachersPositions.statics.getData = () => {
 };
 
 teachersPositions.statics.addNew = (position) => {
-    console.log(position);
     position.id = Date.now();
     var data = new TeacherPositions(position),
         fasade = new Fasade('DepTools');
@@ -67,6 +66,26 @@ teachersPositions.statics.addNew = (position) => {
                 return data.save();
             }).then(newPosition => {
                 resolve(newPosition);
+            }).then(() => {
+                return fasade.closeConnection();
+            }).catch(err => {
+                return fasade.closeConnection();
+            }).then((err) => {
+                reject(err);
+            });
+    });
+};
+
+
+teachersPositions.statics.delete = (positionId) => {
+    var fasade = new Fasade('DepTools');
+
+    return new Promise((resolve, reject) => {
+        fasade.connect()
+            .then(() => {
+                return TeacherPositions.remove({ id: positionId });
+            }).then((deletedPosition) => {
+                resolve(deletedPosition);
             }).then(() => {
                 return fasade.closeConnection();
             }).catch(err => {
