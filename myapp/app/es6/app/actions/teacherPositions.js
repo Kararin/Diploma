@@ -78,8 +78,8 @@ export const deletePositionServer = (option) => {
             }
         }).then(response => {
             return response.json();
-        }).then(position => {
-            dispatch(deletePosition(position));
+        }).then(() => {
+            dispatch(deletePosition(option.id));
         }).catch(error => {
             dispatch(responseError(error));
         });
@@ -99,5 +99,7 @@ export const removeEditing = (id) => {
         id
     };
 };
+
 //TODO: add file with all action types
 //TODO: add file with all urls
+//bug with deleting

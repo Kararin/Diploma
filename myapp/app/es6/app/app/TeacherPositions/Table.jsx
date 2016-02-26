@@ -19,7 +19,8 @@ class Table extends React.Component {
                 <tbody>
                     {this.props.positions.map(item => <Row
                                                         position = {item}
-                                                        key = {item.id}/>)}
+                                                        key = {item.id}
+                                                        onEdit = {this.props.editing.has(item.id)}/>)}
                 </tbody>
             </TableComponent>
         );
