@@ -3,29 +3,70 @@ import expect from 'expect';
 import Position from 'teacherPositions/model';
 import deepFreeze from 'deep-freeze';
 
-//TODO: get rid of switch
+//TODO: require instead of import and export
+//TODO: choose test framewokr and move tests
+
 const teacherPositions = (state = {
     isFetching: false,
     isError: false,
     data: new Positions(),
     editing: new Set()
 }, action) => {
-    switch (action.type) {
-        case 'REQUEST_POSITIONS':
-            {
+    var actions = {
+            REQUEST_POSITIONS: () => {
+                return teacherPositionsServer(state, action);
+            },
+            RESPONSE_POSITIONS_ERROR: () => {
+                return teacherPositionsServer(state, action);
+            },
+            RESPONSE_POSITIONS_SUCCESS: () => {
+                return teacherPositionsServer(state, action);
+            },
+
+            ADD_NEW_POSITION: () => {
+                return teacherPositionsRowsEditing(state, action);
+            },
+            DELETE_POSITION: () => {
+                return teacherPositionsRowsEditing(state, action);
+            },
+
+            ADD_EDITING: () => {
+                state.editing.add(action.id);
+                return Object.assign({},
+                    state);
+            },
+            DELETE_EDITING: () => {
+                state.editing.delete(action.id);
+                return Object.assign({},
+                    state);
+            }
+        },
+        result = state;
+
+    if (actions[action.type]) {
+        result = actions[action.type]();
+    }
+
+    return result;
+};
+
+const teacherPositionsServer = (state = {
+    isFetching: false,
+    isError: false
+}, action) => {
+    var actions = {
+            REQUEST_POSITIONS: () => {
                 return Object.assign({},
                     state, { isFetching: true });
-            }
-        case 'RESPONSE_POSITIONS_ERROR':
-            {
+            },
+            RESPONSE_POSITIONS_ERROR: () => {
                 return Object.assign({},
                     state, {
                         isFetching: false,
                         isError: true
                     });
-            }
-        case 'RESPONSE_POSITIONS_SUCCESS':
-            {
+            },
+            RESPONSE_POSITIONS_SUCCESS: () => {
                 return Object.assign({},
                     state, {
                         isFetching: false,
@@ -33,16 +74,31 @@ const teacherPositions = (state = {
                         data: new Positions(...action.data)
                     });
             }
-        case 'ADD_NEW_POSITION':
-            {
+        },
+        result = state;
+
+    if (actions[action.type]) {
+        result = actions[action.type]();
+    }
+
+    return result;
+};
+
+const teacherPositionsRowsEditing = (
+    state = {
+        data: new Positions()
+    },
+    action
+) => {
+    var actions = {
+            ADD_NEW_POSITION: () => {
                 return Object.assign({},
                     state, {
                         data: new Positions(...state.data.array, action.data)
                     }
                 );
-            }
-        case 'DELETE_POSITION':
-            {
+            },
+            DELETE_POSITION: () => {
                 state.data.delete(action.data);
 
                 return Object.assign({},
@@ -50,22 +106,15 @@ const teacherPositions = (state = {
                         data: new Positions(...state.data.array)
                     }
                 );
-            }
-        case 'ADD_EDITING':
-            {
-                state.editing.add(action.id);
-                return Object.assign({},
-                    state);
-            }
-        case 'DELETE_EDITING':
-            {
-                state.editing.delete(action.id);
-                return Object.assign({},
-                    state);
-            }
-        default:
-            return state;
+            },
+        },
+        result = state;
+
+    if (actions[action.type]) {
+        result = actions[action.type]();
     }
+
+    return result;
 };
 
 const testRequestPositions = () => {

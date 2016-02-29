@@ -6,11 +6,9 @@ const pages = (
         teachers: {}
     },
     action) => {
-
-    switch (action.type) {
-        case 'TOGGLE_ADD_PAGE':
-            {
-                let result = {
+    var actions = {
+            TOGGLE_ADD_PAGE: () => {
+                var result = {
                     [action.pageName]: toggleAddPage(state[action.pageName], action)
                 };
                 return Object.assign({},
@@ -18,29 +16,37 @@ const pages = (
                     result
                 );
             }
-        default:
-            return state;
+        },
+        result = state;
+
+    if (actions[action.type]) {
+        result = actions[action.type]();
     }
+
+    return result;
 };
 
 const toggleAddPage = (
     state = {
         isAddShown: false
     }, action) => {
-
-    switch (action.type) {
-        case 'TOGGLE_ADD_PAGE':
-            {
+    var actions = {
+            TOGGLE_ADD_PAGE: () => {
                 return Object.assign({},
-                    state,
-                    {
+                    state, {
                         isAddShown: !state.isAddShown
                     }
                 );
             }
-        default:
-            return state;
+        },
+        result = state;
+
+    if (actions[action.type]) {
+        result = actions[action.type]();
     }
+
+    return result;
+
 };
 
 const testToggleTeacherAddPage = () => {
@@ -59,8 +65,8 @@ const testToggleTeacherAddPage = () => {
             }
         };
 
-        deepFreeze(stateBefore);
-        deepFreeze(action);
+    deepFreeze(stateBefore);
+    deepFreeze(action);
     expect(pages(stateBefore, action)).toEqual(stateAfter);
 };
 
