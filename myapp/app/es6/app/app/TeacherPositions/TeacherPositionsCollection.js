@@ -43,7 +43,6 @@ export default class TeacherPositions {
             return element.id === positionToDelete.id;
         },
             indexToDelete = this.positions.findIndex(cb);
-            debugger;
             console.log(indexToDelete);
 
         this.positions.splice(indexToDelete, 1);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from "teacherPositions/container/Row";
+import Row from 'teacherPositions/container/Row';
 import TableComponent from 'components/Table';
 
 class Table extends React.Component {
@@ -20,7 +20,7 @@ class Table extends React.Component {
                     {this.props.positions.map(item => <Row
                                                         position = {item}
                                                         key = {item.id}
-                                                        onEdit = {this.props.editing.has(item.id)}/>)}
+                                                        />)}
                 </tbody>
             </TableComponent>
         );
