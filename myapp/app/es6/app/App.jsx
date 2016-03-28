@@ -1,41 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {gotoPage} from './actions/currentPage';
-import Tabs from 'components/Tabs';
-import Tab from 'components/Tab';
-import Main from 'components/Main';
+import Tabs from './core/components/tabs/Tabs.jsx';
+import Tab from './core/components/tabs/Tab.jsx';
+import Main from './app/Main.jsx';
 
-let App = ({
-    currentPage,
-    handleChange
-}) => {
-    console.log(`currenr page is ${currentPage}`);
+export default () => {
     return (
         <div>
-            <Tabs>
-                <Tab key = '1' onClickHandler = {handleChange.bind(this,'teachers')}>Teachers</Tab>
-                <Tab key = '2' onClickHandler = {handleChange.bind(this, 'teachersPositions')}>Positions</Tab>
-            </Tabs>
-            <div>
-                <Main pageName = {currentPage}/>
-            </div>
+            Kararin
         </div>
     );
 }
-
-
-const mapStateToProps = (state) => {
-    return {
-        currentPage: state.currentPage
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleChange: (value) => {
-            dispatch(gotoPage(value));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

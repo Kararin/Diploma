@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from 'components/Tab';
+import Tab from './Tab.jsx';
 
 //TODO: make my own css
 export default ({

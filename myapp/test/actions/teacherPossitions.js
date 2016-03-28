@@ -31,9 +31,9 @@ describe('async actions', () => {
 
     it('creates fetchPositions when fetching todos has been done', (done) => {
         nock('http://localhost:3333')
-            .get('teacherPositions')
+            .get('/teacherPositions')
             .reply(200, {
-                positions: [{
+                body: [{
                     id: 1,
                     name: 'teach',
                     shortName: 't.'
@@ -55,7 +55,6 @@ describe('async actions', () => {
             isFetching: false,
             isError: false
         }, expectedActions, done);
-
         store.dispatch(actions.fetchPositions());
     });
 });

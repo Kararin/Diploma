@@ -1,5 +1,3 @@
-import Collection from 'collection/Teacher';
-
 export default (state = new Collection(), action) => {
     switch (action.type) {
         case 'ADD_TEACHER': {

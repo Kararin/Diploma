@@ -8,9 +8,6 @@ import { combineReducers } from 'redux';
 import currentPage from './counter/currentPage';
 
 const reducer = combineReducers({
-        teachers,
-        currentPage,
-        pages,
         teacherPositions
     }),
     store = createStore(reducer, applyMiddleware(thunkMiddleware));
