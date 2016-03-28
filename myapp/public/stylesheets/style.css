@@ -41,3 +41,8 @@ body {
 .ker-teacher-positions-page {
     width: 50%;
 }
+
+.my-tab li{
+    width: 200px;
+    box-shadow: 1px 1px 1px grey;
+}
