@@ -1,23 +1,19 @@
 import React from 'react';
-import Table from 'teacherPositions/container/Table';
-import AddNew from "teacherPositions/container/AddNew";
-import Page from 'components/Page';
+import Table from './containers/Table';
+import {Panel} from 'react-bootstrap';
 
 class PositionsPage extends React.Component {
     render() {
         return (
-            <Page
-                className = 'ker-teacher-positions-page'
-                title = 'Teachers positions'
-                display = {this.props.display}>
-                <Table/>
-                <AddNew/>
-            </Page>
+            <div>
+                <Panel
+                    header = 'Teachers positions'
+                    bsStyle = 'primary'>
+                    <Table/>
+                </Panel>
+            </div>
         );
-
     }
 }
 
 export default PositionsPage;
-
-//TODO: add style for menu

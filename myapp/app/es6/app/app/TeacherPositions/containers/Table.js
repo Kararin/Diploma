@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import Table from 'teacherPositions/Table';
-import {fetchPositions} from 'actions/teacherPositions';
+import Table from '../Table.jsx';
+import {fetchPositions} from '../../../actions/teacherPositions';
 
 const mapStateToDispatch = ({teacherPositions}) => {
     return {

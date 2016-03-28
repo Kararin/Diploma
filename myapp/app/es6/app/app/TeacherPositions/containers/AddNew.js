@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import AddNew from 'teacherPositions/AddNew';
-import {addPositionServer} from 'actions/teacherPositions';
+import AddNew from './../AddNew';
+import {addPositionServer} from './../../../teacherPositions';
 
 const setDispatchToProps = (dispatch) => {
     return {
@@ -9,5 +9,4 @@ const setDispatchToProps = (dispatch) => {
         }
     };
 };
-
 export default connect(null, setDispatchToProps)(AddNew);

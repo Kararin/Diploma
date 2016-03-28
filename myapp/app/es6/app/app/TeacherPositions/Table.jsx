@@ -1,36 +1,35 @@
 import React from 'react';
-import Row from 'teacherPositions/container/Row';
-import TableComponent from 'components/Table';
+import {Table} from 'react-bootstrap';
 
-class Table extends React.Component {
+class TableComponent extends React.Component {
     componentDidMount() {
         this.props.getData();
     }
 
     render() {
         return (
-            <TableComponent>
+            <Table>
                 <thead>
                     <tr>
-                        <th className = 'mdl-data-table__cell--non-numeric'>Name</th>
-                        <th className = 'mdl-data-table__cell--non-numeric'>Short name</th>
+                        <th>Name</th>
+                        <th>Short name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.positions.map(item => <Row
+                    {this.props.positions.map(item => <tr
                                                         position = {item}
                                                         key = {item.id}
                                                         />)}
                 </tbody>
-            </TableComponent>
+            </Table>
         );
     }
 }
 
-Table.defaultProps = {
+TableComponent.defaultProps = {
     positions: [],
     editing: new Set(),
     getData: console.log(' getdata not implemented yet')
 };
 
-export default Table;
+export default TableComponent;
