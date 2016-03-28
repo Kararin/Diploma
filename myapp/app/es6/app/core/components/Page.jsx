@@ -1,60 +1,37 @@
 import React, {PropTypes} from 'react';
-
+import {Panel, ButtonGroup, Button, Glyphicon} from 'react-bootstrap';
 
 const Page = ({
-  title,
-  children,
-  buttons: {
-    isAdd
-  },
-  actions: {
-    onAdd
-  },
-  display
-}) => (
-  <div
-    className="mdl-layout mdl-js-layout mdl-layout--fixed-header ker-card"
-    style = {{
-      display: display
-    }}
-  >
-    <header className="mdl-layout__header">
-      <div className="mdl-layout__header-row">
-        <span className="mdl-layout-title">
-          {title}
-        </span>
-        <div className="mdl-layout-spacer"></div>
-        {
-          (isAdd)?
-            <button
-              className="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"
-              onClick = {onAdd}
-            >
-              <i className="material-icons">add</i>
-            </button>
-          : <div></div>
-        }
-      </div>
-    </header>
-    <main className="mdl-layout__content ker-content">
-      <div className="page-content">
-        {children}
-      </div>
-    </main>
-  </div>
-);
-
+    children,
+    bsStyle,
+    title
+}) => {
+    return (
+        <Panel
+            bsStyle = {bsStyle}
+            header = {title}>
+            <ButtonGroup>
+                <Button bsSize="large">
+                    <Glyphicon
+                        glyph="plus-sign"
+                        />
+                </Button>
+            </ButtonGroup
+           >
+            {children}
+        </Panel>
+    );
+};
 
 Page.defaultProps = {
   buttons: {
     isAdd: false
   },
+  bsStyle: 'primary',
   actions: {
     onAdd: () => console.log('not implemented')
   },
-  title: '',
-  display: 'block'
+  title: ''
 }
 
-// TODO: proptypes
 export default Page;

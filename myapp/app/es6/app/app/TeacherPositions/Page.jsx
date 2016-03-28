@@ -1,16 +1,15 @@
 import React from 'react';
 import Table from './containers/Table';
-import {Panel} from 'react-bootstrap';
+import Page from '../../core/components/Page.jsx';
 
 class PositionsPage extends React.Component {
     render() {
         return (
             <div>
-                <Panel
-                    header = 'Teachers positions'
-                    bsStyle = 'primary'>
+                <Page
+                    title = 'Teachers positions'>
                     <Table/>
-                </Panel>
+                </Page>
             </div>
         );
     }
