@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Tabs, Tab} from 'react-bootstrap';
-import Positions from './app/TeacherPositions/Page.jsx';
+import Positions from './app/TeacherPositions/Page';
 
 export default () => {
     return (

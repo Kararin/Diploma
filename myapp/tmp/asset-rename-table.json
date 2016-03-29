@@ -1,0 +1,14 @@
+{
+  "pui-css-bootstrap": {
+    "baseAssetDir": "D:\\Studying\\Diploma\\myapp\\node_modules\\pui-css-bootstrap",
+    "assetLocationTranslation": {}
+  },
+  "pui-css-tabs": {
+    "baseAssetDir": "D:\\Studying\\Diploma\\myapp\\node_modules\\pui-css-tabs",
+    "assetLocationTranslation": {}
+  },
+  "pui-css-collapse": {
+    "baseAssetDir": "D:\\Studying\\Diploma\\myapp\\node_modules\\pui-css-collapse",
+    "assetLocationTranslation": {}
+  }
+}

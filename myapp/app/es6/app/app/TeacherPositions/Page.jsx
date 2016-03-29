@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from './containers/Table';
-import Page from '../../core/components/Page.jsx';
+import Page from '../../core/components/Page';
 
 class PositionsPage extends React.Component {
     render() {
