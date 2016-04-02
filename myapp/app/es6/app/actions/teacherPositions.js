@@ -60,13 +60,6 @@ export const addPositionServer = (option) => {
     };
 };
 
-export const deletePosition = (option) => {
-    return {
-        type: 'DELETE_POSITION',
-        data: option
-    };
-};
-
 export const deletePositionServer = (option) => {
     return (dispatch) => {
         dispatch(requestPositions);
@@ -79,23 +72,16 @@ export const deletePositionServer = (option) => {
         }).then(response => {
             return response.json();
         }).then(() => {
-            dispatch(deletePosition(option.id));
+            dispatch(fetchPositions());
         }).catch(error => {
             dispatch(responseError(error));
         });
     };
 };
 
-export const addEditing = (id) => {
+export const isAddNewOpen = (isOpen) => {
     return {
-        type: 'ADD_EDITING',
-        id
-    };
-};
-
-export const removeEditing = (id) => {
-    return {
-        type: 'DELETE_EDITING',
-        id
+        type: 'IS_ADD_NEW_POSITION_PAGE_OPEN',
+        isOpen
     };
 };

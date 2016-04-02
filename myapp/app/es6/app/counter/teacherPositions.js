@@ -30,9 +30,27 @@ export default handleActions({
         return Object.assign({}, state, {
             data: state.data.push(...action.data)
         });
+    },
+    IS_ADD_NEW_POSITION_PAGE_OPEN: (state, action) => {
+        return Object.assign({}, state, {
+            options: teacherPositionOptions(state.options, action)
+        });
     }
 }, {
     data: List(),
     isFetching: false,
-    isError: false
+    isError: false,
+    options: {
+        isAddNewOpen: false
+    }
+});
+
+export const teacherPositionOptions = handleActions({
+    IS_ADD_NEW_POSITION_PAGE_OPEN: (state, action) => {
+        return Object.assign({}, state, {
+            isAddNewOpen: action.isOpen
+        });
+    }
+}, {
+    isAddNewOpen: false
 });

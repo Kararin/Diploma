@@ -1,9 +1,6 @@
 import React from 'react';
-import TD from 'components/Td';
-import Button from 'components/MiniFabButton';
+import {Button, Glyphicon} from 'react-bootstrap';
 
-//TODO: add buttons
-//TODO: add style if needed
 const Row = ({
     position,
     actions,
@@ -13,23 +10,18 @@ const Row = ({
     onEdit
 }) => (
     <tr>
-        <TD>
-            {(isEdit)? <input>position.name</input>: position.name}
-        </TD>
-        <TD>
-            {(isEdit)? <input>position.shortName</input>: position.shortName}
-        </TD>
-        <TD>
-            <Button onClick = {() => {onDelete(position)}}
-                    icon = 'delete'/>
-            {(isEdit)?
-                    <Button
-                        onClick = {() => onEdit(position.id)}
-                        icon = 'ok'/>
-                    :
-                    <Button onClick = {() => beginEdit(position.id)}
-                    icon = 'edit'/>}
-        </TD>
+        <td>{position.name}</td>
+        <td>{position.shortName}</td>
+        <td>
+            <Button>
+                <Glyphicon glyph="edit"/>
+            </Button>
+        </td>
+        <td>
+            <Button onClick = {() => {onDelete(position);}}>
+                <Glyphicon glyph="remove"/>
+            </Button>
+        </td>
     </tr>
 );
 

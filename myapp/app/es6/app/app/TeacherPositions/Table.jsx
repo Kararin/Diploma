@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
+import Row from './containers/Row';
 
 class TableComponent extends React.Component {
     componentDidMount() {
@@ -11,15 +12,16 @@ class TableComponent extends React.Component {
             <Table>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Name </th>
                         <th>Short name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.positions.map(item => <tr
-                                                        position = {item}
+                    {this.props.positions.map(item => <Row
                                                         key = {item.id}
-                                                        />)}
+                                                        position = {item}
+                                                       />
+                                                       )}
                 </tbody>
             </Table>
         );

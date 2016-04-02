@@ -1,45 +1,67 @@
 import React from 'react';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import {
+    Button,
+    Input,
+    Modal} from 'react-bootstrap';
 
 const AddNew = ({
-    onAdd
+    onAdd,
+    onClose,
+    isVisible
 }) => {
-    var name = '',
-        shortName = '';
-
+    var name = null,
+        shortName = null;
     return (
-        <div>
-            <Input hint = 'Name'
-                   ref = {node => name = node}
-                   width = '100px'/>
-            <Input hint = 'Short name'
-                   ref = {node => shortName = node}
-                   width = '100px'/>
-            <Button
-                width = '60px'
-                onClick = {e => {
-                    e.preventDefault();
-                    onAdd({
-                        name: name.value,
-                        shortName: shortName.value
-                    });
+        <div className="static-modal">
+            <Modal show = {isVisible}>
+            <Modal.Header>
+                <Modal.Title>
+                    Add new position
+                </Modal.Title>
+            </Modal.Header>
 
-                    name.value = '';
-                    shortName.value = '';
-            }}>
-                Add
-            </Button>
+            <Modal.Body>
+
+                 <Input
+                    type = "text"
+                    placeholder = "Enter text"
+                    label = "Name"
+                    ref = {(c) => {name = c;}} />
+                <Input
+                    type = "text"
+                    placeholder = "Enter text"
+                    label = "Short name"
+                    ref = {(c) => {shortName = c;}}/>
+            </Modal.Body>
+
+            <Modal.Footer>
+                <Button onClick = {() => {onClose()}}>
+                    Close
+                </Button>
+                <Button
+                    bsStyle="primary"
+                    onClick = {() => {
+                        onAdd({name: name.getValue(), shortName: shortName.getValue()});
+                    }}>
+                    Ok
+                </Button>
+            </Modal.Footer>
+
+            </Modal>
         </div>
     );
 }
 
 AddNew.defaultProps = {
-    onAdd: () => console.log(' onAdd not implemented yet')
+    onAdd: () => console.log(' onAdd not implemented yet'),
+    onClose: () => console.log(' onClose not implemented yet'),
+    isVisible: false
 };
 
 AddNew.propTypes = {
-    onAdd: React.PropTypes.func
+    onAdd: React.PropTypes.func,
+    onClose: React.PropTypes.func,
+    isVisible: React.PropTypes.bool
 };
 
 export default AddNew;

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import Row from 'teacherPositions/Row';
-import {deletePositionServer} from 'actions/teacherPositions';
+import Row from '../Row';
+import {deletePositionServer} from '../../../actions/teacherPositions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
