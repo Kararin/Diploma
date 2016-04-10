@@ -96,5 +96,28 @@ teachersPositions.statics.delete = (positionId) => {
     });
 };
 
+teachersPositions.statics.edit = (position) => {
+    var fasade = new Fasade('DepTools');
+
+    return new Promise((resolve, reject) => {
+        fasade.connect()
+            .then(() => {
+                return TeacherPositions.findByIdAndUpdate(
+                    position.id, {
+                        $set: position
+                    }
+                );
+            }).then((editedPosition) => {
+                resolve(editedPosition);
+            }).then(() => {
+                return fasade.closeConnection();
+            }).catch(err => {
+                return fasade.closeConnection();
+            }).then((err) => {
+                reject(err);
+            });
+    });
+};
+
 TeacherPositions = mongoose.model('TeacherPositions', teachersPositions);
 module.exports = TeacherPositions;

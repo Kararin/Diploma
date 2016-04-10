@@ -20,6 +20,8 @@ class TableComponent extends React.Component {
                     {this.props.positions.map(item => <Row
                                                         key = {item.id}
                                                         position = {item}
+                                                        isDelete = {true}
+                                                        isEdit = {true}
                                                        />
                                                        )}
                 </tbody>

@@ -85,3 +85,5 @@ export const isAddNewOpen = (isOpen) => {
         isOpen
     };
 };
+
+export const toggleEditMode = (editMode) => ({type: 'TOGGLE_EDIT_MODE', editMode});

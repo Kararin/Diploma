@@ -33,6 +33,13 @@ class teacherPositionsService {
                 .then(resolve, reject);
         });
     }
+
+    edit(position) {
+        return new Promise((resolve, reject) => {
+           schema.edit(position).
+                then(resolve, reject);
+        });
+    }
 }
 
 module.exports = new teacherPositionsService();
