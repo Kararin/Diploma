@@ -35,6 +35,7 @@ class teacherPositionsService {
     }
 
     edit(position) {
+        console.log(position);
         return new Promise((resolve, reject) => {
            schema.edit(position).
                 then(resolve, reject);

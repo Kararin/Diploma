@@ -2,25 +2,22 @@ import {connect} from 'react-redux';
 import Row from '../Row';
 import {
     deletePositionServer,
-    toggleEditMode} from '../../../actions/teacherPositions';
-
-const mapStateToProps = ({teacherPositions}) => {
-    var {editMode} = teacherPositions.options;
-
-    return {
-        editMode
-    };
-};
+    toggleEditMode,
+    editPositionServer} from '../../../actions/teacherPositions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onDelete: (position) => {
             dispatch(deletePositionServer(position));
         },
-        toggleEditMode: (editMode) => {
-            dispatch(toggleEditMode(editMode));
+        toggleEditMode: (id) => {
+            dispatch(toggleEditMode(id));
+        },
+        onEdit: (position) => {
+            dispatch(editPositionServer(position));
         }
+
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Row);
+export default connect(null, mapDispatchToProps)(Row);

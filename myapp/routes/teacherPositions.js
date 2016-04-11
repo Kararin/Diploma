@@ -40,8 +40,8 @@ router.delete('/delete:id', (req, res, next) => {
         });
 });
 
-router.put('/edit:id', (req, res, next) => {
-    servise.edit(req.params.body)
+router.post('/edit', (req, res, next) => {
+    servise.edit(req.body)
         .then(editedPosition => {
             console.log('teacher position edited successfully');
             res.send(editedPosition);

@@ -102,10 +102,9 @@ teachersPositions.statics.edit = (position) => {
     return new Promise((resolve, reject) => {
         fasade.connect()
             .then(() => {
+                console.log(position.id);
                 return TeacherPositions.findByIdAndUpdate(
-                    position.id, {
-                        $set: position
-                    }
+                    position._id, position
                 );
             }).then((editedPosition) => {
                 resolve(editedPosition);

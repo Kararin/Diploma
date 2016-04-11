@@ -4,7 +4,8 @@ import {fetchPositions} from '../../../actions/teacherPositions';
 
 const mapStateToDispatch = ({teacherPositions}) => {
     return {
-        positions: teacherPositions.data
+        positions: teacherPositions.data,
+        editing: teacherPositions.options.editing
     };
 };
 

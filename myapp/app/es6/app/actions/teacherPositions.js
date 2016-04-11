@@ -86,4 +86,24 @@ export const isAddNewOpen = (isOpen) => {
     };
 };
 
-export const toggleEditMode = (editMode) => ({type: 'TOGGLE_EDIT_MODE', editMode});
+export const toggleEditMode = (id) => ({type: 'TOGGLE_EDIT_MODE', id});
+
+export const editPositionServer = (position) => {
+        return (dispatch) => {
+        dispatch(requestPositions);
+        return fetch('/teacherPositions/edit', {
+            method: 'post',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(position)
+        }).then(response => {
+            return response.json();
+        }).then(() => {
+            dispatch(fetchPositions());
+        }).catch(error => {
+            dispatch(responseError(error));
+        });
+    };
+};

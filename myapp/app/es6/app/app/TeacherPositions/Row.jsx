@@ -33,7 +33,7 @@ export default class Row extends React.Component {
             </Button>));
 
         (isEdit && !editMode) && (buttons.push(
-            <Button key = {2} onClick = {() => toggleEditMode(true)}>
+            <Button key = {2} onClick = {() => toggleEditMode(position.id)}>
                 <Glyphicon glyph='edit'/>
             </Button>));
 
@@ -51,8 +51,13 @@ export default class Row extends React.Component {
             onEdit
         } = this.props;
 
-        // onEdit(position);
-        toggleEditMode(false);
+        onEdit({
+            _id: position._id,
+            id: position.id,
+            name: this.nameInput.getValue(),
+            shortName: this.shortNameInput.getValue()
+        });
+        toggleEditMode(position.id);
     }
 
     getCells() {
@@ -66,13 +71,19 @@ export default class Row extends React.Component {
 
 
         name = editMode ?
-            <Input type = "text" defaultValue = {position.name}/> :
+            <Input
+                type = "text"
+                defaultValue = {position.name}
+                ref = {c => this.nameInput = c}/> :
             position.name;
 
 
         shortName = editMode ?
-            <Input type = "text" defaultValue = {position.shortName}/> :
-            position.name;
+            <Input
+                type = "text"
+                defaultValue = {position.shortName}
+                ref = {c => this.shortNameInput = c}/> :
+            position.shortName;
 
         cells.push(
             <td key = {1}>

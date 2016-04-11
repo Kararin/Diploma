@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-import {List} from 'immutable';
+import {List, Set} from 'immutable';
 
 export default handleActions({
     REQUEST_POSITIONS: (state, action) => {
@@ -47,7 +47,7 @@ export default handleActions({
     isError: false,
     options: {
         isAddNewOpen: false,
-        editMode: false
+        editing: Set()
     }
 });
 
@@ -58,11 +58,15 @@ export const teacherPositionOptions = handleActions({
         });
     },
     TOGGLE_EDIT_MODE: (state, action) => {
-            return Object.assign({}, state, {
-        editMode: action.editMode
-    });
+        var resSet = state.editing.has(action.id) ?
+            state.editing.delete(action.id) :
+            state.editing.add(action.id);
+
+        return Object.assign({}, state, {
+            editing: resSet
+        });
     }
 }, {
     isAddNewOpen: false,
-    editMode: false
+    editing: Set()
 });

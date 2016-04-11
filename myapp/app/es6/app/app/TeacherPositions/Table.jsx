@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import Row from './containers/Row';
+import {Set} from 'immutable';
 
 class TableComponent extends React.Component {
     componentDidMount() {
@@ -22,6 +23,7 @@ class TableComponent extends React.Component {
                                                         position = {item}
                                                         isDelete = {true}
                                                         isEdit = {true}
+                                                        editMode = {this.props.editing.has(item.id)}
                                                        />
                                                        )}
                 </tbody>
