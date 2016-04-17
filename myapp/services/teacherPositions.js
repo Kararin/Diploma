@@ -1,18 +1,8 @@
 'use strict';
 
-var schema = require('../schemas/TeacherPositions'),
-    data = require('../reset/data/teacherPositions');
-
+var schema = require('../schemas/TeacherPositions');
 
 class teacherPositionsService {
-    setDefaultData() {
-        return new Promise((resolve, reject) => {
-            schema.setDefaultData(data).then(data => {
-                resolve(data);
-            }, reject);
-        });
-    }
-
     getData() {
         return new Promise((resolve, reject) => {
             schema.getData()

@@ -1,18 +1,19 @@
 'use strict';
 
-var TeacherPositions = require('../services/teacherPositions');
+var TeacherPositions = require('../schemas/TeacherPositions'),
+    Teachers = require('../schemas/Teachers'),
+    teacherPositionsData = require('../defaultData/teacherPositions'),
+    teachersData = require('../defaultData/teachers');
 
 class reset {
     setDefaultData() {
-        return new Promise((resolve, reject) => {
-            TeacherPositions.setDefaultData().then((data) => {
-                resolve(data);
-            }, error => {
-                reject(error);
-            });
-        });
-    }
+        var promises = [
+            TeacherPositions.setDefaultData(teacherPositionsData),
+            Teachers.setDefaultData(teachersData)
+        ];
 
+        return Promise.all(promises);
+    }
 }
 
 module.exports = new reset();
