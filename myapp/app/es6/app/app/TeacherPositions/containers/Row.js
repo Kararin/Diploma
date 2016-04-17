@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, null)(Row);
+export default connect(null, mapDispatchToProps)(Row);
