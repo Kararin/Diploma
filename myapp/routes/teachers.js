@@ -2,15 +2,15 @@
 
 var express = require('express'),
     router = express.Router(),
-    servise = require('../services/teacherPositions');
+    servise = require('../services/teachers');
 
 router.get('/', function(req, res, next) {
     servise.getData()
         .then(data => {
-            console.log('teacher positions finded correctly');
+            console.log('teacher finded correctly');
             res.send(data);
         }, error => {
-            console.error('teacher positions finded failed');
+            console.error('teacher finded failed');
             res.sendStatus(500).send(error);
         });
 });
@@ -19,36 +19,36 @@ router.post('/new', (req, res, next) => {
     console.log(req.body);
 
     servise.addNew(req.body)
-        .then(newPosition => {
-            console.log('new teacher position added successfully');
-            res.send(newPosition);
+        .then(newTeacher => {
+            console.log('new teacher added successfully');
+            res.send(newTeacher);
         })
         .catch(error => {
-            console.error('new teacher position added failed');
+            console.error('new teacher added failed');
             res.sendStatus(500).send(error);
         });
 });
 
 router.delete('/delete:id', (req, res, next) => {
     servise.delete(req.params.id)
-        .then(deletedPosition => {
-            console.log('teacher position deleted successfully');
-            res.send(deletedPosition);
+        .then(deletedTachwe => {
+            console.log('teacher deleted successfully');
+            res.send(deletedTachwe);
         })
         .catch(error => {
-            console.error('teacher position deleted failed');
+            console.error('teacher deleted failed');
             res.sendStatus(500).send(error);
         });
 });
 
 router.post('/edit', (req, res, next) => {
     servise.edit(req.body)
-        .then(editedPosition => {
-            console.log('teacher position edited successfully');
-            res.send(editedPosition);
+        .then(editedTeacher => {
+            console.log('teacher edited successfully');
+            res.send(editedTeacher);
         })
         .catch(error => {
-            console.error('teacher position edited failed');
+            console.error('teacher edited failed');
             res.sendStatus(500).send(error);
         })
 });

@@ -5,7 +5,7 @@ import {Set} from 'immutable';
 
 class TableComponent extends React.Component {
     componentDidMount() {
-        this.props.getData();
+        // this.props.getData();
     }
 
     render() {

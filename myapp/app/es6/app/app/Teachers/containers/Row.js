@@ -7,14 +7,14 @@ import {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onDelete: (position) => {
-            dispatch(deletePositionServer(position));
+        onDelete: (teacher) => {
+            // dispatch(deletePositionServer(position));
         },
         toggleEditMode: (id) => {
-            dispatch(toggleEditMode(id));
+            // dispatch(toggleEditMode(id));
         },
-        onEdit: (position) => {
-            dispatch(editPositionServer(position));
+        onEdit: (teacher) => {
+            // dispatch(editPositionServer(position));
         }
 
     };

@@ -1,43 +1,39 @@
-import React, {PropTypes} from 'react';
-import Row from './TableRow';
-import Teachers from './Teachers';
-import Table from 'components/Table';
-import Th from 'components/Header';
+import React from 'react';
+import {Table} from 'react-bootstrap';
+import Row from './Row';
+import {Set} from 'immutable';
 
-const TeacherTable =  ({
-    teachers,
-    onTeacherSelected
-}) => {
-  return (
-  <Table>
-    <thead>
-      <tr>
-        <Th>
-          Last Name
-        </Th>
-        <Th>
-          Name
-        </Th>
-        <Th>
-          Position
-        </Th>
-      </tr>
-    </thead>
-    <tbody>
-      {teachers.array.map(teacher => <Row {...teacher} onClick = {onTeacherSelected}/>)}
-    </tbody>
-  </Table>
-  );
+class TableComponent extends React.Component {
+    componentDidMount() {
+        this.props.getData();
+    }
+
+    render() {
+        return (
+            <Table>
+                <thead>
+                    <tr>
+                        <th>Name </th>
+                        <th>Last name</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.teachers.map(item => <Row key = {item.id}
+                                                        teacher = {item}
+                                                        isDelete = {true}
+                                                       />
+                                                       )}
+                </tbody>
+            </Table>
+        );
+    }
 }
 
-TeacherTable.defaultProps = {
-    teachers: new Teachers(),
-    onTeacherSelected: () => console.log('not implemented')
-}
+TableComponent.defaultProps = {
+    teachers: [],
+    editing: new Set(),
+    getData: console.log(' getdata not implemented yet')
+};
 
-TeacherTable.propTypes = {
-    teachers: PropTypes.object,
-    onTeacherSelected: PropTypes.func
-}
-
-export default TeacherTable;
+export default TableComponent;
