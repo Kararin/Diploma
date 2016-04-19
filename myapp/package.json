@@ -31,6 +31,8 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
+    "react-router": "^2.2.4",
+    "react-router-redux": "^4.0.2",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",
     "serve-favicon": "~2.3.0"
@@ -51,15 +53,17 @@
     "mongodb": "^2.1.7",
     "mongoose": "^4.4.4",
     "nock": "^7.5.0",
+    "node-sass": "^3.4.2",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-tap-event-plugin": "^0.2.2",
     "react-tools": "^0.13.3",
     "redux-mock-store": "^1.0.2",
     "redux-thunk": "^1.0.3",
+    "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.14"
+    "webpack": "^1.13.0"
   },
   "homepage": "https://github.com/Kararin/Diploma#readme",
   "jshintConfig": {

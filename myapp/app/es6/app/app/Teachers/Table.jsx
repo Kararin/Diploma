@@ -10,7 +10,7 @@ class TableComponent extends React.Component {
 
     render() {
         return (
-            <Table>
+            <Table className = "my-table">
                 <thead>
                     <tr>
                         <th>Name </th>

@@ -11,7 +11,7 @@ class Page extends React.Component {
             buttons = this.getButtons();
 
         return (
-            <Panel
+            <Panel className = "my-page"
                 bsStyle = {bsStyle}
                 header = {title}>
                 <ButtonGroup>

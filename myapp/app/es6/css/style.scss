@@ -1,0 +1,59 @@
+$body-color: #FAFAFA;
+$text-color: #003d4d;
+$selected-tab: #edece5;
+$page-header-color: #003d4d;
+body {
+    background-color: $body-color;
+}
+
+.my-tabs {
+    background-color: $body-color;
+    & ul {
+        padding-left: 10%;
+    }
+    & li {
+        height: 70px;
+        width: 20%;
+        & a {
+            height: 100%;
+            border-radius: 0px;
+            color: $text-color;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 18px;
+        }
+        &.active {
+            & a {
+                background: $selected-tab;
+                color: $text-color;
+            }
+            & a:hover {
+                border-color: transparent;
+                background-color: $selected-tab;
+            }
+            & a:focus {
+                outline: none;
+                background-color: $selected-tab;
+            }
+        }
+    }
+}
+
+.my-page {
+    margin: auto;
+    margin-top: 8%;
+    width: 50%;
+    box-shadow: 1px 1px 1px grey;
+    border-color: $page-header-color;
+    & .panel-heading {
+        background: $page-header-color;
+        font-size: 18px;
+    }
+}
+
+.my-table {
+    width: 70%;
+    & tbody tr td {
+        border-top: none;
+    }
+}
