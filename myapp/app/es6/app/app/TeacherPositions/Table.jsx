@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
-import Row from './containers/Row';
+import Row from '../../core/components/Row';
 import {Set} from 'immutable';
 
 class TableComponent extends React.Component {
@@ -9,6 +9,7 @@ class TableComponent extends React.Component {
     }
 
     render() {
+        var {onDelete, onEdit} = this.props;
         return (
             <Table className = "my-table">
                 <thead>
@@ -18,14 +19,20 @@ class TableComponent extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.positions.map(item => <Row
-                                                        key = {item.id}
-                                                        position = {item}
-                                                        isDelete = {true}
-                                                        isEdit = {true}
-                                                        editMode = {this.props.editing.has(item.id)}
-                                                       />
-                                                       )}
+                    {this.props.positions.map(item => (
+                        <Row
+                            key = {item.id}
+                            isDelete = {true}
+                            onDelete = {() => onDelete(item)}
+                            onEdit = {onEdit}
+                            isEdit = {true}
+                            model = {item}
+                            propsToShow = {['name', 'shortName']}
+                            >
+                            {item.name}
+                            {item.shortName}
+                        </Row>)
+                     )}
                 </tbody>
             </Table>
         );
@@ -34,6 +41,8 @@ class TableComponent extends React.Component {
 
 TableComponent.defaultProps = {
     positions: [],
+    onDelete: console.log('onDelete not implemented'),
+    onEdit: console.log('onEdit not implemented'),
     editing: new Set(),
     getData: console.log(' getdata not implemented yet')
 };

@@ -1,6 +1,9 @@
 import {connect} from 'react-redux';
 import Table from '../Table.jsx';
-import {fetchTeachers} from '../../../actions/teachers';
+import {
+    fetchTeachers,
+    editTeacherServer,
+    deleteTeacherServer} from '../../../actions/teachers';
 
 const mapStateToDispatch = ({teachers}) => {
     return {
@@ -12,6 +15,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getData: () => {
             dispatch(fetchTeachers());
+        },
+        onDelete: (teacher) => {
+            dispatch(deleteTeacherServer(teacher));
+        },
+        onEdit: (teacher) => {
+            dispatch(editTeacherServer(teacher));
         }
     };
 };

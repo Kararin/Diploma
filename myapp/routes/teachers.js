@@ -16,8 +16,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/new', (req, res, next) => {
-    console.log(req.body);
-
     servise.addNew(req.body)
         .then(newTeacher => {
             console.log('new teacher added successfully');

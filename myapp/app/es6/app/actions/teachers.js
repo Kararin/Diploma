@@ -58,3 +58,42 @@ export const isAddNewOpen = (isOpen) => {
         isOpen
     };
 };
+
+export const deleteTeacherServer = (option) => {
+    return (dispatch) => {
+        dispatch(requestTeachers);
+        return fetch(`/teachers/delete${option.id}`, {
+            method: 'delete',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            return response.json();
+        }).then(() => {
+            dispatch(fetchTeachers());
+        }).catch(error => {
+            dispatch(responseError(error));
+        });
+    };
+};
+
+export const editTeacherServer = (teacher) => {
+    return (dispatch) => {
+        dispatch(requestTeachers);
+        return fetch('/teachers/edit', {
+            method: 'post',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(teacher)
+        }).then(response => {
+            return response.json();
+        }).then(() => {
+            dispatch(fetchTeachers());
+        }).catch(error => {
+            dispatch(responseError(error));
+        });
+    };
+};

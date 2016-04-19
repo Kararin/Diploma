@@ -1,6 +1,9 @@
 import {connect} from 'react-redux';
 import Table from '../Table.jsx';
-import {fetchPositions} from '../../../actions/teacherPositions';
+import {
+    fetchPositions,
+    deletePositionServer,
+    editPositionServer} from '../../../actions/teacherPositions';
 
 const mapStateToDispatch = ({teacherPositions}) => {
     return {
@@ -13,7 +16,14 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getData: () => {
             dispatch(fetchPositions());
-        }
+        },
+        onEdit: (position) => {
+            dispatch(editPositionServer(position));
+        },
+        onDelete: (position) => {
+            dispatch(deletePositionServer(position));
+        },
+
     };
 };
 

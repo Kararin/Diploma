@@ -27,9 +27,9 @@ class teachersService {
     }
 
     edit(teacher) {
+        console.log(teacher);
         return new Promise((resolve, reject) => {
-           schema.edit(teacher).
-                then(resolve, reject);
+            schema.edit(teacher).then(resolve, reject);
         });
     }
 }
