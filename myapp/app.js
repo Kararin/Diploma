@@ -10,7 +10,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var reset = require('./routes/reset');
 var teacherPositions = require('./routes/teacherPositions');
-var teachers= require('./routes/teachers');
+var teachers = require('./routes/teachers');
+var days = require('./routes/days');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/users', users);
 app.use('/reset', reset);
 app.use('/teacherPositions', teacherPositions);
 app.use('/teachers', teachers);
+app.use('/days', days);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

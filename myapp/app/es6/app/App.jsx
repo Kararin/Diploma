@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
-import Positions from './app/TeacherPositions/containers/Page';
 import Teachers from './app/Teachers/containers/Page';
+import Options from './app/Options/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../css/style.scss';
 
@@ -15,8 +15,8 @@ export default ({defaultKey}) => {
                 title="Teachers">
                 <Teachers/>
             </Tab>
-            <Tab className = "my-tab" eventKey = {2} title="Positions">
-                <Positions/>
+            <Tab className = "my-tab" eventKey = {2} title="Options">
+                <Options/>
             </Tab>
         </Tabs>
     );

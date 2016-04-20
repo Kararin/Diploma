@@ -1,7 +1,6 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import Row from '../../core/components/Row';
-import {Set} from 'immutable';
 
 class TableComponent extends React.Component {
     componentDidMount() {
@@ -29,8 +28,6 @@ class TableComponent extends React.Component {
                             model = {item}
                             propsToShow = {['name', 'shortName']}
                             >
-                            {item.name}
-                            {item.shortName}
                         </Row>)
                      )}
                 </tbody>
@@ -43,7 +40,6 @@ TableComponent.defaultProps = {
     positions: [],
     onDelete: console.log('onDelete not implemented'),
     onEdit: console.log('onEdit not implemented'),
-    editing: new Set(),
     getData: console.log(' getdata not implemented yet')
 };
 

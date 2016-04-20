@@ -6,7 +6,7 @@ import AddNew from './containers/AddNew';
 const PositionsPage  = ({
     onAddAction
 }) => (
-    <div>
+    <div className = "options-nestedpage">
         <Page
             title = "Teachers positions"
             isAdd = {true}

@@ -39,15 +39,34 @@ body {
     }
 }
 
+.options-nestedpage {
+    & .panel {
+        box-shadow: none;
+        max-height: 95%;
+        margin-top: 0px;
+        float: left;
+        border-color: $selected-tab;
+
+        & .panel-heading {
+            background: $selected-tab;
+            color: $text-color;
+            border-color: transparent;
+        }
+    }
+}
+
 .my-page {
     margin: auto;
-    margin-top: 8%;
+    margin-top: 3%;
     width: 50%;
     box-shadow: 1px 1px 1px grey;
     border-color: $page-header-color;
     & .panel-heading {
         background: $page-header-color;
         font-size: 18px;
+    }
+    &.options-page {
+        height: 80%;
     }
 }
 
