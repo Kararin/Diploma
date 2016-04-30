@@ -4,6 +4,7 @@ import Teachers from './app/Teachers/containers/Page';
 import Options from './app/Options/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../css/style.scss';
+import Schedule from './app/Schedule/Page';
 
 export default ({defaultKey}) => {
     return (
@@ -15,7 +16,12 @@ export default ({defaultKey}) => {
                 title="Teachers">
                 <Teachers/>
             </Tab>
-            <Tab className = "my-tab" eventKey = {2} title="Options">
+            <Tab className = "my-tab"
+                eventKey = {2}
+                title = "Schedule">
+                <Schedule/>
+            </Tab>
+            <Tab className = "my-tab" eventKey = {3} title="Options">
                 <Options/>
             </Tab>
         </Tabs>

@@ -13,6 +13,7 @@ body {
     }
     & li {
         height: 70px;
+        background: $body-color;
         width: 20%;
         & a {
             height: 100%;
@@ -42,7 +43,9 @@ body {
 .options-nestedpage {
     & .panel {
         box-shadow: none;
-        max-height: 95%;
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
         margin-top: 0px;
         float: left;
         border-color: $selected-tab;
@@ -59,6 +62,7 @@ body {
     margin: auto;
     margin-top: 3%;
     width: 50%;
+    max-height: 700px;
     box-shadow: 1px 1px 1px grey;
     border-color: $page-header-color;
     & .panel-heading {

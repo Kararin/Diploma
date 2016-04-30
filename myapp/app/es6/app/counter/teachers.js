@@ -23,6 +23,12 @@ export default handleActions({
     },
     IS_ADD_NEW_TEACHER_PAGE_OPEN: (state, action) => Object.assign({}, state, {
             options: teachersOptions(state.options, action)
+    }),
+    ADD_TO_SCHEDULE: (state, action) => Object.assign({}, state, {
+        inSchedule: state.inSchedule.add(action.id)
+    }),
+    REMOVE_FROM_SCHEDULE: (state, action) => Object.assign({}, state, {
+        inSchedule: state.inSchedule.delete(action.id)
     })
 }, {
     data: List(),
@@ -31,7 +37,8 @@ export default handleActions({
     options: {
         isAddNewOpen: false,
         editiong: Set()
-    }
+    },
+    inSchedule: Set()
 });
 
 const teachersOptions = handleActions({

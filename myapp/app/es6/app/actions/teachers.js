@@ -97,3 +97,7 @@ export const editTeacherServer = (teacher) => {
         });
     };
 };
+
+export const addToSchedule = id => ({type: 'ADD_TO_SCHEDULE', id});
+
+export const removeFromSchedule = id => ({type: 'REMOVE_FROM_SCHEDULE', id});
