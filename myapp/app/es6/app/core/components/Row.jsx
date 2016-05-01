@@ -90,12 +90,26 @@ class ButtonRow extends React.Component{
     onEditButtonClick() {
         var {onEdit, model, propsToShow} = this.props;
 
-         propsToShow.forEach(name => {
-             model[name] = this.newModel[name].getValue();
-         });
+        if (!this.isModelsEqual(model, this.newModel)) {
+            propsToShow.forEach(name => {
+                model[name] = this.newModel[name].getValue();
+            });
+
+            onEdit(model);
+        }
 
         this.setEditMode(false);
-        onEdit(model);
+    }
+
+    isModelsEqual(model1, newModel) {
+        var isEqual = true,
+            key;
+
+        for (key in newModel) {
+            (model1[key] !== newModel[key].getValue()) && (isEqual = false);
+        }
+
+        return isEqual;
     }
 }
 
