@@ -80,3 +80,18 @@ body {
         border-top: none;
     }
 }
+
+%sub {
+    width: 100%;
+    height: 20px;
+}
+
+.ch {
+    @extend %sub;
+    background: beige;
+}
+
+.zn {
+    @extend %sub;
+    background: thistle;
+}

@@ -4,14 +4,9 @@ var mongoose = require('mongoose'),
     Base = require('../db/basic'),
     schedule = mongoose.Schema({
         id: Number,
-        {
-            teacherId: {
-                day: {
-                    time: Array
-                }
-            }
-        }
+        teachers: Array,
+        name: String,
+        date: Date
     });
-
 
 module.exports = new Base(schedule, 'Schedule');
