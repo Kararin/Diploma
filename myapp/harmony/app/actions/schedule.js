@@ -28,11 +28,18 @@ export const fetchSchedule = () => {
             })
             .then(json => {
                 dispatch(responseSuccess(json));
+                dispatch(setCurrent(getCurrentId(json)));
             })
             .catch(error => {
                 dispatch(responseError(error));
             });
     };
+};
+
+const getCurrentId = (schedule) => {
+    var resultItem = schedule.find(item => !item.name);
+
+    return resultItem && resultItem.id;
 };
 
 export const addScheduleItem = (item) => ({type: 'ADD_SCHEDULE_ITEM', item});

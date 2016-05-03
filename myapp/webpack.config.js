@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./app/es6/app/main.js",
+    entry: "./harmony/app/main.js",
     output: {
         filename: "./public/javascripts/main.js"
     },

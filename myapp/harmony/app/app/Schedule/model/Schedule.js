@@ -81,7 +81,10 @@ export default class Schedule {
                resultDay = item;
 
            if (day) {
-               resultDay = this.mergeTimes(day, item);
+               resultDay = this.mergeTimes({
+                   newDay: item,
+                   oldDay: day
+                });
 
                newDays.splice(dayIndex, 1);
            }
@@ -94,14 +97,30 @@ export default class Schedule {
         return result;
     }
 
-    static mergeTimes(firstDay, secondDay) {
-        var ch = Immutable.Set(firstDay.ch).add(secondDay.ch),
-            zn = Immutable.Set(firstDay.zn).add(secondDay.zn),
-        result = Object.assign({}, firstDay, {
-            ch: ch.toArray(),
-            zn: zn.toArray()
+    static mergeTimes({newDay, oldDay}) {
+        var result;
+
+        result = Object.assign({}, oldDay, {
+            ch: newDay.ch ? newDay.ch : oldDay.ch,
+            zn: newDay.zn ? newDay.zn : oldDay.zn
         });
 
         return result;
+    }
+
+    static deleteDuplicate(array) {
+        var newArray = Object.assign([], array);
+
+        newArray.sort();
+
+        for (var index = 0; index < newArray.length - 1; index++) {
+             if (newArray[index] === newArray[index + 1]) {
+                 newArray.splice(index, 1);
+                 index--;
+             }
+        }
+
+        return newArray;
+
     }
 }
