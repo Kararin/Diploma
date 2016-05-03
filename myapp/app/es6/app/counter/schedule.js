@@ -32,7 +32,7 @@ export default handleActions({
     }
 }, {
     data: List(),
-    current: 2,
+    current: null,
     isFetching: false,
     isError: false
 });

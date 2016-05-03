@@ -1,26 +1,41 @@
-import {connect} from 'react-redux';
+import {
+    connect
+} from 'react-redux';
 import SubCell from '../SubCell';
-import { addScheduleServer } from '../../../actions/schedule';
+import {
+    addScheduleServer,
+    editScheduleServer
+} from '../../../actions/schedule';
 import Schedule from '../model/Schedule';
+import Immutable from 'immutable';
 
 const mapStateToProps = (
-    state, {teacherId, dayId, type}
-) => {
-    var {schedule} = state,
-        value = schedule.current ? getValue({
-        schedule: schedule.data,
-        current: schedule.current,
+    state, {
         teacherId,
         dayId,
         type
-    }) : '';
+    }
+) => {
+    var {
+        schedule
+    } = state,
+    currentItem = schedule.data.toArray().find(item => item.id === schedule.current),
+        value = schedule.current ? Schedule.getCellValue({
+            schedule: schedule.data,
+            current: schedule.current,
+            teacherId,
+            dayId,
+            type
+        }) : '';
 
     return {
         data: {
             teacherId,
             dayId,
             value,
-            type
+            type,
+            current: schedule.current,
+            newItem: newItem(currentItem)
         }
     };
 };
@@ -42,29 +57,35 @@ const mapDispatchToProps = dispatch => {
                 });
 
                 dispatch(addScheduleServer(scheduleItem));
+            },
+            editAction: (scheduleItem) => {
+                dispatch(editScheduleServer(scheduleItem));
             }
+
         }
     };
 };
 
-const getValue = ({
-    schedule,
-    teacherId,
-    current,
-    dayId,
-    type
-}) => {
-   var scheduleItem = schedule.find(item => item.id === current),
-       teacher,
-       day,
-       cellValue = '';
 
-   //TODO: refactor
-   scheduleItem && (teacher = scheduleItem.teachers.find(item => item.id === teacherId));
-   teacher && (day = teacher.days.find(item => item.id === dayId));
-   day && (cellValue = day[type]);
+const newItem = (currentItem) => {
+    return ({
+        teacherId,
+        dayId,
+        value,
+        type
+    }) => {
+        var newValue = Schedule.getNewScheduleItem({
+                teacherId,
+                dayId,
+                value,
+                type
+            }),
+            result;
 
-   return cellValue && cellValue.join('');
+        result = Schedule.mergeItems(currentItem, newValue);
+
+        return result;
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCell);

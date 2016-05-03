@@ -39,15 +39,21 @@ export default class SubCell extends React.Component {
     onEdit(timeValue) {
         var {
             data, actions
-        } = this.props;
+        } = this.props,
+            scheduleData = {
+                teacherId: data.teacherId,
+                value: timeValue,
+                dayId: data.dayId,
+                type: data.type
+            }
+
+        if (data.current) {
+            actions.editAction(data.newItem(scheduleData));
+        } else {
+            actions.addAction(scheduleData);
+        }
 
         this.changeEditMode(false);
-        actions.addAction({
-            teacherId: data.teacherId,
-            value: timeValue,
-            dayId: data.dayId,
-            type: data.type
-        });
     }
 }
 
@@ -56,9 +62,13 @@ SubCell.defaultProps = {
         value: '',
         teacherId: -1,
         dayId: -1,
-        type: ''
+        type: '',
+        schedule: [],
+        current: null,
+        newItem: console.log('newItem not implemented')
     },
     actions: {
-        addAction: console.log('addAction not implemented')
+        addAction: console.log('addAction not implemented'),
+        editAction: console.log('editAction not implemented')
     }
 }
