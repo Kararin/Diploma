@@ -2,11 +2,14 @@ import {connect} from 'react-redux';
 import AddNew from './../AddNew';
 import {addNewTeacherServer, isAddNewOpen} from '../../../actions/teachers';
 
-const setPropsToDispatch = ({teachers}) => {
+const setPropsToDispatch = ({teachers, teacherPositions}) => {
     var {isAddNewOpen} = teachers.options;
 
     return {
-        isVisible: isAddNewOpen
+        isVisible: isAddNewOpen,
+        data: {
+            teacherPositions: teacherPositions.data
+        }
     };
 };
 

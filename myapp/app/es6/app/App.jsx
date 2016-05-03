@@ -4,7 +4,7 @@ import Teachers from './app/Teachers/containers/Page';
 import Options from './app/Options/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../css/style.scss';
-import Schedule from './app/Schedule/Page';
+import Schedule from './app/Schedule/containers/Page';
 
 export default ({defaultKey}) => {
     return (

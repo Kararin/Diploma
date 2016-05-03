@@ -8,13 +8,11 @@ const Cell = ({
        <SubCell
             teacherId = {data.teacherId}
             dayId = {data.dayId}
-            value = {data.values.ch}
             type = 'ch'
         />
         <SubCell
             teacherId = {data.teacherId}
             dayId = {data.dayId}
-            value = {data.values.zn}
             type = 'zn'
         />
     </td>
@@ -23,11 +21,7 @@ const Cell = ({
 Cell.defaultProps = {
     data: {
         teacherId: -1,
-        dayId: -1,
-        values: {
-            ch: '',
-            zn: ''
-        }
+        dayId: -1
     }
 };
 

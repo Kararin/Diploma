@@ -3,15 +3,18 @@ import {
     Button,
     Input,
     Modal} from 'react-bootstrap';
+import Select from '../../core/components/Select';
 
 const AddNew = ({
     onAdd,
     onClose,
-    isVisible
+    isVisible,
+    data
 }) => {
     var name = null,
         lastName = null,
-        position = null;
+        position = null,
+        {teacherPositions} = data;
     return (
         <div className="static-modal">
             <Modal show = {isVisible}>
@@ -33,11 +36,10 @@ const AddNew = ({
                     placeholder = "Enter text"
                     label = "Last name"
                     ref = {(c) => {lastName = c;}}/>
-                <Input
-                    type = "text"
-                    placeholder = "Enter text"
-                    label = "Position"
-                    ref = {(c) => {position = c;}}/>
+                <Select
+                    store = {teacherPositions}
+                    ref = {(c) => {position = c;}}
+                 />
             </Modal.Body>
 
             <Modal.Footer>
@@ -47,6 +49,7 @@ const AddNew = ({
                 <Button
                     bsStyle="primary"
                     onClick = {() => {
+                        console.log(position);
                         onAdd({name: name.getValue(),
                             lastName: lastName.getValue(),
                             position: position.getValue()});

@@ -4,52 +4,66 @@ import {
     Input,
     Modal} from 'react-bootstrap';
 
-const AddNew = ({
-    onAdd,
-    onClose,
-    isVisible
-}) => {
-    var name = null,
-        shortName = null;
-    return (
-        <div className="static-modal">
-            <Modal show = {isVisible}>
-            <Modal.Header>
-                <Modal.Title>
-                    Add new position
-                </Modal.Title>
-            </Modal.Header>
+export default class AddNew extends React.Component {
+    render() {
+        var name = null,
+            shortName = null,
+            {onAdd, onClose, isVisible} = this.props;
 
-            <Modal.Body>
+        return (
+            <div className="static-modal">
+                <Modal show = {isVisible}>
+                <Modal.Header>
+                    <Modal.Title>
+                        Add new position
+                    </Modal.Title>
+                </Modal.Header>
 
-                 <Input
-                    type = "text"
-                    placeholder = "Enter text"
-                    label = "Name"
-                    ref = {(c) => {name = c;}} />
-                <Input
-                    type = "text"
-                    placeholder = "Enter text"
-                    label = "Short name"
-                    ref = {(c) => {shortName = c;}}/>
-            </Modal.Body>
+                <Modal.Body>
 
-            <Modal.Footer>
-                <Button onClick = {() => {onClose()}}>
-                    Close
-                </Button>
-                <Button
-                    bsStyle="primary"
-                    onClick = {() => {
-                        onAdd({name: name.getValue(), shortName: shortName.getValue()});
-                    }}>
-                    Ok
-                </Button>
-            </Modal.Footer>
+                    <Input
+                        type = "text"
+                        placeholder = "Enter text"
+                        label = "Name"
+                        ref = {(c) => {name = c;}}
+                        onChange = {e => this.changeShortName(e.target.value, shortName)} />
+                    <Input
+                        type = "text"
+                        placeholder = "Enter text"
+                        label = "Short name"
+                        ref = {(c) => {shortName = c;}}
+                        />
+                </Modal.Body>
 
-            </Modal>
-        </div>
-    );
+                <Modal.Footer>
+                    <Button onClick = {() => {onClose()}}>
+                        Close
+                    </Button>
+                    <Button
+                        bsStyle="primary"
+                        onClick = {() => {
+                            onAdd({name: name.getValue(), shortName: shortName.getValue()});
+                        }}>
+                        Ok
+                    </Button>
+                </Modal.Footer>
+
+                </Modal>
+            </div>
+        );
+    }
+
+    changeShortName(name, shortName) {
+        var value = this.getDefaultShortName(name);
+
+        shortName.getInputDOMNode().value = value;
+    }
+
+    getDefaultShortName(name) {
+        var shortPositionNameSymbols = 3;
+
+        return `${name.slice(0, shortPositionNameSymbols)}.`;
+    }
 }
 
 AddNew.defaultProps = {
@@ -63,5 +77,3 @@ AddNew.propTypes = {
     onClose: React.PropTypes.func,
     isVisible: React.PropTypes.bool
 };
-
-export default AddNew;

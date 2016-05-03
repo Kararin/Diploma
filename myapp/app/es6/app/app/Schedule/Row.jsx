@@ -1,8 +1,8 @@
 import React from 'react';
 import Cell from './containers/Cell';
-const Row = ({data}) => (
+const Row = ({data, actions}) => (
     <tr>
-        <td>
+        <td onClick = {e => actions.removeFromSchedule(data.teacher.id)}>
             {data.teacher.displayName}
         </td>
         {data.days.map(item => (
@@ -20,9 +20,12 @@ Row.defaultProps = {
         teacher: {
             id: -1,
             displayName: ''
-        }
+        },
+        days: []
     },
-    days: []
+    actions: {
+        removeFromSchedule: console.log('removeFromSchedule not implemented')
+    }
 };
 
 export default Row;

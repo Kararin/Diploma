@@ -23,9 +23,16 @@ export default handleActions({
             data: List(action.data)
         });
     },
+    ADD_SCHEDULE_ITEM: (state, action) => {
+        return Object.assign({}, state, {
+            isFetching: false,
+            isError: false,
+            data: state.data.push(action.item)
+        });
+    }
 }, {
     data: List(),
-    current: -1,
+    current: 2,
     isFetching: false,
     isError: false
 });

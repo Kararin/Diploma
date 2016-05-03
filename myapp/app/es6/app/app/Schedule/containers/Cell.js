@@ -8,13 +8,8 @@ const mapStateToProps = (
     return {
         data: {
             teacherId,
-            dayId,
-            //TODO: add real values
-            values: {
-                zn: 2,
-                ch: 1
-            }
+            dayId
         }
     };
 };
-export default connect (null, null)(Cell);
+export default connect (mapStateToProps, null)(Cell);

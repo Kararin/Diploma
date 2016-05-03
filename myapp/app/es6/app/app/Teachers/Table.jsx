@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
-import Row from '../../core/components/Row';
+import Row from './containers/Row';
 import {Set} from 'immutable';
 
 class TableComponent extends React.Component {

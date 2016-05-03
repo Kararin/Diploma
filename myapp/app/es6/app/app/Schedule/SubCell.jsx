@@ -17,8 +17,9 @@ export default class SubCell extends React.Component {
             this.state.edit ?
                 <Input type = 'text'
                         defaultValue = {value}
-                        onClick = {e => {
-                            this.onEdit(e.target.value)
+                        onKeyDown = {e => {
+                            (e.keyCode === 13) &&
+                            (this.onEdit(e.target.value))
                         }}
                  /> :
                 <div
@@ -36,8 +37,6 @@ export default class SubCell extends React.Component {
     }
 
     onEdit(timeValue) {
-        //TODO: add validation
-        //TODO: change onClick
         var {
             data, actions
         } = this.props;
@@ -46,7 +45,8 @@ export default class SubCell extends React.Component {
         actions.addAction({
             teacherId: data.teacherId,
             value: timeValue,
-            dayId: data.dayId
+            dayId: data.dayId,
+            type: data.type
         });
     }
 }

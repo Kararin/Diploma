@@ -5,19 +5,10 @@ import {
     toggleEditMode,
     editPositionServer} from '../../../actions/teacherPositions';
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onDelete: (teacher) => {
-            // dispatch(deletePositionServer(position));
-        },
-        toggleEditMode: (id) => {
-            // dispatch(toggleEditMode(id));
-        },
-        onEdit: (teacher) => {
-            // dispatch(editPositionServer(position));
-        }
-
-    };
+const mapStateToProps = ({teacherPositions}) => {
+  return {
+      teacherPositions: teacherPositions.data.toArray()
+  };
 };
 
-export default connect(null, null)(Row);
+export default connect(mapStateToProps)(Row);
