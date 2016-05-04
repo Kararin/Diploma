@@ -6,7 +6,9 @@ export default ({
     teachers
 }) => (
     <ListGroup>
-        <ListGroupItem className= 'teachers-list-header'>
+        <ListGroupItem
+            className = 'teachers-list-header'
+            >
             Teahers:
         </ListGroupItem>
         {teachers.map(teacher => (

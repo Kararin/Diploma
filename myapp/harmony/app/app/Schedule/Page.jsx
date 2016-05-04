@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import TeacherList from '../Teachers/containers/List';
 import Table from './Table';
+import SavedList from './containers/SavedList';
 
 export default class Page extends React.Component{
     componentDidMount() {
@@ -12,14 +13,14 @@ export default class Page extends React.Component{
              <div className = 'my-schedule-page'>
                 <Grid>
                     <Row>
-                        <Col xs = {4} className = 'my-shedule-col'>
+                        <Col xs = {3} className = 'my-shedule-col'>
                             <TeacherList/>
                         </Col>
                         <Col xs = {6} className = 'my-shedule-col'>
                             <Table/>
                         </Col>
-                        <Col xs = {4} className = 'my-shedule-col'>
-                            saved
+                        <Col xs = {2} className = 'my-shedule-col'>
+                            <SavedList/>
                         </Col>
                     </Row>
                 </Grid>

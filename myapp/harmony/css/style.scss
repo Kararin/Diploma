@@ -4,19 +4,24 @@ $selected-tab: #edece5;
 $page-header-color: #003d4d;
 
 $font-size-medium: 16px;
+$font-size-big: 18px;
 
 $font-weight-medium: 700;
 
+$sub-cell-height: 25px;
 body {
     background-color: $body-color;
 }
 
 .my-tabs {
     background-color: $body-color;
+
     & ul {
         padding-left: 10%;
+        border-bottom: none;
     }
-    & li {
+
+    & li[role="presentation"] {
         height: 70px;
         background: $body-color;
         width: 20%;
@@ -89,16 +94,16 @@ body {
         margin-right: 4%;
 
         & .my-shedule-col {
-            margin: 20px;
+            margin: 10px;
         }
     }
     & .schedule-table {
+        background: white;
         & thead {
             background: $page-header-color;
             text-align: center;
             color: $selected-tab;
-            font-size: $font-size-medium;
-            font-weight: $font-weight-medium;
+            font-size: $font-size-big;
         }
 
         & tbody {
@@ -107,8 +112,28 @@ body {
                 text-align: center;
                 color: $page-header-color;
                 vertical-align: middle;
+
+                & .form-group {
+                    margin: 0px;
+
+                    & .form-control {
+                        border-radius: 0px;
+                        height: $sub-cell-height;
+                        text-align: center;
+                    }
+                }
+
+
             }
         }
+    }
+
+    & .teachers-list-header {
+        background: $page-header-color;
+        color: $selected-tab;
+        font-size: $font-size-big;
+        height: auto;
+        width: auto;
     }
 }
 
@@ -121,23 +146,14 @@ body {
 
 %sub {
     width: 100%;
-    height: 20px;
+    height: $sub-cell-height;
 }
 
 .ch {
     @extend %sub;
-    background: #DCF1DC;
-
+    border-bottom: 1px solid #ddd;
 }
 
 .zn {
     @extend %sub;
-    background: #D6DBE8;
 }
-
-// .teachers-list-header {
-//     background: $page-header-color;
-//     color: $selected-tab;
-//     font-weight: $font-weight-medium;
-//     font-size: $font-size-medium;
-// }
