@@ -9,16 +9,16 @@ export default class Page extends React.Component{
     }
     render() {
         return (
-             <div>
+             <div className = 'my-schedule-page'>
                 <Grid>
                     <Row>
-                        <Col xs = {2}>
+                        <Col xs = {4} className = 'my-shedule-col'>
                             <TeacherList/>
                         </Col>
-                        <Col xs = {6}>
+                        <Col xs = {6} className = 'my-shedule-col'>
                             <Table/>
                         </Col>
-                        <Col xs = {4}>
+                        <Col xs = {4} className = 'my-shedule-col'>
                             saved
                         </Col>
                     </Row>

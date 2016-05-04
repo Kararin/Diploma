@@ -6,7 +6,7 @@ import TableBody from './containers/TableBody';
 export default class Schedule extends React.Component {
     render() {
         return (
-            <Table>
+            <Table bordered className = "schedule-table">
                 <thead>
                     <TableHeader/>
                 </thead>

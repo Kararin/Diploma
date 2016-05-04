@@ -2,6 +2,11 @@ $body-color: #FAFAFA;
 $text-color: #003d4d;
 $selected-tab: #edece5;
 $page-header-color: #003d4d;
+
+$font-size-medium: 16px;
+
+$font-weight-medium: 700;
+
 body {
     background-color: $body-color;
 }
@@ -74,6 +79,39 @@ body {
     }
 }
 
+.my-schedule-page {
+    margin: auto;
+    margin-top: 3%;
+    max-height: 700px;
+
+    & .container {
+        margin-left: 4%;
+        margin-right: 4%;
+
+        & .my-shedule-col {
+            margin: 20px;
+        }
+    }
+    & .schedule-table {
+        & thead {
+            background: $page-header-color;
+            text-align: center;
+            color: $selected-tab;
+            font-size: $font-size-medium;
+            font-weight: $font-weight-medium;
+        }
+
+        & tbody {
+            td {
+                padding: 0px;
+                text-align: center;
+                color: $page-header-color;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
 .my-table {
     width: 70%;
     & tbody tr td {
@@ -88,10 +126,18 @@ body {
 
 .ch {
     @extend %sub;
-    background: beige;
+    background: #DCF1DC;
+
 }
 
 .zn {
     @extend %sub;
-    background: thistle;
+    background: #D6DBE8;
 }
+
+// .teachers-list-header {
+//     background: $page-header-color;
+//     color: $selected-tab;
+//     font-weight: $font-weight-medium;
+//     font-size: $font-size-medium;
+// }
