@@ -5,11 +5,15 @@ import {removeFromSchedule} from '../../../actions/teachers';
 const mapStateToPtops = (
     state, {teacher}
 ) => {
+    var {teacherPositions: {data: positions}} = state,
+        teacherPosition = positions.find(item => item.id === +teacher.position),
+        shortName = teacherPosition ? teacherPosition.shortName: '';
+
     return {
         data: {
             teacher: {
                 id: teacher.id,
-                displayName: `${teacher.lastName} ${teacher.name} ${teacher.position}`
+                displayName: `${teacher.lastName} ${teacher.name} ${shortName}`
             },
             days: state.days.data
         }
