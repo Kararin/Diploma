@@ -13,7 +13,7 @@ export default class Page extends React.Component{
              <div className = 'my-schedule-page'>
                 <Grid>
                     <Row>
-                        <Col xs = {3} className = 'my-shedule-col'>
+                        <Col xs = {2} className = 'my-shedule-col'>
                             <TeacherList/>
                         </Col>
                         <Col xs = {6} className = 'my-shedule-col'>
