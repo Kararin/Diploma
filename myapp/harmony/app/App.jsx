@@ -9,7 +9,7 @@ import Schedule from './app/Schedule/containers/Page';
 export default ({defaultKey}) => {
     return (
         <Tabs className = "my-tabs"
-             defaultActiveKey = {1}
+             defaultActiveKey = {2}
              bsStyle = 'tabs'>
             <Tab className = "my-tab"
                 eventKey = {1}

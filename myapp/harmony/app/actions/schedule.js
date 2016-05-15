@@ -1,3 +1,6 @@
+import Schedule from '../app/Schedule/model/Schedule';
+import {addToSchedule} from './teachers';
+
 export const requestSchedule = () => {
     return {
         type: 'REQUEST_SCHEDULE'
@@ -27,8 +30,7 @@ export const fetchSchedule = () => {
                 return response.json();
             })
             .then(json => {
-                dispatch(responseSuccess(json));
-                dispatch(setCurrent(getCurrentId(json)));
+                processResponce(json, dispatch);
             })
             .catch(error => {
                 dispatch(responseError(error));
@@ -40,6 +42,16 @@ const getCurrentId = (schedule) => {
     var resultItem = schedule.find(item => !item.name);
 
     return resultItem && resultItem.id;
+};
+
+const processResponce = (schedule, dispatch) => {
+    var currentItem = Schedule.getCurrentItem(schedule),
+        teachers = currentItem.teachers.map(item => item.id);
+
+    dispatch(responseSuccess(schedule));
+    dispatch(setCurrent(currentItem.id));
+
+    teachers.forEach(item => dispatch(addToSchedule(item)));
 };
 
 export const addScheduleItem = (item) => ({type: 'ADD_SCHEDULE_ITEM', item});

@@ -1,6 +1,10 @@
-import Immutable from 'immutable';
+import {Record} from 'immutable';
 
 export default class Schedule {
+    constructor (params) {
+        this.data = params;
+    }
+
     static getNewScheduleItem ({
         teacherId,
         dayId,
@@ -122,5 +126,11 @@ export default class Schedule {
 
         return newArray;
 
+    }
+
+    static getCurrentItem(scheduleArray) {
+        var current = scheduleArray.find(item => !item.dates.end);
+
+        return current;
     }
 }

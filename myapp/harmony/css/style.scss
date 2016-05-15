@@ -163,3 +163,26 @@ body {
 .zn {
     @extend %sub;
 }
+
+@mixin buttons-margin ($width) {
+    $empty-width: 100 - $width * 3;
+
+    margin-left: $empty-width / 2;
+    margin-right: $empty-width / 2;
+}
+
+$schedule-button-width: 15%;
+
+.schedule-button-panel {
+    width: 100%;
+    margin-bottom: 10px;
+
+    & .button {
+        width: $schedule-button-width;
+    }
+
+    & .button-center {
+        @extend .button;
+        @include buttons-margin($schedule-button-width);
+    }
+}

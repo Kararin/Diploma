@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
         id: Number,
         teachers: Array,
         name: String,
-        date: Date
+        dates: Object
     });
 
 module.exports = new Base(schedule, 'Schedule');

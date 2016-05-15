@@ -34,5 +34,9 @@ export default handleActions({
     data: List(),
     current: null,
     isFetching: false,
-    isError: false
+    isError: false,
+    dates: {
+        start: null,
+        end: null
+    }
 });
