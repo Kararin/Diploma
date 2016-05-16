@@ -30,6 +30,7 @@
     "jQuery": "^1.7.4",
     "jade": "~1.11.0",
     "jquery": "^2.2.3",
+    "moment": "^2.13.0",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.5",
     "react-bootstrap-select": "^0.14.0",

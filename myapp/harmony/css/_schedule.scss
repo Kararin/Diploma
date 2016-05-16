@@ -1,0 +1,89 @@
+@import 'colors';
+@import 'font';
+
+$body-color: #FAFAFA;
+$text-color: #003d4d;
+$selected-tab: #edece5;
+$page-header-color: #003d4d;
+
+.my-schedule-page {
+    margin: auto;
+    margin-top: 3%;
+    max-height: 700px;
+    width: 100%;
+
+    & .container {
+        margin-left: 4%;
+        width: 100%;
+        margin-right: 4%;
+
+        & .my-shedule-col {
+            margin: 10px;
+        }
+    }
+    & .schedule-table {
+        background: white;
+        & thead {
+            background: $page-header-color;
+            text-align: center;
+            color: $selected-tab;
+            font-size: $font-size-big;
+        }
+
+        & tbody {
+            td:first-child {
+                cursor: pointer;
+            }
+
+            td {
+                padding: 0px;
+                text-align: center;
+                color: $page-header-color;
+                vertical-align: middle;
+
+                & .form-group {
+                    margin: 0px;
+
+                    & .form-control {
+                        border-radius: 0px;
+                        height: $sub-cell-height;
+                        text-align: center;
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    & .teachers-list-header {
+        background: $page-header-color;
+        color: $selected-tab;
+        font-size: $font-size-big;
+        height: auto;
+        width: auto;
+    }
+}
+
+%sub {
+    width: 100%;
+    height: $sub-cell-height;
+}
+
+.ch {
+    @extend %sub;
+    border-bottom: 1px solid #ddd;
+}
+
+.zn {
+    @extend %sub;
+}
+
+.dates-container {
+    width: 100%;
+
+    & .dates {
+        margin: auto;
+        width: 160px;
+    }
+}

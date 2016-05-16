@@ -47,13 +47,20 @@ export default class SubCell extends React.Component {
                 type: data.type
             }
 
-        if (data.current) {
-            actions.editAction(data.newItem(scheduleData));
-        } else {
-            actions.addAction(scheduleData);
+        if (this.validateTime(timeValue)) {
+            if (data.current) {
+                actions.editAction(data.newItem(scheduleData));
+            } else {
+                actions.addAction(scheduleData);
+            }
         }
 
+
         this.changeEditMode(false);
+    }
+
+    validateTime(time) {
+        return !!time.match(/\d\d:\d\d/);
     }
 }
 

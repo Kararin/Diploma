@@ -7,13 +7,15 @@ import teachers from './counter/teachers';
 import teacherPositions from './counter/teacherPositions';
 import days from './counter/days';
 import schedule from './counter/schedule';
+import dates from './counter/dates';
 
 const reducer = combineReducers({
         teacherPositions,
         teachers,
         days,
         routing: routerReducer,
-        schedule
+        schedule,
+        dates
     }),
     store = createStore(reducer, applyMiddleware(thunkMiddleware));
 

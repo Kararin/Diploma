@@ -4,8 +4,8 @@ const ScheduleDates  = ({
     startDate,
     endDate
 }) => (
-    <div>
-        <div>
+    <div className = 'dates-container'>
+        <div className = 'dates'>
             {startDate} - {endDate}
         </div>
     </div>

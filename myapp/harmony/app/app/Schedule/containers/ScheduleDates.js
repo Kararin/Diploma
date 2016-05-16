@@ -1,11 +1,13 @@
 import {connect} from 'react-redux';
 import ScheduleDates from '../ScheduleDates';
+import moment from 'moment';
 
+const mapStateToProps = ({dates}) => {
+    var dateFormat = 'DD.MM.YYYY';
 
-const mapStateToProps = (state) => {
     return {
-        startDate: '01.01.2014',
-        endDate: '03.03.1203'
+        startDate: moment(dates.start).format(dateFormat),
+        endDate: moment(dates.end).format(dateFormat)
     };
 };
 

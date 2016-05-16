@@ -16,13 +16,29 @@ export default class Schedule extends React.Component {
             <Grid>
                 <Row>
                     <div className = 'schedule-button-panel '>
-                        <Button className = 'button'>
+                        <Button
+                            className = 'button'
+                            onClick = {(e) => {
+                                var {toPrevWeek, currentDate} = this.props;
+
+                                toPrevWeek(currentDate);
+                            }}>
                             Previous
                         </Button>
-                        <Button className = 'button-center'>
+                        <Button
+                            className = 'button-center'
+                            onClick = {(e) => {
+                                this.props.toCurrentWeek();
+                            }}>
                             Current
                         </Button>
-                        <Button className = 'button'>
+                        <Button
+                            className = 'button'
+                            onClick = {(e) => {
+                                var {toNextWeek, currentDate} = this.props;
+
+                                toNextWeek(currentDate);
+                            }}>
                             Next
                         </Button>
                     </div>
