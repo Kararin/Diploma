@@ -22,6 +22,7 @@ export const responseSuccess = (schedule) => {
 
 export const setCurrent = (id) => ({type: 'SET_CURRENT', id});
 
+
 export const fetchSchedule = () => {
     return (dispatch) => {
         dispatch(requestSchedule);
@@ -36,12 +37,6 @@ export const fetchSchedule = () => {
                 dispatch(responseError(error));
             });
     };
-};
-
-const getCurrentId = (schedule) => {
-    var resultItem = schedule.find(item => !item.name);
-
-    return resultItem && resultItem.id;
 };
 
 const processResponce = (schedule, dispatch) => {

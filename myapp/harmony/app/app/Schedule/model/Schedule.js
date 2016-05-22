@@ -1,8 +1,15 @@
-import {Record} from 'immutable';
-
+import {List} from 'immutable';
+import {dateFormat} from '../../../core/settings';
+import moment from 'moment';
+import Dates from '../../Date/Dates';
 export default class Schedule {
-    constructor (params) {
-        this.data = params;
+    constructor ({data, current}) {
+        this.store = List(data);
+        this.current = current;
+    }
+
+    get data () {
+        return this.store;
     }
 
     static getNewScheduleItem ({
@@ -130,6 +137,25 @@ export default class Schedule {
 
     static getCurrentItem(scheduleArray) {
         var current = scheduleArray.find(item => !item.dates.end);
+
+        return current;
+    }
+
+    getCurrentItemByDate (dates = {}) {
+        var current = null,
+            i = 0;
+
+        while (current) {
+            let item = this.store[i],
+                start = Dates.isSameOrBefore(item.dates.start, dates.start),
+                end = Dates.isSameOrAfter(item.dates.end || dates.end, dates.end);
+
+            if (start && end) {
+                current = item;
+            }
+
+            i++;
+        }
 
         return current;
     }

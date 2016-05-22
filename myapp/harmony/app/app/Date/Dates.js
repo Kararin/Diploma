@@ -1,4 +1,5 @@
 import moment from 'moment';
+import {dateFormat} from '../../core/settings';
 
 export default class Dates {
     static getStartOfWeek (currentDate) {
@@ -30,5 +31,27 @@ export default class Dates {
             result = moment(currentDate).add(mapDays[currentDay], 'd');
 
         return result;
+    }
+
+    static isSameOrBefore(baseDate, toCompareDate) {
+        var base = this.toMomentDate(baseDate),
+            toCompare = this.toMomentDate(toCompareDate);
+
+        return base.isSameOrBefore(toCompare, 'year') &&
+            base.isSameOrBefore(toCompare, 'month') &&
+            base.isSameOrBefore(toCompare, 'day');
+    }
+
+    static isSameOrAfter(baseDate, toCompareDate) {
+        var base = this.toMomentDate(baseDate),
+            toCompare = this.toMomentDate(toCompareDate);
+
+        return base.isSameOrAfter(toCompare, 'year') &&
+            base.isSameOrAfter(toCompare, 'month') &&
+            base.isSameOrAfter(toCompare, 'day');
+    }
+
+    static toMomentDate(date) {
+        return moment(date, dateFormat);
     }
 }

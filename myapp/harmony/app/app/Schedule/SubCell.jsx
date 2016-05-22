@@ -60,7 +60,7 @@ export default class SubCell extends React.Component {
     }
 
     validateTime(time) {
-        return !!time.match(/\d\d:\d\d/);
+        return !!time.match(/(\d|\d\d):\d\d/);
     }
 }
 

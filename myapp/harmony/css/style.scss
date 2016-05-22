@@ -78,8 +78,6 @@ body {
     }
 }
 
-
-
 .my-table {
     width: 70%;
     & tbody tr td {
@@ -87,19 +85,9 @@ body {
     }
 }
 
-%sub {
-    width: 100%;
-    height: $sub-cell-height;
-}
 
-.ch {
-    @extend %sub;
-    border-bottom: 1px solid #ddd;
-}
 
-.zn {
-    @extend %sub;
-}
+
 
 @mixin buttons-margin ($width) {
     $empty-width: 100 - $width * 3;

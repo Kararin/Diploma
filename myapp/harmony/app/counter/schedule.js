@@ -1,9 +1,12 @@
 import {handleActions} from 'redux-actions';
-import {List} from 'immutable';
+import Schedule from '../app/Schedule/model/Schedule';
 
 export default handleActions({
     SET_CURRENT: (state, action) => Object.assign({}, state, {
-        current: action.id
+        schedule: new Schedule({
+            data: state.schedule.data,
+            current: action.id
+        })
     }),
     REQUEST_SCHEDULE: (state, action) => {
         return Object.assign({}, state, {
@@ -20,19 +23,24 @@ export default handleActions({
         return Object.assign({}, state, {
             isFetching: false,
             isError: false,
-            data: List(action.data)
+            schedule: new Schedule({
+                data: action.data,
+                current: state.schedule.current
+            })
         });
     },
     ADD_SCHEDULE_ITEM: (state, action) => {
         return Object.assign({}, state, {
             isFetching: false,
             isError: false,
-            data: state.data.push(action.item)
+            schedule: new Schedule({
+                data: state.schedule.data.push(action.item),
+                current: state.schedule.current
+            })
         });
     }
 }, {
-    data: List(),
-    current: null,
+    schedule: new Schedule({}),
     isFetching: false,
     isError: false
 });

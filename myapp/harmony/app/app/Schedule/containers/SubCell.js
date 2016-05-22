@@ -17,12 +17,14 @@ const mapStateToProps = (
     }
 ) => {
     var {
-        schedule
+        schedule,
+        dates
     } = state,
-    currentItem = schedule.data.toArray().find(item => item.id === schedule.current),
-        value = schedule.current ? Schedule.getCellValue({
-            schedule: schedule.data,
-            current: schedule.current,
+        currentItem = schedule.schedule.data.toArray().find(item => item.id === schedule.schedule.current),
+        // currentItem = Schedule.getCurrentItemByDate(schedule.data, dates),
+        value = schedule.schedule.current ? Schedule.getCellValue({
+            schedule: schedule.schedule.data,
+            current: schedule.schedule.current,
             teacherId,
             dayId,
             type
@@ -34,7 +36,7 @@ const mapStateToProps = (
             dayId,
             value,
             type,
-            current: schedule.current,
+            current: schedule.schedule.current,
             newItem: newItem(currentItem)
         }
     };
