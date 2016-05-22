@@ -44,15 +44,12 @@ export default class SubCell extends React.Component {
                 teacherId: data.teacherId,
                 value: timeValue,
                 dayId: data.dayId,
-                type: data.type
+                type: data.type,
+                current: data.current
             }
 
         if (this.validateTime(timeValue)) {
-            if (data.current) {
-                actions.editAction(data.newItem(scheduleData));
-            } else {
-                actions.addAction(scheduleData);
-            }
+            actions.editAction(scheduleData);
         }
 
 
@@ -60,7 +57,19 @@ export default class SubCell extends React.Component {
     }
 
     validateTime(time) {
-        return !!time.match(/(\d|\d\d):\d\d/);
+        var validInput = [
+                /\d\d:\d\d/,
+                /\d:\d\d/,
+                /(\d|\d\d)/,
+                /^$/
+            ],
+            timeWithoutSpaces = time.trim(),
+            validResults = validInput.map(item => {
+               return item.test(timeWithoutSpaces)
+            }),
+            result = validResults.some(item => item);
+
+        return result;
     }
 }
 

@@ -3,8 +3,9 @@ import {
 } from 'react-redux';
 import SubCell from '../SubCell';
 import {
-    addScheduleServer,
-    editScheduleServer
+    addSchedule,
+    editSchedule,
+    deleteSchedule
 } from '../../../actions/schedule';
 import Schedule from '../model/Schedule';
 import Immutable from 'immutable';
@@ -60,14 +61,35 @@ const mapDispatchToProps = dispatch => {
 
                 dispatch(addScheduleServer(scheduleItem));
             },
-            editAction: (scheduleItem) => {
-                dispatch(editScheduleServer(scheduleItem));
-            }
+            editAction: (scheduleData) => {
+                var action = selectAction({
+                        current: scheduleData.current,
+                        value: scheduleData.value,
+                    }),
+                    actions = {
+                        ADD: (scheduleData) => addSchedule(scheduleData),
+                        EDIT: (scheduleData) => editSchedule(scheduleData),
+                        DELETE: (scheduleData) => deleteSchedule(scheduleData)
+                    };
 
+                dispatch(actions[action](scheduleData));
+            }
         }
     };
 };
 
+const selectAction = ({
+    value,
+    current
+}) => {
+    var actions = {
+        [!current]: 'ADD',
+        [!value]: 'DELETE',
+        [current && !!value]: 'EDIT'
+    };
+
+    return actions[true];
+};
 
 const newItem = (currentItem) => {
     return ({

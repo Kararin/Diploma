@@ -12,6 +12,10 @@ export default class Schedule {
         return this.store;
     }
 
+    get currentItem () {
+        return this.store.find(item => item.id === this.current);
+    }
+
     static getNewScheduleItem ({
         teacherId,
         dayId,
@@ -135,12 +139,6 @@ export default class Schedule {
 
     }
 
-    static getCurrentItem(scheduleArray) {
-        var current = scheduleArray.find(item => !item.dates.end);
-
-        return current;
-    }
-
     getCurrentItemByDate (dates = {}) {
         var current = null,
             i = 0;
@@ -158,5 +156,14 @@ export default class Schedule {
         }
 
         return current;
+    }
+
+    static deleteFromItem (item, {
+        teacherId,
+        type,
+        dayId
+    }) {
+        var result;
+
     }
 }

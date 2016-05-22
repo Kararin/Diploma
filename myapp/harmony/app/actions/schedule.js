@@ -24,7 +24,6 @@ export const responseSuccess = (schedule) => {
 
 export const setCurrent = (id) => ({type: 'SET_CURRENT', id});
 
-
 export const updateCurrent = (currentItem) => {
     return dispatch => {
         var teachers = currentItem.teachers.map(item => item.id);
@@ -104,5 +103,42 @@ export const editScheduleServer = (item) => {
         }).catch(error => {
             dispatch(responseError(error));
         });
+    };
+};
+
+export const deleteScheduleServer = (item) => {
+
+};
+
+export const addSchedule = (scheduleData) => {
+    return dispatch => {
+        var newItem = Schedule.getNewScheduleItem(scheduleData);
+
+        dispatch(addScheduleServer(newItem));
+    };
+};
+
+export const editSchedule = (scheduleData) => {
+    return (dispatch, getCurrentState) => {
+        var state = getCurrentState(),
+            currentItem = state.schedule.schedule.currentItem,
+            newScheduleItem = Schedule.getNewScheduleItem(scheduleData),
+            result = Schedule.mergeItems(currentItem, newScheduleItem);
+
+        dispatch(editScheduleServer(result));
+    };
+};
+
+export const deleteSchedule = (scheduleData) => {
+    return (dispatch, getCurrentState) => {
+        var state = getCurrentState(),
+            currentItem = state.schedule.schedule.currentItem,
+            result = Schedule.deleteFromItem(currentItem, scheduleData);
+
+        if (result) {
+            dispatch(editScheduleServer(result));
+        } else {
+            consle.log('deleteScheduleServer');
+        }
     };
 };
