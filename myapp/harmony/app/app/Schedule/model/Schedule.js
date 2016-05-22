@@ -145,8 +145,8 @@ export default class Schedule {
         var current = null,
             i = 0;
 
-        while (current) {
-            let item = this.store[i],
+        while (!current) {
+            let item = this.store.get(i),
                 start = Dates.isSameOrBefore(item.dates.start, dates.start),
                 end = Dates.isSameOrAfter(item.dates.end || dates.end, dates.end);
 

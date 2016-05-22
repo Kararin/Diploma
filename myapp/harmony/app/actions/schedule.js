@@ -1,5 +1,7 @@
 import Schedule from '../app/Schedule/model/Schedule';
-import {addToSchedule} from './teachers';
+import {
+    addToSchedule,
+    clearInSchedule} from './teachers';
 
 export const requestSchedule = () => {
     return {
@@ -23,15 +25,26 @@ export const responseSuccess = (schedule) => {
 export const setCurrent = (id) => ({type: 'SET_CURRENT', id});
 
 
+export const updateCurrent = (currentItem) => {
+    return dispatch => {
+        var teachers = currentItem.teachers.map(item => item.id);
+
+        dispatch(setCurrent(currentItem.id));
+        dispatch(clearInSchedule());
+
+        teachers.forEach(item => dispatch(addToSchedule(item)));
+    };
+};
+
 export const fetchSchedule = () => {
-    return (dispatch) => {
+    return (dispatch, getCurrentItem) => {
         dispatch(requestSchedule);
         return fetch('/schedule')
             .then(response => {
                 return response.json();
             })
             .then(json => {
-                processResponce(json, dispatch);
+                processResponce(json, dispatch, getCurrentItem);
             })
             .catch(error => {
                 dispatch(responseError(error));
@@ -39,14 +52,16 @@ export const fetchSchedule = () => {
     };
 };
 
-const processResponce = (schedule, dispatch) => {
-    var currentItem = Schedule.getCurrentItem(schedule),
-        teachers = currentItem.teachers.map(item => item.id);
+const processResponce = (schedule, dispatch, getCurrentItem) => {
+    var currentItem,
+        state;
 
     dispatch(responseSuccess(schedule));
-    dispatch(setCurrent(currentItem.id));
 
-    teachers.forEach(item => dispatch(addToSchedule(item)));
+    state = getCurrentItem();
+    currentItem = state.schedule.schedule.getCurrentItemByDate(state.dates);
+
+    dispatch(updateCurrent(currentItem));
 };
 
 export const addScheduleItem = (item) => ({type: 'ADD_SCHEDULE_ITEM', item});

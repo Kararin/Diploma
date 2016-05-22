@@ -1,5 +1,6 @@
 import {handleActions} from 'redux-actions';
 import {List, Set} from 'immutable';
+import { CLEAR_SCHEDULE } from '../utils/consts/teachers';
 
 export default handleActions({
     ADD_TEACHER: (state, action) => Object.assign({}, state, {
@@ -29,7 +30,11 @@ export default handleActions({
     }),
     REMOVE_FROM_SCHEDULE: (state, action) => Object.assign({}, state, {
         inSchedule: state.inSchedule.delete(action.id)
+    }),
+    CLEAR_SCHEDULE: (state, actoin) => Object.assign({}, state, {
+        inSchedule: Set()
     })
+
 }, {
     data: List(),
     isFetching: false,

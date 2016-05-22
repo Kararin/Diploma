@@ -1,3 +1,5 @@
+import {CLEAR_SCHEDULE} from '../utils/consts/teachers';
+
 export const addTeacher = (teacher) => ({
     type: 'ADD_TEACHER',
     teacher
@@ -97,6 +99,8 @@ export const editTeacherServer = (teacher) => {
         });
     };
 };
+
+export const clearInSchedule = () => ({type: CLEAR_SCHEDULE});
 
 export const addToSchedule = id => ({type: 'ADD_TO_SCHEDULE', id});
 

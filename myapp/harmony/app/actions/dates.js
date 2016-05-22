@@ -3,7 +3,7 @@ import {
     SET_END_DATE
 } from '../utils/consts';
 import Dates from '../app/Date/Dates';
-import {setCurrent} from './schedule';
+import {updateCurrent} from './schedule';
 
 export const setStartDate = (date) => ({type: SET_START_DATE, date});
 
@@ -26,6 +26,6 @@ export const updateCurrentWeek = (date) => {
             end
         });
 
-        dispatch(setCurrent(currentItem));
+        dispatch(updateCurrent(currentItem));
     };
 };
