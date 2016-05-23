@@ -26,6 +26,15 @@ export const updateCurrentWeek = (date) => {
             end
         });
 
+        !currentItem && (currentItem = updateCurrentItemIfEmpty());
+
         dispatch(updateCurrent(currentItem));
+    };
+};
+
+const updateCurrentItemIfEmpty = () => {
+    return {
+        id: null,
+        teachers: []
     };
 };

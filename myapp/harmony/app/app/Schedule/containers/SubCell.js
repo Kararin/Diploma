@@ -21,8 +21,7 @@ const mapStateToProps = (
         schedule,
         dates
     } = state,
-        currentItem = schedule.schedule.data.toArray().find(item => item.id === schedule.schedule.current),
-        // currentItem = Schedule.getCurrentItemByDate(schedule.data, dates),
+        currentItem = schedule.schedule.currentItem,
         value = schedule.schedule.current ? Schedule.getCellValue({
             schedule: schedule.schedule.data,
             current: schedule.schedule.current,
@@ -37,8 +36,7 @@ const mapStateToProps = (
             dayId,
             value,
             type,
-            current: schedule.schedule.current,
-            newItem: newItem(currentItem)
+            current: schedule.schedule.current
         }
     };
 };
@@ -46,21 +44,6 @@ const mapStateToProps = (
 const mapDispatchToProps = dispatch => {
     return {
         actions: {
-            addAction: ({
-                teacherId,
-                value,
-                dayId,
-                type
-            }) => {
-                var scheduleItem = Schedule.getNewScheduleItem({
-                    teacherId,
-                    dayId,
-                    value,
-                    type
-                });
-
-                dispatch(addScheduleServer(scheduleItem));
-            },
             editAction: (scheduleData) => {
                 var action = selectAction({
                         current: scheduleData.current,
@@ -89,27 +72,6 @@ const selectAction = ({
     };
 
     return actions[true];
-};
-
-const newItem = (currentItem) => {
-    return ({
-        teacherId,
-        dayId,
-        value,
-        type
-    }) => {
-        var newValue = Schedule.getNewScheduleItem({
-                teacherId,
-                dayId,
-                value,
-                type
-            }),
-            result;
-
-        result = Schedule.mergeItems(currentItem, newValue);
-
-        return result;
-    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCell);

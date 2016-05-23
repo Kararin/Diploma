@@ -106,10 +106,6 @@ export const editScheduleServer = (item) => {
     };
 };
 
-export const deleteScheduleServer = (item) => {
-
-};
-
 export const addSchedule = (scheduleData) => {
     return dispatch => {
         var newItem = Schedule.getNewScheduleItem(scheduleData);
@@ -133,12 +129,31 @@ export const deleteSchedule = (scheduleData) => {
     return (dispatch, getCurrentState) => {
         var state = getCurrentState(),
             currentItem = state.schedule.schedule.currentItem,
-            result = Schedule.deleteFromItem(currentItem, scheduleData);
+            result = state.schedule.schedule.deleteFromItem(currentItem, scheduleData);
 
-        if (result) {
-            dispatch(editScheduleServer(result));
+        if (!result.deleted) {
+            dispatch(editScheduleServer(result.updatedItem));
         } else {
-            consle.log('deleteScheduleServer');
+            dispatch(deleteScheduleServer({id: result.id}));
         }
+    };
+};
+
+export const deleteScheduleServer = (option) => {
+    return (dispatch) => {
+        dispatch(requestSchedule);
+        return fetch(`/schedule/delete${option.id}`, {
+            method: 'delete',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            return response.json();
+        }).then(() => {
+            dispatch(fetchSchedule());
+        }).catch(error => {
+            dispatch(responseError(error));
+        });
     };
 };

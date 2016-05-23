@@ -3,9 +3,12 @@ import {dateFormat} from '../../../core/settings';
 import moment from 'moment';
 import Dates from '../../Date/Dates';
 export default class Schedule {
-    constructor ({data, current}) {
-        this.store = List(data);
-        this.current = current;
+    constructor (params = {
+        data: [],
+        current: null
+    }) {
+        this.store = List(params.data);
+        this.current = params.current;
     }
 
     get data () {
@@ -139,11 +142,17 @@ export default class Schedule {
 
     }
 
+    /**
+     * (Return schedule item that exists in defined time intervals)
+     *
+     * @param [dates] (start and and of time intervals)
+     * @returns (schedule item that exists in defined time interval)
+     */
     getCurrentItemByDate (dates = {}) {
         var current = null,
             i = 0;
 
-        while (!current) {
+        while (!current && this.store.get(i)) {
             let item = this.store.get(i),
                 start = Dates.isSameOrBefore(item.dates.start, dates.start),
                 end = Dates.isSameOrAfter(item.dates.end || dates.end, dates.end);
@@ -158,12 +167,90 @@ export default class Schedule {
         return current;
     }
 
-    static deleteFromItem (item, {
+
+    deleteFromItem (item, {
         teacherId,
         type,
         dayId
     }) {
-        var result;
+        var teacher = item.teachers.find(item => item.id === teacherId),
+            day = teacher.days.find(item => item.id === dayId),
+            deleteDayResult,
+            deleteTeacherResult,
+            deleteScheduleResult;
 
+        day = this.deleteSubDay(day, type);
+        deleteDayResult = this.deleteDayIfEmpty(day);
+
+        if (deleteDayResult.deleted) {
+            teacher.days = this.removeItemInArray(teacher.days, deleteDayResult.id);
+        } else {
+            teacher.days = this.updateItemInArray(teacher.days, day);
+        }
+
+        deleteTeacherResult = this.deleteTeacherIfNoDays(teacher);
+
+        if (deleteTeacherResult.deleted) {
+            item.teachers = this.removeItemInArray(item.teachers, deleteTeacherResult.id);
+        } else {
+            item.teachers = this.updateItemInArray(item.teachers, teacher);
+        }
+
+        deleteScheduleResult = this.deleteScheduleItemIfNoTeachers(item);
+
+        return deleteScheduleResult.deleted ? {
+            deleted: true,
+            id: item.id
+        } : {
+            deleted: false,
+            updatedItem: item
+        };
+    }
+
+    deleteSubDay(day, type) {
+        var newDay = Object.assign({}, day);
+
+        delete newDay[type];
+        return newDay;
+    }
+
+    deleteDayIfEmpty(day) {
+        return {
+            id: day.id,
+            deleted: !day.ch && !day.zn
+        };
+    }
+
+    removeItemInArray(daysArray, dayIdToRemove) {
+        var dayIndex = daysArray.findIndex(item => item.id === dayIdToRemove),
+            copyOfDays = Object.assign([], daysArray);
+
+        if (dayIndex >= 0) {
+            copyOfDays.splice(dayIndex, 1);
+        }
+
+        return copyOfDays;
+    }
+
+    updateItemInArray(daysArray, day) {
+        var updatedDays = this.removeItemInArray(daysArray, day.id);
+
+        updatedDays.push(day);
+
+        return updatedDays;
+    }
+
+    deleteTeacherIfNoDays(teacher) {
+        return {
+            id: teacher.id,
+            deleted: !teacher.days.length
+        };
+    }
+
+    deleteScheduleItemIfNoTeachers(scheduleItem) {
+        return {
+            id: scheduleItem.id,
+            deleted: !scheduleItem.teachers.length
+        };
     }
 }

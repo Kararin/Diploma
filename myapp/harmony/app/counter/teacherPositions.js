@@ -35,18 +35,12 @@ export default handleActions({
         return Object.assign({}, state, {
             options: teacherPositionOptions(state.options, action)
         });
-    },
-    TOGGLE_EDIT_MODE: (state, action) => {
-        return Object.assign({}, state, {
-            options: teacherPositionOptions(state.options, action)
-        });
     }
 }, {
     data: List(),
     isFetching: false,
     isError: false,
     options: {
-        isAddNewOpen: false,
         editing: Set()
     }
 });
@@ -67,6 +61,5 @@ export const teacherPositionOptions = handleActions({
         });
     }
 }, {
-    isAddNewOpen: false,
     editing: Set()
 });

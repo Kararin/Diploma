@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as actions from '../../app/es6/app/actions/teacherPositions';
+import * as actions from '../../harmony/app/actions/teacherPositions';
 import {List} from 'immutable';
 
 describe('teacherPositions actions', () => {

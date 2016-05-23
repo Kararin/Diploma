@@ -1,7 +1,8 @@
 import expect from 'expect';
-import reducer, {teacherPositionOptions} from '../../app/es6/app/counter/teacherPositions';
+import reducer, {teacherPositionOptions} from '../../harmony/app/counter/teacherPositions';
 import {
-    List
+    List,
+    Set
 } from 'immutable';
 
 describe('teacherPosition reduser', () => {
@@ -11,7 +12,7 @@ describe('teacherPosition reduser', () => {
             isFetching: false,
             isError: false,
             options: {
-                isAddNewOpen: false
+                editing: Set()
             }
         };
         expect(
@@ -168,78 +169,5 @@ describe('teacherPosition reduser', () => {
             };
 
           expect(reducer(initialState, action)).toEqual(nextState);
-    });
-
-    it('shoud change options', () => {
-        var initialState = {
-                data: List([{
-                    id: 2,
-                    name: 'expert',
-                    shortName: 'exp.'
-                }]),
-                isFetching: true,
-                isError: false,
-                options: {
-                    isAddNewOpen: true
-                }
-            },
-            nextState = {
-                data: List([{
-                    id: 2,
-                    name: 'expert',
-                    shortName: 'exp.'
-                }]),
-                isFetching: true,
-                isError: false,
-                options: {
-                    isAddNewOpen: false
-                }
-            },
-            action = {
-                type: 'IS_ADD_NEW_POSITION_PAGE_OPEN',
-                isOpen: false
-            };
-
-        expect(reducer(initialState, action)).toEqual(nextState);
-    });
-});
-
-describe('teacherPositionOptions subreduces', () => {
-    it('should return initialState', () => {
-        var initialState = {
-            isAddNewOpen: false
-        };
-
-        expect(teacherPositionOptions(undefined, {})).toEqual(initialState);
-    });
-
-    it('should change visible Add new position page to true', () => {
-        var initialState = {
-            isAddNewOpen: false
-        },
-        nextState = {
-            isAddNewOpen: true
-        },
-        action = {
-            type: 'IS_ADD_NEW_POSITION_PAGE_OPEN',
-            isOpen: true
-        };
-
-        expect(teacherPositionOptions(initialState, action)).toEqual(nextState);
-    });
-
-    it('should change visible Add new position page to false', () => {
-        var initialState = {
-            isAddNewOpen: true
-        },
-        nextState = {
-            isAddNewOpen: false
-        },
-        action = {
-            type: 'IS_ADD_NEW_POSITION_PAGE_OPEN',
-            isOpen: false
-        };
-
-        expect(teacherPositionOptions(initialState, action)).toEqual(nextState);
     });
 });
