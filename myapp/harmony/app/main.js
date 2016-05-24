@@ -5,8 +5,8 @@ import store from './store';
 import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';
 import { Router, Route, browserHistory } from 'react-router';
-import Teachers from './app/Teachers/containers/Page';
-import Positions from './app/TeacherPositions/containers/Page';
+import Teachers from './teachers/containers/Page';
+import Positions from './teacherPositions/containers/Page';
 
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
-import Teachers from './app/Teachers/containers/Page';
-import Options from './app/Options/Page';
+import Teachers from './teachers/containers/Page';
+import Options from './options/views/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../css/style.scss';
-import Schedule from './app/Schedule/containers/Page';
+import Schedule from './schedule/containers/Page';
 
 export default ({defaultKey}) => {
     return (
