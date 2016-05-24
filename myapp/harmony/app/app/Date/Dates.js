@@ -54,4 +54,24 @@ export default class Dates {
     static toMomentDate(date) {
         return moment(date, dateFormat);
     }
+
+    static toString(date) {
+        return date.format(dateFormat);
+    }
+
+    /**
+     * (Compare 2 dates by date, month, day)
+     * @static
+     * @param firstDate (description)
+     * @param secondDate (description)
+     * @returns {Boolean}
+     */
+    static isSame (firstDate, secondDate) {
+        var first = this.toMomentDate(firstDate),
+            second = this.toMomentDate(secondDate);
+
+        return first.isSame(second, 'year') &&
+            first.isSame(second, 'month') &&
+            first.isSame(second, 'day');
+    }
 }

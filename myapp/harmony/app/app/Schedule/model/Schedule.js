@@ -253,4 +253,42 @@ export default class Schedule {
             deleted: !scheduleItem.teachers.length
         };
     }
+
+    /**
+     * return current schedule Item of defined week
+     * by scrict comparison
+     * @param dates (description)
+     * @returns (description)
+     */
+    getCurrentOfThisWeek(dates) {
+        var current = null,
+            i = 0;
+
+        while (!current && this.store.get(i)) {
+            let item = this.store.get(i),
+                start = Dates.isSameOrBefore(item.dates.start, dates.start),
+                end = Dates.isSameOrAfter(item.dates.end, dates.end);
+
+            if (start && end) {
+                current = item;
+            }
+
+            i++;
+        }
+
+        return current;
+    }
+
+    updateScheduleItemWithDate(scheduleItemId, startDate) {
+        var item = this.store.find(item => item.id === scheduleItemId),
+            momentStartDate = Dates.toMomentDate(startDate),
+            finishDate = Dates.getEndOfWeek(momentStartDate.subtract(7, 'days'));
+
+        return Object.assign({}, item, {
+            dates: {
+                start: item.dates.start,
+                end: Dates.toString(finishDate)
+            }
+        });
+    }
 }

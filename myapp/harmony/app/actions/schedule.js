@@ -1,7 +1,10 @@
 import Schedule from '../app/Schedule/model/Schedule';
+import Dates from '../app/Date/Dates';
 import {
+
     addToSchedule,
     clearInSchedule} from './teachers';
+
 
 export const requestSchedule = () => {
     return {
@@ -106,6 +109,24 @@ export const editScheduleServer = (item) => {
     };
 };
 
+const changeCurrentItem = (scheduleItem) => {
+    return (dispatch, getCurrentState) => {
+        var state = getCurrentState(),
+            startDate = state.dates.start,
+            currentItem = state.schedule.schedule.currentItem,
+            updatedCurrentItem = state.schedule.schedule.updateScheduleItemWithDate(state.schedule.schedule.current, startDate);
+
+        if (Dates.isSame(scheduleItem.dates.start, startDate)) {
+            dispatch(editScheduleServer(scheduleItem));
+        } else {
+            delete scheduleItem.id;
+            delete scheduleItem._id;
+            dispatch(editScheduleServer(updatedCurrentItem));
+            dispatch(addScheduleServer(scheduleItem));
+        }
+    };
+};
+
 export const addSchedule = (scheduleData) => {
     return dispatch => {
         var newItem = Schedule.getNewScheduleItem(scheduleData);
@@ -121,7 +142,7 @@ export const editSchedule = (scheduleData) => {
             newScheduleItem = Schedule.getNewScheduleItem(scheduleData),
             result = Schedule.mergeItems(currentItem, newScheduleItem);
 
-        dispatch(editScheduleServer(result));
+        dispatch(changeCurrentItem(result));
     };
 };
 
@@ -132,7 +153,7 @@ export const deleteSchedule = (scheduleData) => {
             result = state.schedule.schedule.deleteFromItem(currentItem, scheduleData);
 
         if (!result.deleted) {
-            dispatch(editScheduleServer(result.updatedItem));
+            dispatch(changeCurrentItem(result.updatedItem));
         } else {
             dispatch(deleteScheduleServer({id: result.id}));
         }
