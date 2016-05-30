@@ -222,9 +222,9 @@ export default class Schedule {
         };
     }
 
-    removeItemInArray(daysArray, dayIdToRemove) {
-        var dayIndex = daysArray.findIndex(item => item.id === dayIdToRemove),
-            copyOfDays = Object.assign([], daysArray);
+    removeItemInArray(sourceArray, itemIdToRemove) {
+        var dayIndex = sourceArray.findIndex(item => item.id === itemIdToRemove),
+            copyOfDays = Object.assign([], sourceArray);
 
         if (dayIndex >= 0) {
             copyOfDays.splice(dayIndex, 1);
@@ -290,6 +290,14 @@ export default class Schedule {
                 start: item.dates.start,
                 end: Dates.toString(finishDate)
             }
+        });
+    }
+
+    removeTeacherFromItem(scheduleItem, teacherId) {
+        var updatedTeachers = this.removeItemInArray(scheduleItem.teachers, teacherId);
+
+        return Object.assign({}, scheduleItem, {
+            teachers: updatedTeachers
         });
     }
 }

@@ -1,5 +1,5 @@
 import expect from 'expect';
-import Schedule from '../../../../harmony/app/app/Schedule/model/Schedule';
+import Schedule from '../../../../harmony/app/schedule/model/ScheduleModel';
 
 describe('delete from schedule item', () => {
     var schedule;
@@ -341,6 +341,47 @@ describe('get current schedule item by dates', () => {
 
         expect(schedule.getCurrentItemByDate(dates)).toEqual(result);
     });
+});
 
 
-})
+describe('removeTeacherFromItem?', () => {
+    var schedule = new Schedule();
+    it('should delete teacher from item', () => {
+        var item = {
+            id: 1,
+            teachers: [{
+                id: 1,
+                days: [{
+                    id: 1,
+                    ch: ['13:00']
+                }]
+            }, {
+                id: 2,
+                days: [{
+                    id: 1,
+                    ch: ['13:00']
+                }]
+            }],
+            dates: {
+                start: '24.12.2015',
+                end: '14.02.2016'
+            }
+        },
+        result = {
+            id: 1,
+            teachers: [{
+                id: 1,
+                days: [{
+                    id: 1,
+                    ch: ['13:00']
+                }]
+            }],
+            dates: {
+                start: '24.12.2015',
+                end: '14.02.2016'
+            }
+        };
+
+        expect(schedule.removeTeacherFromItem(item, 2)).toEqual(result);
+    });
+});

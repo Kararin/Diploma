@@ -177,3 +177,18 @@ export const deleteScheduleServer = (option) => {
         });
     };
 };
+
+export const removeTeacherFromCurrentSchedule = (teacherId) => {
+    return (dispatch, getCurrentState) => {
+        var state = getCurrentState(),
+            schedule = state.schedule.schedule,
+            currentItem = schedule.currentItem,
+            updatedItem = schedule.removeTeacherFromItem(currentItem, teacherId);
+
+        if (updatedItem.teachers.length) {
+            dispatch(editScheduleServer(updatedItem));
+        } else {
+            dispatch(deleteScheduleServer(updatedItem));
+        }
+    };
+};

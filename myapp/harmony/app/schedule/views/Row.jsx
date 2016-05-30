@@ -1,9 +1,14 @@
 import React from 'react';
 import Cell from '../containers/Cell';
+import Teacher from '../../teachers/containers/ItemWithClose';
+
 const Row = ({data, actions}) => (
     <tr>
-        <td onClick = {e => actions.removeFromSchedule(data.teacher.id)}>
-            {data.teacher.displayName}
+        <td>
+            <Teacher
+                fullName = {data.teacher.displayName}
+                id = {data.teacher.id}
+            />
         </td>
         {data.days.map(item => (
             <Cell

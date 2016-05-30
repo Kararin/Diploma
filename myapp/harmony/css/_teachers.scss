@@ -1,0 +1,23 @@
+@import 'colors';
+
+.item-delete {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    margin-left: 10px;
+
+    button {
+        background: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        align-self: flex-end;
+        height: 15px;
+        font-size:18px;
+    }
+
+    .content {
+        width: 95%;
+        text-align: left;
+    }
+}

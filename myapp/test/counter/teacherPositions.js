@@ -1,5 +1,5 @@
 import expect from 'expect';
-import reducer, {teacherPositionOptions} from '../../harmony/app/counter/teacherPositions';
+import reducer, {teacherPositionOptions} from '../../harmony/app/teacherPositions/reducer';
 import {
     List,
     Set

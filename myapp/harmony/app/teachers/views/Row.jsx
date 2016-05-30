@@ -2,7 +2,6 @@ import React from 'react';
 import BaseRow from '../../core/components/Row';
 import Select from '../../core/components/Select';
 
-
 export default class Row extends BaseRow {
     getCellValue(propName) {
         var value = (propName !== 'position') ? super.getCellValue(propName): this.getPositionCell(propName);
