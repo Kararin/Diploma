@@ -1,7 +1,7 @@
 import {List} from 'immutable';
 import {dateFormat} from '../../core/settings';
 import moment from 'moment';
-import Dates from '../../dates/model/Dates';
+import Dates from '../../myDates/model/DatesModel';
 
 export default class Schedule {
     constructor (params = {

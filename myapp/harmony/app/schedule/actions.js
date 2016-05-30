@@ -1,5 +1,5 @@
 import Schedule from './model/ScheduleModel';
-import Dates from '../dates/model/Dates';
+import Dates from '../myDates/model/DatesModel';
 import {
     addToSchedule,
     clearInSchedule} from '../teachers/actions';

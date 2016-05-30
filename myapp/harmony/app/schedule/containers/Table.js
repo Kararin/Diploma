@@ -3,7 +3,7 @@ import Table from '../views/Table';
 import moment from 'moment';
 import {
     updateCurrentWeek
-} from '../../dates/actions';
+} from '../../myDates/actions';
 
 const mapStateToProps = ({dates}) => {
      return {

@@ -11,10 +11,13 @@ export default class SubCell extends React.Component {
     }
 
     render() {
-        var {value, type} = this.props.data;
+        var {
+            value,
+            type,
+            allowChange} = this.props.data;
 
         return (
-            this.state.edit ?
+            this.state.edit && allowChange ?
                 <Input type = 'text'
                         defaultValue = {value}
                         onKeyDown = {e => {
@@ -81,7 +84,7 @@ SubCell.defaultProps = {
         type: '',
         schedule: [],
         current: null,
-        newItem: console.log('newItem not implemented')
+        allowChange: true
     },
     actions: {
         addAction: console.log('addAction not implemented'),

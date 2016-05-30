@@ -51,6 +51,22 @@ export default class Dates {
             base.isSameOrAfter(toCompare, 'day');
     }
 
+    static isAfter(baseDate, toCompareDate) {
+        var base = this.toMomentDate(baseDate),
+            toCompare = this.toMomentDate(toCompareDate);
+
+        return base.isAfter(toCompare, 'year') &&
+            base.isAfter(toCompare, 'month') &&
+            base.isAfter(toCompare, 'day');
+    }
+
+    static isBefore (baseDate, toCompareDate) {
+        var base = this.toMomentDate(baseDate),
+            toCompare = this.toMomentDate(toCompareDate);
+
+        return base.isBefore(toCompare);
+    }
+
     static toMomentDate(date) {
         return moment(date, dateFormat);
     }
@@ -73,5 +89,13 @@ export default class Dates {
         return first.isSame(second, 'year') &&
             first.isSame(second, 'month') &&
             first.isSame(second, 'day');
+    }
+
+    static getCurrentDate() {
+        return moment(new Date());
+    }
+
+    static myTest() {
+        return true;
     }
 }

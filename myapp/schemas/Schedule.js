@@ -5,7 +5,6 @@ var mongoose = require('mongoose'),
     schedule = mongoose.Schema({
         id: Number,
         teachers: Array,
-        name: String,
         dates: Object
     });
 

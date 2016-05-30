@@ -2,7 +2,7 @@ import {
     SET_START_DATE,
     SET_END_DATE
 } from '../utils/consts';
-import Dates from './model/Dates';
+import Dates from './model/DatesModel';
 import {updateCurrent} from '../schedule/actions';
 
 export const setStartDate = (date) => ({type: SET_START_DATE, date});

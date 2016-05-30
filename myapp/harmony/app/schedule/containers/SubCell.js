@@ -9,6 +9,7 @@ import {
 } from '../actions';
 import Schedule from '../model/ScheduleModel';
 import Immutable from 'immutable';
+import Dates from '../../myDates/model/DatesModel';
 
 const mapStateToProps = (
     state, {
@@ -22,13 +23,15 @@ const mapStateToProps = (
         dates
     } = state,
         currentItem = schedule.schedule.currentItem,
-        value = schedule.schedule.current ? Schedule.getCellValue({
+        value = currentItem ? Schedule.getCellValue({
             schedule: schedule.schedule.data,
             current: schedule.schedule.current,
             teacherId,
             dayId,
             type
-        }) : '';
+        }) : '',
+        date = Dates.getStartOfWeek(Dates.getCurrentDate()),
+        allowChange = Dates.isSameOrAfter(dates.start, date);
 
     return {
         data: {
@@ -36,7 +39,8 @@ const mapStateToProps = (
             dayId,
             value,
             type,
-            current: schedule.schedule.current
+            current: currentItem,
+            allowChange
         }
     };
 };

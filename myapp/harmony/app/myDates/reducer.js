@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';
-import Dates from './model/Dates';
+import Dates from './model/DatesModel';
 import {SET_START_DATE, SET_END_DATE} from '../utils/const';
 
 export default handleActions({
