@@ -127,8 +127,11 @@ const changeCurrentItem = (scheduleItem) => {
 };
 
 export const addSchedule = (scheduleData) => {
-    return dispatch => {
-        var newItem = Schedule.getNewScheduleItem(scheduleData);
+    return (dispatch, getCurrentState) => {
+        var state = getCurrentState(),
+            newItem = Schedule.getNewScheduleItem(scheduleData);
+
+        newItem.dates = state.dates;
 
         dispatch(addScheduleServer(newItem));
     };

@@ -4,17 +4,18 @@ import '../../../css/_teachers.scss';
 export const CloseItem = ({
     data = {
         id,
-        fullName
+        fullName,
+        allowClose
     },
     actions = {
         onClickAction
     }
 }) => (
     <div className = 'item-delete'>
-        <button onClick = {e => {
-            e.preventDefault();
-            actions.onClickAction(data.id)
-        }}>&times;</button>
+        {data.allowClose ? <button onClick = {e => {
+                    e.preventDefault();
+                    actions.onClickAction(data.id)
+                }}>&times;</button> : null}
 
         <div
             className = 'content'

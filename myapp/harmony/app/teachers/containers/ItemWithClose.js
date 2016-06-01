@@ -9,7 +9,8 @@ const mapStateToProps = (state, props) => {
      return {
          data: {
              id,
-             fullName
+             fullName,
+             allowClose: !(id === undefined)
          }
      };
 };

@@ -5,13 +5,15 @@ import teacherPositions from './teacherPositions/reducer';
 import days from './days/reducer';
 import schedule from './schedule/reducer';
 import dates from './myDates/reducer';
+import exportReducer from './export/reducer';
 
 const reducer = combineReducers({
         teacherPositions,
         teachers,
         days,
         schedule,
-        dates
+        dates,
+        export: exportReducer
     }),
     store = createStore(reducer, applyMiddleware(thunkMiddleware));
 

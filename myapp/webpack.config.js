@@ -4,7 +4,7 @@ module.exports = {
         filename: "./public/javascripts/main.js"
     },
     watch: true,
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
 
     resolve: {
         extensions: ['', '.js', '.jsx']

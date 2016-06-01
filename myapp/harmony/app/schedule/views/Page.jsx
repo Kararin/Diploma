@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import TeacherList from '../../teachers/containers/List';
 import Table from '../containers/Table';
-import ExportButtons from '../../export/views/Buttons';
+import ExportButtons from '../../export/containers/Buttons';
 
 export default class Page extends React.Component{
     componentDidMount() {

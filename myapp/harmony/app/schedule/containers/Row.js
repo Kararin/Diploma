@@ -13,7 +13,7 @@ const mapStateToPtops = (
         data: {
             teacher: {
                 id: teacher.id,
-                displayName: `${teacher.lastName} ${teacher.name} ${shortName}`
+                displayName: `${teacher.lastName || ''} ${teacher.name || ''} ${shortName}`
             },
             days: state.days.data
         }

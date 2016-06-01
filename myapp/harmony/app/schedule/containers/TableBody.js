@@ -1,12 +1,15 @@
 import {connect} from 'react-redux';
 import TableBody from '../views/TableBody';
+import * as teachSelectors from '../../teachers/teacherSelectors';
 
-const mapStateToProps = ({teachers}) => {
-    var {inSchedule, data: teachersData} = teachers,
-        teachersInShedule =  teachersData.filter(item => inSchedule.has(item.id));
+const mapStateToProps = (state) => {
+    var teachersCount = teachSelectors.teachersCount(state),
+        teacherInScheduleCount = teachSelectors.teacherInScheduleCount(state),
+        emptyRowsCount = teachersCount - teacherInScheduleCount;
 
     return {
-        teachers: teachersInShedule
+        teachers: teachSelectors.teachersInShedule(state),
+        emptyRowsCount
     };
 };
 
