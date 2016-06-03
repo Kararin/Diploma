@@ -10,3 +10,5 @@ export const teacherInScheduleCount = createSelector(
     teachersInShedule,
     (teachers) => teachers.count()
 );
+
+export const selectTeachersIds = (teachers) => teachers.map(item => item.id);

@@ -1,0 +1,1 @@
+export const selectDaysId = (days) => days.map(item => item.id);

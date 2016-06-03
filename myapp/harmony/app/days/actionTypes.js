@@ -1,0 +1,3 @@
+export const SET_EXPORT = 'SET_TO_EXPORT_LIST_DAYS';
+
+export const SET_EXPORT_LIST = 'SET_EXPORT_LIST_DAYS';

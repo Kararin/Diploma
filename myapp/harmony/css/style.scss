@@ -98,16 +98,14 @@ body {
 
 $schedule-button-width: 15%;
 
-.schedule-button-panel {
+.schedule-grid-panel {
     width: 100%;
-    margin-bottom: 10px;
+        & .button-panel {
+            min-width: 30%;
+            float: left;
+        }
 
-    & .button {
-        width: $schedule-button-width;
-    }
-
-    & .button-center {
-        @extend .button;
-        @include buttons-margin($schedule-button-width);
-    }
+        & .dates-panel {
+            min-width: 70%;
+        }
 }

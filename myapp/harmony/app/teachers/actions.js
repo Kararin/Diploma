@@ -1,4 +1,6 @@
 import {CLEAR_SCHEDULE} from '../utils/consts/teachers';
+import * as actions from './actionTypes';
+import * as selectors from './teacherSelectors';
 
 export const addTeacher = (teacher) => ({
     type: 'ADD_TEACHER',
@@ -105,3 +107,8 @@ export const clearInSchedule = () => ({type: CLEAR_SCHEDULE});
 export const addToSchedule = id => ({type: 'ADD_TO_SCHEDULE', id});
 
 export const removeFromSchedule = id => ({type: 'REMOVE_FROM_SCHEDULE', id});
+
+export const setExportList = (teachers) => ({
+    type: actions.SET_EXPORT_LIST,
+    teachersId: selectors.selectTeachersIds(teachers)
+});

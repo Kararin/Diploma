@@ -129,6 +129,26 @@ class Base {
     getModel(db) {
         return db.model(this.modelName, this.schema);
     }
+
+    getById(dataItemId) {
+        var fasade = new Fasade('DepTools');
+
+        return new Promise((resolve, reject) => {
+            fasade.connect()
+                .then(db => {
+                    var Model = this.getModel(db);
+
+                    return Model.findById(dataItemId);
+                }).then(result => resolve)
+                .then(() => {
+                    fasade.closeConnection();
+                }).catch(err => {
+                    return fasade.closeConnection();
+                }).then((err) => {
+                    reject(err);
+                });
+        });
+    }
 }
 
 module.exports = Base;

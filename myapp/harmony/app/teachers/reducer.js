@@ -1,6 +1,7 @@
 import {handleActions} from 'redux-actions';
 import {List, Set} from 'immutable';
 import { CLEAR_SCHEDULE } from '../utils/consts/teachers';
+import * as actions from './actionTypes';
 
 export default handleActions({
     ADD_TEACHER: (state, action) => Object.assign({}, state, {
@@ -33,6 +34,9 @@ export default handleActions({
     }),
     CLEAR_SCHEDULE: (state, actoin) => Object.assign({}, state, {
         inSchedule: Set()
+    }),
+    [actions.SET_EXPORT_LIST]: (state, action) => Object.assign({}, state, {
+        exportList: Set(action.teachersId)
     })
 
 }, {
@@ -43,7 +47,8 @@ export default handleActions({
         isAddNewOpen: false,
         editiong: Set()
     },
-    inSchedule: Set()
+    inSchedule: Set(),
+    exportList: Set()
 });
 
 const teachersOptions = handleActions({

@@ -15,7 +15,9 @@ export const CloseItem = ({
         {data.allowClose ? <button onClick = {e => {
                     e.preventDefault();
                     actions.onClickAction(data.id)
-                }}>&times;</button> : null}
+                }}>&times;</button>
+            : null
+        }
 
         <div
             className = 'content'

@@ -1,3 +1,6 @@
+import * as selectors from './daysSelectors';
+import * as actions from './actionTypes';
+
 export const requestDays = () => {
     return {
         type: 'REQUEST_DAYS'
@@ -30,5 +33,12 @@ export const fetchDays = () => {
             .catch(error => {
                 dispatch(responseError(error));
             });
+    };
+};
+
+export const setExportList = (days) => {
+    return {
+        type: actions.SET_EXPORT,
+        daysId: selectors.selectDaysId(days)
     };
 };

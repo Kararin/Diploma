@@ -15,36 +15,35 @@ export default class Schedule extends React.Component {
         return (
             <Grid>
                 <Row>
-                    <div className = 'schedule-button-panel '>
-                        <Button
-                            className = 'button'
-                            onClick = {(e) => {
-                                var {toPrevWeek, currentDate} = this.props;
+                    <div className = 'schedule-grid-panel'>
+                        <div className = 'button-panel'>
+                            <Button
+                                onClick = {(e) => {
+                                    var {toPrevWeek, currentDate} = this.props;
 
-                                toPrevWeek(currentDate);
-                            }}>
-                            Previous
-                        </Button>
-                        <Button
-                            className = 'button-center'
-                            onClick = {(e) => {
-                                this.props.toCurrentWeek();
-                            }}>
-                            Current
-                        </Button>
-                        <Button
-                            className = 'button'
-                            onClick = {(e) => {
-                                var {toNextWeek, currentDate} = this.props;
+                                    toPrevWeek(currentDate);
+                                }}>
+                                Previous
+                            </Button>
+                            <Button
+                                onClick = {(e) => {
+                                    this.props.toCurrentWeek();
+                                }}>
+                                Current
+                            </Button>
+                            <Button
+                                onClick = {(e) => {
+                                    var {toNextWeek, currentDate} = this.props;
 
-                                toNextWeek(currentDate);
-                            }}>
-                            Next
-                        </Button>
+                                    toNextWeek(currentDate);
+                                }}>
+                                Next
+                            </Button>
+                        </div>
+                        <div className = 'dates-panel'>
+                            <ScheduleDates/>
+                        </div>
                     </div>
-                </Row>
-                <Row>
-                    <ScheduleDates/>
                 </Row>
                 <Row>
                     <Table bordered className = "schedule-table">
