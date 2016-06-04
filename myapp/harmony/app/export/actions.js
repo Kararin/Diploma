@@ -41,7 +41,7 @@ export const exportToHtml = () => {
         var state = getCurrentState(),
             teachers = state.teachers.data,
             days = state.days.data,
-            scheduleId = state.schedule.currrent,
+            scheduleId,
             dates = state.dates,
             teachersToExport,
             daysToExport;
@@ -52,6 +52,7 @@ export const exportToHtml = () => {
         state = getCurrentState();
         teachersToExport = state.teachers.exportList;
         daysToExport = state.days.exportList;
+        scheduleId = state.schedule.schedule.currentItemId;
 
         dispatch(exportToHtmlServer({
             scheduleId,

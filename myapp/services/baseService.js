@@ -39,6 +39,16 @@ class BaseService {
                 .then(resolve, reject);
         });
     }
+
+    getItemsById(itemsIds) {
+        var promises = itemsIds.map(item => this.getById(item));
+
+        return new Promise((resolve, reject) => {
+            Promise.all(promises)
+                .then(resolve)
+                .catch(reject);
+        });
+    }
 }
 
 module.exports = BaseService;

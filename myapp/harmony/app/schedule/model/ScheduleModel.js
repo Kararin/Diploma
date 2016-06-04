@@ -20,6 +20,10 @@ export default class Schedule {
         return this.store.find(item => item.id === this.current);
     }
 
+    get currentItemId () {
+        return this.current;
+    }
+
     static getNewScheduleItem ({
         teacherId,
         dayId,

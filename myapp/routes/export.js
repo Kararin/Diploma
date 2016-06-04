@@ -3,6 +3,7 @@ var express = require('express'),
     service = require('../services/export');
 
 router.post('/html', (req, res, next) => {
+    console.log(service);
     service.exportToHtml(req.body)
         .then(response => {
             res.send(response);

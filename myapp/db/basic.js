@@ -137,16 +137,11 @@ class Base {
             fasade.connect()
                 .then(db => {
                     var Model = this.getModel(db);
-
-                    return Model.findById(dataItemId);
-                }).then(result => resolve)
-                .then(() => {
-                    fasade.closeConnection();
-                }).catch(err => {
-                    return fasade.closeConnection();
-                }).then((err) => {
-                    reject(err);
-                });
+                    return Model.findOne({id: dataItemId});
+                }).then(resolve)
+                .then(fasade.closeConnection)
+                .catch(fasade.closeConnection)
+                .then(reject);
         });
     }
 }
