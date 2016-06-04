@@ -1,11 +1,12 @@
 'use strict';
+require('node-jsx').install({extension: '.jsx'});
 
 var scheduleService = require('./schedule'),
     teachersService = require('./teachers'),
     daysService = require('./days'),
-    JSZip = require("jszip"),
-    fs = require('fs'),
-    fileSave = require('file-save');
+    React = require('react'),
+    ReactDOMServer = require('react-dom/server'),
+    Grid = React.createFactory(require('../exportViews/Grid.jsx'));
 
  class ExportService {
     /**
@@ -21,50 +22,45 @@ var scheduleService = require('./schedule'),
      */
     exportToHtml(options) {
         return new Promise((resolve, reject) => {
-            // var promises = [
-            //     scheduleService.getById(options.scheduleId),
-            //     teachersService.getItemsById(options.teachers),
-            //     daysService.getItemsById(options.days)
-            // ],
-            //     result;
+            var promises = [
+                scheduleService.getById(options.scheduleId),
+                teachersService.getItemsById(options.teachers),
+                daysService.getItemsById(options.days)
+            ],
+                result;
 
-            // Promise.all(promises)
-            //     .then(result => {
-            //         resolve(result);
-            //     })
-            //     .catch(reject);
-            this.createZip().then(resolve);
+            Promise.all(promises)
+                .then(result => {
+                    resolve(this.creatHtmlPage({
+                        schedule: result[0],
+                        teachers: result[1],
+                        days: result[2]
+                    }));
+                })
+                .catch(reject);
         });
     }
 
-    createZip(data) {
-        var zip = new JSZip();
-        zip.file("Hello.txt", "Hello World\n");
+    creatHtmlPage(options) {
+        var str = ReactDOMServer.renderToString(Grid(options));
 
-        return new Promise((resolve, reject) => {
-            fileSave('sample/test')
-            .write('this is the first line', 'utf8')
-            .write('this is the second line', 'utf8', function() {
-                console.log('writer callback')
-            })
-            .end('this is the end')
-            .error(function() {
-                console.log('error goes here');
-                reject();
-            })
-            .finish(function() {
-                console.log('write finished.');
-                resolve();
-            });
+        return this.createHtmlTemplate(str);
+    }
 
-        });
-        // zip.generateAsync({type:"string"})
-        // .then(function(content) {
-        //     // see FileSaver.js
-        //     console.log('I am here');
-        //     console.log(saveAs);
-        //     saveAs(content, "example.zip");
-        // });
+    createHtmlTemplate(body) {
+        return `
+            <!DOCTYPE html>
+            <html>
+                <header>
+                    <title>
+                        Schedule
+                    </title>
+                    <body>
+                        ${body}
+                    </body>
+                </header>
+            </html>
+        `;
     }
 }
 

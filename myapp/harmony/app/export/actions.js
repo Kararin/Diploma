@@ -2,6 +2,8 @@ import * as actions from './actionTypes';
 //note: for now we set to export list manually
 import {setExportList as setExportListTeachers} from '../teachers/actions';
 import { setExportList as setExportListDays } from '../days/actions';
+import JSZip from 'jszip';
+import {saveAs} from 'file-saver';
 
 const exportToHtmlRequest = () => ({type: actions.EXPORT_TO_HTML_REQUEST});
 
@@ -26,13 +28,19 @@ const exportToHtmlServer  = ({scheduleId, teachers, days, dates}) => {
                 days
             })
         }).then(response => {
-            return response.json();
-        }).then(json => {
+            return response.text();
+        }).then(text => {
             dispatch(exportToHtmlSuccess);
+            saveFile(text);
         }).catch(error => {
             dispatch(exportToHtmlError);
         });
     };
+};
+
+const saveFile = (data) => {
+    var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "hello world.html");
 };
 
 //Note: now we take teachers and days from state, then it will be arguments
