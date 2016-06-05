@@ -41,24 +41,26 @@ export default class Schedule {
         };
     }
 
-    static getCellValue({
-        schedule,
+    getCellValue({
         teacherId,
-        current,
         dayId,
         type
     }) {
-        var scheduleItem = schedule.find(item => item.id === current),
+        var scheduleItem = this.currentItem,
             teacher,
             day,
-            cellValue = '';
+            cellValue = '',
+            result;
 
         //TODO: refactor
-        scheduleItem && (teacher = scheduleItem.teachers.find(item => item.id === teacherId));
-        teacher && (day = teacher.days.find(item => item.id === dayId));
-        day && (cellValue = day[type]);
+        if (scheduleItem) {
+            scheduleItem && (teacher = scheduleItem.teachers.find(item => item.id === teacherId));
+            teacher && (day = teacher.days.find(item => item.id === dayId));
+            day && (cellValue = day[type]);
+            result = cellValue && cellValue.join('');
+        }
 
-        return cellValue && cellValue.join('');
+        return result;
     }
 
     static mergeItems(mainItem, itemToMerge) {

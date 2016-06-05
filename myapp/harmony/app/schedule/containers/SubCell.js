@@ -23,13 +23,11 @@ const mapStateToProps = (
         dates
     } = state,
         currentItem = schedule.schedule.currentItem,
-        value = currentItem ? Schedule.getCellValue({
-            schedule: schedule.schedule.data,
-            current: schedule.schedule.current,
+        value = schedule.schedule.getCellValue({
             teacherId,
             dayId,
             type
-        }) : '',
+        }),
         date = Dates.getStartOfWeek(Dates.getCurrentDate()),
         allowChange = Dates.isSameOrAfter(dates.start, date);
 

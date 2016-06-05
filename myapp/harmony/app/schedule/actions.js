@@ -115,15 +115,25 @@ const changeCurrentItem = (scheduleItem) => {
             currentItem = state.schedule.schedule.currentItem,
             updatedCurrentItem = state.schedule.schedule.updateScheduleItemWithDate(state.schedule.schedule.current, startDate);
 
+        console.log(Dates);
         if (Dates.isSame(scheduleItem.dates.start, startDate)) {
             dispatch(editScheduleServer(scheduleItem));
         } else {
             delete scheduleItem.id;
             delete scheduleItem._id;
             dispatch(editScheduleServer(updatedCurrentItem));
-            dispatch(addScheduleServer(scheduleItem));
+            dispatch(addScheduleServer(addCurrentDate(scheduleItem)));
         }
     };
+};
+
+const addCurrentDate = (scheduleItem) => {
+    return Object.assign({}, scheduleItem, {
+        dates: {
+            end: null,
+            start: Dates.toString(Dates.getStartOfWeek(Dates.getCurrentDate()))
+        }
+    });
 };
 
 export const addSchedule = (scheduleData) => {
