@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from 'react-bootstrap';
+import {Input, Panel} from 'react-bootstrap';
 
 export default class SubCell extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ export default class SubCell extends React.Component {
                         }}
                  /> :
                 <div
-                    className = {type}
+                    className = {type? type : 'baseCell'}
                     onClick = {e => this.changeEditMode(true)}>
                     {value}
                 </div>

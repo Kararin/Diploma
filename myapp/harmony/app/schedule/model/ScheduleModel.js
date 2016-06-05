@@ -30,16 +30,35 @@ export default class Schedule {
         value,
         type
     }) {
+        var day = this.getScheduleItemDay({
+            dayId,
+            value,
+            type
+        });
+
         return {
             teachers: [{
                 id: teacherId,
-                days: [{
-                    id: dayId,
-                    [type]: [value]
-                }]
+                days: [day]
             }]
         };
     }
+
+    static getScheduleItemDay({
+        dayId,
+        type,
+        value
+    }) {
+        return type ? {
+            id: dayId,
+            [type]: [value]
+        } : {
+            id: dayId,
+            ch: [value],
+            zn: [value]
+        };
+    }
+
 
     getCellValue({
         teacherId,
@@ -50,7 +69,7 @@ export default class Schedule {
             teacher,
             day,
             cellValue = '',
-            result;
+            result = null;
 
         //TODO: refactor
         if (scheduleItem) {

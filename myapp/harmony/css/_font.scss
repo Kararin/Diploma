@@ -3,4 +3,5 @@ $font-size-big: 18px;
 
 $font-weight-medium: 700;
 
-$sub-cell-height: 25px;
+$cell-height: 50px;
+$sub-cell-height: $cell-height / 2;

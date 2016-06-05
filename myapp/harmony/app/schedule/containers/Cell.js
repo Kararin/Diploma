@@ -17,18 +17,13 @@ const mapStateToProps = (
             type: 'ch'
         });
 
-    console.log(chValue);
-    console.log(znValue);
-
     return {
-        data: {
-            values: {
-                ch: chValue,
-                zn: znValue
-            },
-            teacherId,
-            dayId
-        }
+        values: {
+            ch: chValue,
+            zn: znValue
+        },
+        teacherId,
+        dayId
     };
 };
 export default connect (mapStateToProps, null)(Cell);

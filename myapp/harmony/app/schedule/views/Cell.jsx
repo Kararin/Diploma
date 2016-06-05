@@ -1,40 +1,76 @@
 import React from 'react';
 import SubCell from '../containers/SubCell';
-
+import APP from '../../utils/AppObject';
 
 class Cell extends React.Component {
     render () {
-        var data = this.props.data;
+        var znCell = this.getZhSubCell(),
+            chCell = this.getChSubCell(),
+            commonSubCell = this.getCommonSubCell();
+
         return (
             <td>
-                <SubCell
-                    teacherId = {data.teacherId}
-                    dayId = {data.dayId}
-                    type = 'ch'
-                />
-                <SubCell
-                    teacherId = {data.teacherId}
-                    dayId = {data.dayId}
-                    type = 'zn'
-                />
-
+                {chCell}
+                {znCell}
+                {commonSubCell}
             </td>
         )
     }
 
-    isChVasible() {
+    getZhSubCell() {
+        var {
+            values,
+            teacherId,
+            dayId
+        } = this.props;
 
+        return values.ch !== values.zn && (APP.isDefined(values.zn) || APP.isDefined(values.ch)) ?
+            <SubCell
+                teacherId = {teacherId}
+                dayId = {dayId}
+                type = 'zn'
+                value = {values.zn}
+            /> : null;
+    }
+
+    getChSubCell() {
+        var {
+            values,
+            teacherId,
+            dayId
+        } = this.props;
+
+        return values.ch !== values.zn && (APP.isDefined(values.ch) || APP.isDefined(values.zn))?
+            <SubCell
+                teacherId = {teacherId}
+                dayId = {dayId}
+                type = 'ch'
+                value = {values.ch}
+            /> : null;
+    }
+
+    getCommonSubCell() {
+        var {
+            values,
+            teacherId,
+            dayId
+        } = this.props;
+
+        return values.ch === values.zn && (APP.isDefined(values.ch) || APP.isDefined(values.zn))?
+            <SubCell
+                teacherId = {teacherId}
+                dayId = {dayId}
+                value = {values.ch}
+            /> : null;
     }
 }
 
 Cell.defaultProps = {
-    data: {
-        teacherId: -1,
-        dayId: -1,
-        values: {
-            ch: '',
-            zn: ''
-        }
+    teacherId: -1,
+    dayId: -1,
+    values: {
+        ch: '',
+        zn: ''
     }
 };
 

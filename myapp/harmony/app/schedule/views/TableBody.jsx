@@ -5,7 +5,6 @@ class TableBody extends React.Component {
     render() {
         var emptyRows = this.getEmptyRows();
 
-        console.log(emptyRows);
         return (
             <tbody>
                 {this.props.teachers.map(item => (
