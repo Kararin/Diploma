@@ -10,7 +10,7 @@ class Row extends React.Component {
             days = this.props.days;
         return (
             <tr>
-                <td>
+                <td className = 'time'>
                     {this.props.teacher.name}
                 </td>
                 {days.map(item => (

@@ -84,28 +84,3 @@ body {
         border-top: none;
     }
 }
-
-
-
-
-
-@mixin buttons-margin ($width) {
-    $empty-width: 100 - $width * 3;
-
-    margin-left: $empty-width / 2;
-    margin-right: $empty-width / 2;
-}
-
-$schedule-button-width: 15%;
-
-.schedule-grid-panel {
-    width: 100%;
-        & .button-panel {
-            min-width: 30%;
-            float: left;
-        }
-
-        & .dates-panel {
-            min-width: 70%;
-        }
-}

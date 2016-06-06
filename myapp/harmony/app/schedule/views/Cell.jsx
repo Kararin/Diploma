@@ -56,17 +56,17 @@ class Cell extends React.Component {
             dayId
         } = this.props;
 
-        return values.ch === values.zn && (APP.isDefined(values.ch) || APP.isDefined(values.zn))?
+        return values.ch === values.zn && teacherId ?
             <SubCell
                 teacherId = {teacherId}
                 dayId = {dayId}
-                value = {values.ch}
+                value = {APP.isDefined(values.ch) ? values.ch: ''}
             /> : null;
     }
 }
 
 Cell.defaultProps = {
-    teacherId: -1,
+    teacherId: null,
     dayId: -1,
     values: {
         ch: '',

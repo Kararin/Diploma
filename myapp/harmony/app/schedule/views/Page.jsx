@@ -14,6 +14,8 @@ export default class Page extends React.Component{
                 <Grid>
                     <Row>
                         <Col xs = {2} className = 'my-shedule-col'>
+                            <Row style = {{height: 45}}>
+                            </Row>
                             <TeacherList/>
                         </Col>
                         <Col xs = {6} className = 'my-shedule-col'>

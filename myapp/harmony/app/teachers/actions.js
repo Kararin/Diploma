@@ -110,5 +110,5 @@ export const removeFromSchedule = id => ({type: 'REMOVE_FROM_SCHEDULE', id});
 
 export const setExportList = (teachers) => ({
     type: actions.SET_EXPORT_LIST,
-    teachersId: selectors.selectTeachersIds(teachers)
+    teachersId: teachers
 });

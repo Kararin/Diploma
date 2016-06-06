@@ -47,7 +47,7 @@ const saveFile = (data) => {
 export const exportToHtml = () => {
     return (dispatch, getCurrentState) => {
         var state = getCurrentState(),
-            teachers = state.teachers.data,
+            teachers = state.teachers.inSchedule,
             days = state.days.data,
             scheduleId,
             dates = state.dates,

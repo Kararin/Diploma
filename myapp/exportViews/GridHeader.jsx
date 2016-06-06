@@ -4,10 +4,10 @@ var React = require('react');
 class Header extends React.Component{
     render() {
         return (
-            <tr>
-                <td>Name</td>
+            <tr >
+                <td className = 'time'>Name</td>
                 {this.props.days.map(item => (
-                    <td
+                    <td className = 'time'
                         key = {item.id}>
                         {item.name}
                     </td>

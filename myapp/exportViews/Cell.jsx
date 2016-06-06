@@ -5,26 +5,42 @@ var React = require('react');
 
 class Cell extends React.Component{
     render () {
-        var value = this.getCellValue();
+        var commonCell = this.getCommonCell();
         return (
             <td>
-                {value}
+                {commonCell}
             </td>
         );
     }
 
-    getCellValue() {
+    getCommonCell() {
+        var chValue = this.getCellValue('ch'),
+            znValue = this.getCellValue('zn');
+
+        return chValue === znValue ? chValue :
+            <div>
+                <div style = {{
+                    border: '1px solid'
+                }}>
+                    {chValue}
+                </div>
+                <div style = {{
+                    border: '1px solid'
+                }}>
+                    {znValue}
+                </div>
+            </div>
+
+    }
+
+    getCellValue(type) {
         var teacher = this.props.schedule.teachers.find(item => item.id === this.props.teacher.id),
             day,
             values;
 
             teacher && (day = teacher.days.find(item => item.id === this.props.dayId));
-            day && (values = [
-                day.ch ? day.ch.join(''): '',
-                day.zn ? day.zn.join(''): ''
-            ]);
 
-        return values ? values.join(''): '';
+        return day ? day[type].join('') : null;
     }
  };
 

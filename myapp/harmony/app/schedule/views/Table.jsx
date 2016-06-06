@@ -4,7 +4,8 @@ import {
     Grid,
     Col,
     Row,
-    Button
+    Button,
+    Glyphicon
 } from 'react-bootstrap';
 import TableHeader from '../containers/TableHeader';
 import TableBody from '../containers/TableBody';
@@ -18,26 +19,31 @@ export default class Schedule extends React.Component {
                     <div className = 'schedule-grid-panel'>
                         <div className = 'button-panel'>
                             <Button
+                                bsSize="large"
+                                className = 'schedule-navigation-button'
                                 onClick = {(e) => {
                                     var {toPrevWeek, currentDate} = this.props;
 
                                     toPrevWeek(currentDate);
                                 }}>
-                                Previous
+                                <Glyphicon glyph="arrow-left" />
                             </Button>
                             <Button
+                                className = 'schedule-navigation-button'
                                 onClick = {(e) => {
                                     this.props.toCurrentWeek();
                                 }}>
                                 Current
                             </Button>
                             <Button
+                                bsSize="large"
+                                className = 'schedule-navigation-button'
                                 onClick = {(e) => {
                                     var {toNextWeek, currentDate} = this.props;
 
                                     toNextWeek(currentDate);
                                 }}>
-                                Next
+                                <Glyphicon glyph="arrow-right" />
                             </Button>
                         </div>
                         <div className = 'dates-panel'>

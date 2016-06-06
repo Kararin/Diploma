@@ -37,6 +37,7 @@ $page-header-color: #003d4d;
 
             td {
                 padding: 0px;
+                height: 40px;
                 text-align: center;
                 color: $page-header-color;
                 vertical-align: middle;
@@ -46,7 +47,7 @@ $page-header-color: #003d4d;
 
                     & .form-control {
                         border-radius: 0px;
-                        height: $sub-cell-height;
+                        height: 40px;
                         text-align: center;
                     }
                 }
@@ -81,7 +82,8 @@ $page-header-color: #003d4d;
 
 .baseCell {
     @extend %sub;
-    height: $cell-height;
+    height: 100%;
+    padding-top: 10px;
 }
 
 .dates-container {
@@ -91,4 +93,41 @@ $page-header-color: #003d4d;
         margin: auto;
         width: 160px;
     }
+}
+
+@mixin buttons-margin ($width) {
+    $empty-width: 100 - $width * 3;
+
+    margin-left: $empty-width / 2;
+    margin-right: $empty-width / 2;
+}
+
+$schedule-button-width: 15%;
+
+.schedule-grid-panel {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    align-items: center;
+        & .button-panel {
+            flex: 1 0 30%;
+
+            & .schedule-navigation-button {
+                background: transparent;
+                border: none;
+                font-size: 18px;
+            }
+
+            & .schedule-navigation-button:focus {
+                outline-color: transparent;
+            }
+        }
+
+        & .dates-panel {
+            flex: 2 0 60%;
+            font-size: 18px;
+            text-align: center;
+        }
 }

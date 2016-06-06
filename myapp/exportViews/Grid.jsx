@@ -7,7 +7,7 @@ var React = require('react'),
 class Grid extends React.Component {
     render() {
         return (
-            <div>
+            <div style = {{margin: 'auto'}}>
                 <table>
                     <GridBody
                         schedule = {this.props.schedule}
