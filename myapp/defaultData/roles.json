@@ -1,0 +1,9 @@
+[{
+    "id": 1,
+    "name": "admin",
+    "rights": [1, 2, 3, 4]
+}, {
+    "id": 2,
+    "name": "teacher",
+    "rights": [1, 2, 3]
+}]

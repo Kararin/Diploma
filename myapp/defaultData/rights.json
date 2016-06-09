@@ -1,0 +1,13 @@
+[{
+    "id": 1,
+    "name": "SCHOW_TEACHERS"
+}, {
+    "id": 2,
+    "name": "SCHOW_OPTIONS"
+}, {
+    "id": 3,
+    "name": "SCHOW_SCHEDULE"
+}, {
+    "id": 4,
+    "name": "SCHOW_USERS"
+}]
