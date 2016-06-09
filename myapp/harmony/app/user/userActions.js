@@ -14,7 +14,7 @@ const setUser = ({id, name, role, rights}) => ({
 
  export const checkUser = (name, pass) => {
     return dispatch => {
-        return fetch('/user/check', {
+        return fetch('/users/check', {
             method: 'post',
             headers: {
                 Accept: 'application/json',

@@ -53,4 +53,16 @@ router.post('/edit', (req, res, next) => {
         })
 });
 
+router.post('/check', (req, res, next) => {
+    servise.checkUser(req.body)
+    .then(userData => {
+        console.log('user exists');
+        res.send(userData);
+    })
+    .catch(error => {
+        console.error('user doesnt\'t exist');
+        res.sendStatus(500).send(error);
+    });
+});
+
 module.exports = router;

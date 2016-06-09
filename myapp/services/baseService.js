@@ -49,6 +49,13 @@ class BaseService {
                 .catch(reject);
         });
     }
+
+    getModelBy(object) {
+         return new Promise((resolve, reject) => {
+            this.schema.getModelBy(object)
+                .then(resolve, reject);
+        });
+    }
 }
 
 module.exports = BaseService;

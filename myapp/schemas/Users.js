@@ -9,5 +9,4 @@ var mongoose = require('mongoose'),
         role: Number
     });
 
-
 module.exports = new Base(users, 'Users');

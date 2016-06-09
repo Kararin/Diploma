@@ -144,6 +144,21 @@ class Base {
                 .then(reject);
         });
     }
+
+    getModelBy(findObject) {
+        var fasade = new Fasade('DepTools');
+
+        return new Promise((resolve, reject) => {
+            fasade.connect()
+                .then(db => {
+                    var Model = this.getModel(db);
+                    return Model.findOne(findObject);
+                }).then(resolve)
+                .then(fasade.closeConnection)
+                .catch(fasade.closeConnection)
+                .then(reject);
+        });
+    }
 }
 
 module.exports = Base;
