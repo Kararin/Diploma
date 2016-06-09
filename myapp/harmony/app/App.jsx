@@ -24,6 +24,8 @@ export default ({defaultKey}) => {
             <Tab className = "my-tab" eventKey = {3} title="Options">
                 <Options/>
             </Tab>
+            <Tab className = "my-tab" eventKey = {4} title="Users">
+            </Tab>
         </Tabs>
     );
 }
