@@ -279,7 +279,7 @@ describe('delete from schedule item', () => {
             dataToDelete = {
                 teacherId: 1,
                 dayId: 1,
-                type: null
+                type: 'ch'
             },
             result = {
                 deleted: true,

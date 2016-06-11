@@ -25,7 +25,7 @@ export default class Dates {
                 3: 2,
                 4: 1,
                 5: 0,
-                6: -1
+                6: 6
             },
             currentDay = moment(currentDate).format('d'),
             result = moment(currentDate).add(mapDays[currentDay], 'd');
