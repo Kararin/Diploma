@@ -52,6 +52,7 @@ export default class SubCell extends React.Component {
             }
 
         if (this.validateTime(timeValue)) {
+            scheduleData.value = this.fixTimaValue(scheduleData.value);
             actions.editAction(scheduleData);
         }
 
@@ -73,6 +74,14 @@ export default class SubCell extends React.Component {
             result = validResults.some(item => item);
 
         return result;
+    }
+
+    fixTimaValue(time) {
+        var withoutChanges = /\d:\d\d|\d\d:\d\d/,
+            needsChanges = /(\d|\d\d)/;
+
+        return withoutChanges.test(time) ? time
+                : needsChanges.test(time) ? `${time}:00` : '';
     }
 }
 

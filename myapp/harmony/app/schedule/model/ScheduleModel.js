@@ -236,8 +236,9 @@ export default class Schedule {
     deleteSubDay(day, type) {
         var newDay = Object.assign({}, day);
 
-        delete newDay[type];
-        return newDay;
+        type && delete newDay[type];
+
+        return type ? newDay : Object.assign({}, {id: day.id});
     }
 
     deleteDayIfEmpty(day) {
