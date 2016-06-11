@@ -1,6 +1,7 @@
 
 import {handleActions} from 'redux-actions';
 import * as actions from './userActionTypes';
+import {List} from 'immutable';
 
 export default handleActions({
     [actions.SET_USER]: (state, {id, name, role, rights}) => {
@@ -8,7 +9,7 @@ export default handleActions({
             id,
             name,
             role,
-            rights,
+            rights: List.of(...rights),
             isError: false
         });
     },
@@ -18,13 +19,13 @@ export default handleActions({
             id: null,
             name: '',
             role: null,
-            rights: [],
+            rights: List(),
         });
     }
 }, {
     id: null,
     name: '',
     role: null,
-    rights: [],
+    rights: List(),
     isError: false
 });

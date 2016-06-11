@@ -8,10 +8,11 @@ class Page extends React.Component {
                 title,
                 children
             } = this.props,
-            buttons = this.getButtons();
+            buttons = this.getButtons(),
+            classes = `${this.props.className} my-page`;
 
         return (
-            <Panel className = "my-page"
+            <Panel className = {classes}
                 bsStyle = {bsStyle}
                 header = {title}>
                 <ButtonGroup>

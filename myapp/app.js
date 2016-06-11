@@ -14,6 +14,8 @@ var teachers = require('./routes/teachers');
 var days = require('./routes/days');
 var schedule = require('./routes/schedule');
 var exportRoute = require('./routes/export');
+var roles = require('./routes/roles');
+var rights = require('./routes/rights');
 
 var app = express();
 
@@ -40,6 +42,8 @@ app.use('/teachers', teachers);
 app.use('/days', days);
 app.use('/schedule', schedule);
 app.use('/export', exportRoute);
+app.use('/roles', roles);
+app.use('/rights', rights);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

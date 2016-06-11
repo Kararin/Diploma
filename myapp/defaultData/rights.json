@@ -1,13 +1,13 @@
 [{
     "id": 1,
-    "name": "SCHOW_TEACHERS"
+    "name": "SHOW_TEACHERS"
 }, {
     "id": 2,
-    "name": "SCHOW_OPTIONS"
+    "name": "SHOW_OPTIONS"
 }, {
     "id": 3,
-    "name": "SCHOW_SCHEDULE"
+    "name": "SHOW_SCHEDULE"
 }, {
     "id": 4,
-    "name": "SCHOW_USERS"
+    "name": "SHOW_USERS"
 }]

@@ -1,5 +1,5 @@
 import * as actions from './userActionTypes';
-
+import { fetchRights } from '../rights/rightsActions';
 const setUser = ({id, name, role, rights}) => ({
      type: actions.SET_USER,
      id,
@@ -28,6 +28,7 @@ const setUser = ({id, name, role, rights}) => ({
             return response.json();
         }).then(position => {
             dispatch(setUser(position));
+            dispatch(fetchRights());
         }).catch(error => {
             dispatch(responseError(error));
         });

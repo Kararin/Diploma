@@ -22,11 +22,8 @@ class User extends BaseService {
 
                     !role && reject();
 
-                    console.log(roleService);
                     return roleService.getModelBy({id: role});
                 }).then(role => {
-                    console.log(role);
-                    console.log('here');
                     !role || !role.rights && reject();
                     var promises = role.rights.map(item => rightsService.getModelBy({id: item}));
 
@@ -34,8 +31,9 @@ class User extends BaseService {
                 }).then(rights => {
                     resolve({
                         id: checkedUser.id,
+                        name: checkedUser.name,
                         role: role,
-                        rights: rights
+                        rights: rights.map(item => {return {id: item.id, name: item.name};})
                     });
                 }).catch(error => reject);
             });

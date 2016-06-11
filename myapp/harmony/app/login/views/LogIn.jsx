@@ -1,5 +1,6 @@
 import React from 'react';
 import {Input, Button} from 'react-bootstrap';
+import Page from '../../core/components/Page';
 
 //todo: styling
 export default class LogIn extends React.Component {
@@ -7,22 +8,27 @@ export default class LogIn extends React.Component {
         var name,
             pass;
         return (
-            <div>
+            <Page
+                title = 'Log In'
+                className = 'login'>
                 <Input
                     type = 'text'
                     label = 'Name'
                     placeholder = 'Enter Name'
+                    defaultValue = 'Tom'
                     ref = {c => {name = c}}/>
                 <Input
                     type = 'text'
                     placeholder = 'Enter Password'
                     label = 'Password'
+                    defaultValue = '1'
                     ref = {c => {pass = c}}/>
+
                 <Button onClick = {e => {
                     this.onOkClick(name.getInputDOMNode().value, pass.getInputDOMNode().value)}}>
                     LogIn
                 </Button>
-            </div>
+            </Page>
         )
     }
 

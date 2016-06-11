@@ -7,6 +7,7 @@ import schedule from './schedule/reducer';
 import dates from './myDates/reducer';
 import exportReducer from './export/reducer';
 import user from './user/userReducer';
+import rights from './rights/rightsReducer';
 
 const reducer = combineReducers({
         teacherPositions,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
         schedule,
         dates,
         user,
-        export: exportReducer
+        export: exportReducer,
+        rights
     }),
     store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
