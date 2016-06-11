@@ -8,6 +8,7 @@ import dates from './myDates/reducer';
 import exportReducer from './export/reducer';
 import user from './user/userReducer';
 import rights from './rights/rightsReducer';
+import language from './translate/languageReducer';
 
 const reducer = combineReducers({
         teacherPositions,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
         dates,
         user,
         export: exportReducer,
-        rights
+        rights,
+        language
     }),
     store = createStore(reducer, applyMiddleware(thunkMiddleware));
 

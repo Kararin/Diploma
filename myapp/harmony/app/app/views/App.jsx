@@ -5,22 +5,26 @@ import Options from '../../options/views/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../../../css/style.scss';
 import Schedule from '../../schedule/containers/Page';
+import LanguageButtons from '../../translate/containers/LanguageButtonsContainer';
 
 export default  class App extends React.Component {
     render () {
         return (
-            <Tabs className = "my-tabs"
-             defaultActiveKey = {2}
-             bsStyle = 'tabs'>
-            {this.getTeacherTab()}
-            <Tab className = "my-tab"
-                eventKey = {2}
-                title = "Schedule">
-                <Schedule/>
-            </Tab>
-            {this.getOptionsTab()}
-            {this.getUsersTab()}
-        </Tabs>
+            <div>
+                <LanguageButtons/>
+                <Tabs className = "my-tabs"
+                    defaultActiveKey = {2}
+                    bsStyle = 'tabs'>
+                    {this.getTeacherTab()}
+                    <Tab className = "my-tab"
+                        eventKey = {2}
+                        title = "Schedule">
+                        <Schedule/>
+                    </Tab>
+                    {this.getOptionsTab()}
+                    {this.getUsersTab()}
+                </Tabs>
+            </div>
         );
     }
 
