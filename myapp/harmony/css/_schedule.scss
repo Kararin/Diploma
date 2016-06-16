@@ -82,7 +82,7 @@ $page-header-color: #003d4d;
 
 .baseCell {
     @extend %sub;
-    height: 100%;
+    height: 90%;
     padding-top: 10px;
 }
 
@@ -130,4 +130,13 @@ $schedule-button-width: 15%;
             font-size: 18px;
             text-align: center;
         }
+}
+
+.divide-button {
+    border: none;
+    width: 15px;
+    height: 15px;
+    box-shadow: none;
+    padding: 0;
+    float: right;
 }

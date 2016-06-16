@@ -3,7 +3,7 @@ import App from '../views/App';
 import { userHasRight } from '../../user/userSelectors';
 import * as rightsName from '../../rights/rightsSelectors';
 
-const mapStateToProps = ({user}) => {
+const mapStateToProps = ({user, language}) => {
     var showTeachers = userHasRight(user, rightsName.showTeachers),
         showOptions = userHasRight(user, rightsName.showOptions),
         showUsers = userHasRight(user, rightsName.showUsers);
@@ -11,7 +11,8 @@ const mapStateToProps = ({user}) => {
     return {
         showTeachers,
         showOptions,
-        showUsers
+        showUsers,
+        lang: language.lang
     };
 };
 

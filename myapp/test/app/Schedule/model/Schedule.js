@@ -385,3 +385,67 @@ describe('removeTeacherFromItem?', () => {
         expect(schedule.removeTeacherFromItem(item, 2)).toEqual(result);
     });
 });
+
+describe('mergeDays', () => {
+    it('should merge empty days', () => {
+        var mainDays = [],
+            daysToMerge = [],
+            result = [];
+
+        expect(Schedule.mergeDays(mainDays, daysToMerge)).toEqual(result);
+    });
+
+    it('should merge empty days', () => {
+        var mainDays = [],
+            daysToMerge = [{
+                id: 2,
+                ch: ['12:00']
+            }],
+            result = [{
+                id: 2,
+                ch: ['12:00']
+            }];
+
+        expect(Schedule.mergeDays(mainDays, daysToMerge)).toEqual(result);
+    });
+
+    it('should merge empty days', () => {
+        var mainDays = [{
+                id: 6,
+                zn: ['9:00']
+            }],
+            daysToMerge = [{
+                id: 4,
+                ch: ['12:00']
+            }],
+            result = [{
+                id: 4,
+                ch: ['12:00']
+            }, {
+                id: 6,
+                zn: ['9:00']
+            }];
+
+        expect(Schedule.mergeDays(mainDays, daysToMerge)).toEqual(result);
+    });
+
+    it('should merge empty days', () => {
+        var mainDays = [{
+                id: 6,
+                zn: ['9:00']
+            }],
+            daysToMerge = [{
+                id: 4,
+                ch: ['12:00']
+            }],
+            result = [ {
+                id: 6,
+                zn: ['9:00']
+            }, {
+                id: 4,
+                ch: ['12:00']
+            }];
+
+        expect(Schedule.mergeDays(mainDays, daysToMerge)).toEqual(result);
+    });
+});

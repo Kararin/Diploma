@@ -5,78 +5,80 @@ import Options from '../../options/views/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../../../css/style.scss';
 import Schedule from '../../schedule/containers/Page';
-import LanguageButtons from '../../translate/containers/LanguageButtonsContainer';
+import UserView from '../../user/containers/UserViewContainer';
+import TR from '../../translate/translate';
 
 export default  class App extends React.Component {
     render () {
+        var {lang} = this.props;
+
         return (
             <div>
-                <LanguageButtons/>
                 <Tabs className = "my-tabs"
                     defaultActiveKey = {2}
                     bsStyle = 'tabs'>
                     {this.getTeacherTab()}
                     <Tab className = "my-tab"
                         eventKey = {2}
-                        title = "Schedule">
+                        title = {TR(lang, 'SCHEDULE')}>
                         <Schedule/>
                     </Tab>
                     {this.getOptionsTab()}
                     {this.getUsersTab()}
+                    <Tab className = "my-tab"
+                        eventKey = {5}
+                        title = {TR(lang, 'CURRENT_USER')}>
+                        <UserView/>
+                    </Tab>
                 </Tabs>
             </div>
         );
     }
 
     getTeacherTab() {
-        return this.props.showTeachers ? (
+        var {
+            showTeachers,
+            lang
+        } = this.props;
+
+        return showTeachers ? (
             <Tab className = "my-tab"
                 eventKey = {1}
-                title="Teachers">
+                title = {TR(lang, 'TEACHERS')}>
                 <Teachers/>
             </Tab>): null;
     }
 
     getOptionsTab() {
-        return this.props.showOptions ? (
-            <Tab className = "my-tab" eventKey = {3} title="Options">
+        var {
+            showOptions,
+            lang
+        } = this.props;
+
+        return showOptions ? (
+            <Tab
+                className = "my-tab"
+                eventKey = {3}
+                title = {TR(lang, 'OPTIONS')}>
                 <Options/>
             </Tab>
         ): null;
     }
 
     getUsersTab() {
-        return this.props.showUsers ? (
-            <Tab className = "my-tab" eventKey = {4} title="Users">
+        var {
+            lang,
+            showUsers
+        } = this.props;
+
+        return showUsers ? (
+            <Tab
+                className = "my-tab"
+                eventKey = {4}
+                title = {TR(lang, 'USERS')}>
             </Tab>
         ) : null;
     }
 
-}({
-    showOptions,
-    showTeachers,
-    shpwUsers
-}) => {
-    return (
-        <Tabs className = "my-tabs"
-             defaultActiveKey = {2}
-             bsStyle = 'tabs'>
-            <Tab className = "my-tab"
-                eventKey = {1}
-                title="Teachers">
-                <Teachers/>
-            </Tab>
-            <Tab className = "my-tab"
-                eventKey = {2}
-                title = "Schedule">
-                <Schedule/>
-            </Tab>
-            <Tab className = "my-tab" eventKey = {3} title="Options">
-                <Options/>
-            </Tab>
-            <Tab className = "my-tab" eventKey = {4} title="Users">
-            </Tab>
-        </Tabs>
-    );
 }
 
