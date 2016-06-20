@@ -112,7 +112,7 @@ $schedule-button-width: 15%;
     justify-content: center;
     align-items: center;
         & .button-panel {
-            flex: 1 0 30%;
+            flex: 1 0 50%;
 
             & .schedule-navigation-button {
                 background: transparent;
@@ -126,7 +126,7 @@ $schedule-button-width: 15%;
         }
 
         & .dates-panel {
-            flex: 2 0 60%;
+            flex: 2 0 50%;
             font-size: 18px;
             text-align: center;
         }

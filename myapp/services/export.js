@@ -105,11 +105,8 @@ var scheduleService = require('./schedule'),
                         font-family: 'Open Sans', Helvetica;
                         color: #efefef;
                         }
-                        table tr:nth-child(2n) {
-                        background: #eff0f1;
-                        }
-                        table tr:nth-child(2n+3) {
-                        background: #fff;
+                        table tr {
+                            background: #eff0f1;
                         }
                         table th, table td {
                         padding: 1em;

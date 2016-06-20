@@ -29,5 +29,6 @@ export default {
     ENTER_POSITION_NAME: 'Введите название',
     ENTER_POSITION_SHORT_NAME: 'Введите сокращенное название',
     ENTER_TEACHER_NAME: 'Введите имя',
-    ENTER_TEACHER_LAST_NAME: 'Введите фамилию'
+    ENTER_TEACHER_LAST_NAME: 'Введите фамилию',
+    LANGUAGE: 'Язые интерфейса'
 };

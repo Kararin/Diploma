@@ -15,18 +15,23 @@ class Cell extends React.Component{
 
     getCommonCell() {
         var chValue = this.getCellValue('ch'),
-            znValue = this.getCellValue('zn');
+            znValue = this.getCellValue('zn'),
+            style = {
+                border: '1px solid white',
+                margin: '0 -15px 0 -15px',
+                width: '160px'
+            };
 
         return chValue === znValue ? chValue :
             <div>
-                <div style = {{
-                    border: '1px solid'
-                }}>
+                <div style = {Object.assign({}, style, {
+                    'marginTop': '-15px'
+                })}>
                     {chValue}
                 </div>
-                <div style = {{
-                    border: '1px solid'
-                }}>
+                <div style = {Object.assign({}, style, {
+                    'marginBottom': '-15px'
+                })}>
                     {znValue}
                 </div>
             </div>

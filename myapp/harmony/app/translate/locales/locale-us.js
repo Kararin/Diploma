@@ -29,5 +29,6 @@ export default {
     ENTER_POSITION_NAME: 'Enter Name',
     ENTER_POSITION_SHORT_NAME: 'Enter Short Name',
     ENTER_TEACHER_NAME: 'Enter Name',
-    ENTER_TEACHER_LAST_NAME: 'Enter Last Name'
+    ENTER_TEACHER_LAST_NAME: 'Enter Last Name',
+    LANGUAGE: 'Language'
 };

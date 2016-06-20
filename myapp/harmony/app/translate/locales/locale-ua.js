@@ -25,10 +25,11 @@ export default {
     DAYS_NAME: 'Назва',
     SHORT_NAME: 'Скорочена назва',
     ENTER_NAME: 'Введіть  ім\'я ',
-    ENTER_PASSWORD: 'Веедіть пароль',
+    ENTER_PASSWORD: 'Введіть пароль',
     ADD_NEW_POSITION: 'Додати нову посаду',
     ENTER_POSITION_NAME: 'Введіть назву',
     ENTER_POSITION_SHORT_NAME: 'Введіть скорочену назву',
     ENTER_TEACHER_NAME: 'Введіть ім\'я',
-    ENTER_TEACHER_LAST_NAME: 'Введіть прізвище'
+    ENTER_TEACHER_LAST_NAME: 'Введіть прізвище',
+    LANGUAGE: 'Мова інтерфейсу'
 };

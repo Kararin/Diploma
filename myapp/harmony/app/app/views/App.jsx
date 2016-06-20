@@ -24,10 +24,9 @@ export default  class App extends React.Component {
                         <Schedule/>
                     </Tab>
                     {this.getOptionsTab()}
-                    {this.getUsersTab()}
                     <Tab className = "my-tab"
                         eventKey = {5}
-                        title = {TR(lang, 'CURRENT_USER')}>
+                        title = {TR(lang, 'LANGUAGE')}>
                         <UserView/>
                     </Tab>
                 </Tabs>
@@ -64,21 +63,5 @@ export default  class App extends React.Component {
             </Tab>
         ): null;
     }
-
-    getUsersTab() {
-        var {
-            lang,
-            showUsers
-        } = this.props;
-
-        return showUsers ? (
-            <Tab
-                className = "my-tab"
-                eventKey = {4}
-                title = {TR(lang, 'USERS')}>
-            </Tab>
-        ) : null;
-    }
-
 }
 
