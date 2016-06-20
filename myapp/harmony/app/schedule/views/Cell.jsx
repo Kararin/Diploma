@@ -8,12 +8,13 @@ class Cell extends React.Component {
         super(props);
 
         this.state = {
-            isDividedButtonShow: this.showDevideButton(props.values)
+            isDividedButtonShow: this.showDevideButton(props.values, props.teacherId)
         };
     }
 
-    showDevideButton(types) {
-        return types.ch === types.zn && APP.isDefined(types.ch) && APP.isDefined(types.zn);
+    showDevideButton(types, teacherId) {
+        // return types.ch === types.zn && APP.isDefined(types.ch) && APP.isDefined(types.zn);
+        return APP.isDefined(teacherId) && (types.ch === types.zn);
     }
 
     render () {
@@ -48,7 +49,7 @@ class Cell extends React.Component {
         } = this.state;
 
 
-        return (values.ch !== values.zn && (APP.isDefined(values.zn) || APP.isDefined(values.ch))) || !isDividedButtonShow ?
+        return APP.isDefined(teacherId) && !isDividedButtonShow ?
             <SubCell
                 teacherId = {teacherId}
                 dayId = {dayId}
@@ -66,7 +67,7 @@ class Cell extends React.Component {
             isDividedButtonShow
         } = this.state;
 
-        return (values.ch !== values.zn && (APP.isDefined(values.ch) || APP.isDefined(values.zn))) || !isDividedButtonShow ?
+        return APP.isDefined(teacherId) && !isDividedButtonShow ?
             <SubCell
                 teacherId = {teacherId}
                 dayId = {dayId}
@@ -85,7 +86,7 @@ class Cell extends React.Component {
         } = this.state;
 
 
-        return (values.ch === values.zn && teacherId) && isDividedButtonShow ?
+        return isDividedButtonShow ?
             <SubCell
                 teacherId = {teacherId}
                 dayId = {dayId}

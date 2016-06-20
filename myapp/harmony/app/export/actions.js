@@ -40,7 +40,7 @@ const exportToHtmlServer  = ({scheduleId, teachers, days, dates}) => {
 
 const saveFile = (data) => {
     var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "hello world.html");
+    saveAs(blob, "Schedule.html");
 };
 
 //Note: now we take teachers and days from state, then it will be arguments
