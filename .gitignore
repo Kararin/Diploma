@@ -1,7 +1,5 @@
 myapp/temp/
 myapp/node_modules/
-myapp/public/javascripts/
-myapp/public/stylesheets/
 myapp/bower_components/
 myapp/.sublime-grunt.cahce
 .vscode/
