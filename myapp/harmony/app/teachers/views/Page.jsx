@@ -2,13 +2,15 @@ import React from 'react';
 import Table from '../containers/Table';
 import Page from '../../core/components/Page';
 import AddNew from '../containers/AddNew';
+import TR from '../../translate/translate';
 
 const TeachersPage  = ({
-    onAddAction
+    onAddAction,
+    lang
 }) => (
     <div>
         <Page
-            title = "Teachers"
+            title = {TR(lang, 'TEACHERS')}
             isAdd = {true}
             onAdd = {onAddAction}
         >

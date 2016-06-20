@@ -2,6 +2,12 @@ import {connect} from 'react-redux';
 import {isAddNewOpen} from '../actions';
 import Page from '../views/Page';
 
+const mapStateToProps = ({language}) => {
+    return {
+        lang: language.lang
+    };
+};
+
 const mapDispatchToProps = () => (
     (dispatch) => ({
         onAddAction: () => {
@@ -10,5 +16,5 @@ const mapDispatchToProps = () => (
     })
 );
 
-export default connect(null, mapDispatchToProps)(Page);
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
 

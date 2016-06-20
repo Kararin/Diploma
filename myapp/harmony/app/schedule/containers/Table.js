@@ -5,9 +5,10 @@ import {
     updateCurrentWeek
 } from '../../myDates/actions';
 
-const mapStateToProps = ({dates}) => {
+const mapStateToProps = ({dates, language}) => {
      return {
-         currentDate: dates.start
+         currentDate: dates.start,
+         lang: language.lang
      };
 };
 

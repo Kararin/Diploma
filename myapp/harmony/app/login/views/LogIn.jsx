@@ -1,32 +1,33 @@
 import React from 'react';
 import {Input, Button} from 'react-bootstrap';
 import Page from '../../core/components/Page';
+import TR from '../../translate/translate';
 
 //todo: styling
 export default class LogIn extends React.Component {
     render() {
         var name,
-            pass;
+            pass,
+            {lang} = this.props;
+
         return (
             <Page
-                title = 'Log In'
+                title = {TR(lang, 'LOG_IN')}
                 className = 'login'>
                 <Input
                     type = 'text'
-                    label = 'Name'
-                    placeholder = 'Enter Name'
-                    defaultValue = 'Tom'
+                    label = {TR(lang, 'NAME')}
+                    placeholder = {TR(lang, 'ENTER_NAME')}
                     ref = {c => {name = c}}/>
                 <Input
                     type = 'text'
-                    placeholder = 'Enter Password'
-                    label = 'Password'
-                    defaultValue = '1'
+                    placeholder = {TR(lang, 'ENTER_PASSWORD')}
+                    label = {TR(lang, 'PASSWORD')}
                     ref = {c => {pass = c}}/>
 
                 <Button onClick = {e => {
                     this.onOkClick(name.getInputDOMNode().value, pass.getInputDOMNode().value)}}>
-                    LogIn
+                    {TR(lang, 'LOG_IN')}
                 </Button>
             </Page>
         )
@@ -47,5 +48,6 @@ export default class LogIn extends React.Component {
 };
 
 LogIn.defaultProps = {
+    lang: null,
     onLogInClick: console.log('onLogInClick not implemented')
 };

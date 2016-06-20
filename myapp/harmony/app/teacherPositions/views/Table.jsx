@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import Row from '../../core/components/Row';
+import TR from '../../translate/translate';
 
 class TableComponent extends React.Component {
     componentDidMount() {
@@ -8,13 +9,13 @@ class TableComponent extends React.Component {
     }
 
     render() {
-        var {onDelete, onEdit} = this.props;
+        var {onDelete, onEdit, lang} = this.props;
         return (
             <Table className = "my-table">
                 <thead>
                     <tr>
-                        <th>Name </th>
-                        <th>Short name</th>
+                        <th>{TR(lang, 'TEACHER_POSITIONS_NAME')} </th>
+                        <th>{TR(lang, 'SHORT_NAME')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@ class TableComponent extends React.Component {
 
 TableComponent.defaultProps = {
     positions: [],
+    lang: null,
     onDelete: console.log('onDelete not implemented'),
     onEdit: console.log('onEdit not implemented'),
     getData: console.log(' getdata not implemented yet')

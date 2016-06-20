@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
 import Teachers from '../../teachers/containers/Page';
-import Options from '../../options/views/Page';
+import Options from '../../options/containers/Page';
 import {Link} from 'react-router';
 import {appStyle} from '../../../css/style.scss';
 import Schedule from '../../schedule/containers/Page';

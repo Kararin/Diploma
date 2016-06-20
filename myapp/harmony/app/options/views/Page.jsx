@@ -1,12 +1,15 @@
 import Positions from '../../teacherPositions/containers/Page';
-import Days from '../../days/views/Page';
+import Days from '../../days/containers/PageContainer';
 import React from 'react';
 import Page from '../../core/components/Page';
+import TR from '../../translate/translate';
 
-export default () => (
+export default ({
+    lang
+}) => (
     <div className = "options-page">
         <Page
-            title = "Options"
+            title = {TR(lang, 'OPTIONS')}
            >
             <Positions/>
             <Days/>

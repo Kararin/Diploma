@@ -1,10 +1,12 @@
 import React from 'react';
+import TR from '../../translate/translate';
 
 const Header = ({
-    days
+    days,
+    lang
 }) => (
     <tr>
-        <td>Name</td>
+        <td>{TR(lang, 'NAME')}</td>
         {days.map(item => (
             <td
                 key = {item.id}>

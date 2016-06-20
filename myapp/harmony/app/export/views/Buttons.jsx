@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
+import TR from '../../translate/translate';
 
 export default class Export extends React.Component {
     render() {
@@ -10,7 +11,7 @@ export default class Export extends React.Component {
         return (
             <div>
                 <Button onClick = {e => {actions.toHtml(data.scheduleId, data.dates)}}>
-                    To HTML
+                    {TR(data.lang, 'TO_HTML')}
                 </Button>
             </div>
         )
@@ -23,6 +24,7 @@ Export.defaultProps = {
     },
     data: {
         scheduleId: null,
+        lang: null,
         dates: {
             start: null,
             end: null

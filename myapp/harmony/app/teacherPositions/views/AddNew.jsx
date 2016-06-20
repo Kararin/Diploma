@@ -3,19 +3,20 @@ import {
     Button,
     Input,
     Modal} from 'react-bootstrap';
+import TR from '../../translate/translate';
 
 export default class AddNew extends React.Component {
     render() {
         var name = null,
             shortName = null,
-            {onAdd, onClose, isVisible} = this.props;
+            {onAdd, onClose, isVisible, lang} = this.props;
 
         return (
             <div className="static-modal">
                 <Modal show = {isVisible}>
                 <Modal.Header>
                     <Modal.Title>
-                        Add new position
+                        {TR(lang, 'ADD_NEW_POSITION')}
                     </Modal.Title>
                 </Modal.Header>
 
@@ -23,28 +24,28 @@ export default class AddNew extends React.Component {
 
                     <Input
                         type = "text"
-                        placeholder = "Enter text"
-                        label = "Name"
+                        placeholder = {TR(lang, 'ENTER_POSITION_NAME')}
+                        label = {TR(lang, 'TEACHER_POSITIONS_NAME')}
                         ref = {(c) => {name = c;}}
                         onChange = {e => this.changeShortName(e.target.value, shortName)} />
                     <Input
                         type = "text"
-                        placeholder = "Enter text"
-                        label = "Short name"
+                        placeholder = {TR(lang, 'ENTER_POSITION_SHORT_NAME')}
+                        label = {TR(lang, 'SHORT_NAME')}
                         ref = {(c) => {shortName = c;}}
                         />
                 </Modal.Body>
 
                 <Modal.Footer>
                     <Button onClick = {() => {onClose()}}>
-                        Close
+                        {TR(lang, 'CLOSE')}
                     </Button>
                     <Button
                         bsStyle="primary"
                         onClick = {() => {
                             onAdd({name: name.getValue(), shortName: shortName.getValue()});
                         }}>
-                        Ok
+                        {TR(lang, 'OK')}
                     </Button>
                 </Modal.Footer>
 

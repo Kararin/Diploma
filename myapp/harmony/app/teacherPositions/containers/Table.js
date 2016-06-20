@@ -5,9 +5,10 @@ import {
     deletePositionServer,
     editPositionServer} from '../actions';
 
-const mapStateToDispatch = ({teacherPositions}) => {
+const mapStateToDispatch = ({teacherPositions, language}) => {
     return {
         positions: teacherPositions.data,
+        lang: language.lang,
         editing: teacherPositions.options.editing
     };
 };

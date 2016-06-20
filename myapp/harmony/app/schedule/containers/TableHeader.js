@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import TableHeader from '../views/TableHeader';
 
-const mapStateToProps = ({days}) => {
+const mapStateToProps = ({days, language}) => {
     return {
-        days: days.data
+        days: days.data,
+        lang: language.lang
     };
 };
 

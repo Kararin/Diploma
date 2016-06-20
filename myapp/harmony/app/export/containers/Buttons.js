@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
      return {
          data: {
              scheduleId: state.schedule.schedule.current,
-             dates: state.dates
+             dates: state.dates,
+             lang: state.language.lang
          }
      };
 };

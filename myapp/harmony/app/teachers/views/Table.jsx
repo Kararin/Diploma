@@ -2,6 +2,7 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import Row from '../containers/Row';
 import {Set} from 'immutable';
+import TR from '../../translate/translate';
 
 class TableComponent extends React.Component {
     componentDidMount() {
@@ -9,14 +10,14 @@ class TableComponent extends React.Component {
     }
 
     render() {
-        var {onDelete, onEdit} = this.props;
+        var {onDelete, onEdit, lang} = this.props;
         return (
             <Table className = "my-table">
                 <thead>
                     <tr>
-                        <th>Name </th>
-                        <th>Last name</th>
-                        <th>Position</th>
+                        <th>{TR(lang, 'NAME')} </th>
+                        <th>{TR(lang, 'LAST_NAME')}</th>
+                        <th>{TR(lang, 'POSITION')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@ class TableComponent extends React.Component {
 
 TableComponent.defaultProps = {
     teachers: [],
+    lang: null,
     editing: new Set(),
     onDelete: console.log('onDelete not implemented'),
     onEdit: console.log('onEdit not implemented'),

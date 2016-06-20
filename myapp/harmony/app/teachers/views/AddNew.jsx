@@ -4,12 +4,14 @@ import {
     Input,
     Modal} from 'react-bootstrap';
 import Select from '../../core/components/Select';
+import TR from '../../translate/translate';
 
 const AddNew = ({
     onAdd,
     onClose,
     isVisible,
-    data
+    data,
+    lang
 }) => {
     var name = null,
         lastName = null,
@@ -20,7 +22,7 @@ const AddNew = ({
             <Modal show = {isVisible}>
             <Modal.Header>
                 <Modal.Title>
-                    Add new teacher
+                    {TR(lang, 'ADD_NEW_TEACHERS')}
                 </Modal.Title>
             </Modal.Header>
 
@@ -28,13 +30,13 @@ const AddNew = ({
 
                  <Input
                     type = "text"
-                    placeholder = "Enter text"
-                    label = "Name"
+                    placeholder = {TR(lang, 'ENTER_TEACHER_NAME')}
+                    label = {TR(lang, 'NAME')}
                     ref = {(c) => {name = c;}} />
                 <Input
                     type = "text"
-                    placeholder = "Enter text"
-                    label = "Last name"
+                    placeholder = {TR(lang, 'ENTER_TEACHER_LAST_NAME')}
+                    label = {TR(lang, 'LAST_NAME')}
                     ref = {(c) => {lastName = c;}}/>
                 <Select
                     store = {teacherPositions}

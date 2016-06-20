@@ -10,9 +10,12 @@ import {
 import TableHeader from '../containers/TableHeader';
 import TableBody from '../containers/TableBody';
 import ScheduleDates from '../containers/ScheduleDates';
+import TR from '../../translate/translate';
 
 export default class Schedule extends React.Component {
     render() {
+        var {lang} = this.props;
+
         return (
             <Grid>
                 <Row>
@@ -33,7 +36,7 @@ export default class Schedule extends React.Component {
                                 onClick = {(e) => {
                                     this.props.toCurrentWeek();
                                 }}>
-                                Current
+                                {TR(lang, 'CURRENT')}
                             </Button>
                             <Button
                                 bsSize="large"

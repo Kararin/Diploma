@@ -2,9 +2,10 @@ import {connect} from 'react-redux';
 import Table from '../views/Table.jsx';
 import {fetchDays} from '../actions';
 
-const mapStateToDispatch = ({days}) => {
+const mapStateToDispatch = ({days, language}) => {
     return {
-        days: days.data
+        days: days.data,
+        lang: language.lang
     };
 };
 
